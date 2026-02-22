@@ -1,0 +1,62 @@
+.dropdown {
+	position: relative;
+	display: inline-block;
+
+	.btn-toggle {
+		display: none;
+
+		&.active {
+			color: var(--primary);
+		}
+	}
+
+	.menu {
+		display: inline-flex;
+		column-gap: 6px;
+
+		hr {
+			display: none;
+		}
+
+		&.open {
+			display: inline-flex;
+		}
+	}
+
+
+
+	@media(max-width: 1024px) {
+		.btn-toggle {
+			display: inline-flex;
+			min-width: 2.5em;
+			padding: 0;
+		}
+
+		.menu {
+			position: absolute;
+			top: 100%;
+			right: 0;
+			min-width: 120px;
+			margin-top: 4px;
+			display: none;
+			flex-direction: column;
+			box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+			z-index: 10;
+			background-color: #fff;
+			border: 0px solid var(--border-color);
+			border-radius: 4px;
+			overflow: hidden;
+
+			hr {
+				display: block;
+			}
+
+			button {
+				border: 0;
+				border-radius: 0;
+				min-height: 3.5em;
+
+			}
+		}
+	}
+}

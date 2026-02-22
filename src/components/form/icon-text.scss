@@ -1,0 +1,27 @@
+.icon-text {
+	flex: 0 0 auto;
+	align-self: center;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	line-height: 0;
+	padding: 3px 5px;
+	border-radius: 3px;
+	font-style: normal;
+	white-space: nowrap;
+	letter-spacing: 1px;
+	font-weight: 500;
+	min-width: 1em;
+	min-height: calc(1em + 6px);
+	font-size: 12px;
+
+	&.required {
+		background-color: rgb(237, 89, 89);
+		color: rgba(255, 255, 255, 0.95);
+	}
+
+	&.new {
+		background-color: #595BED;
+		color: hsl(0 100% 100% / .95);
+	}
+}

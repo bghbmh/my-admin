@@ -1,0 +1,178 @@
+.global-nav-wrapper {
+	display: flex;
+	flex-direction: column;
+
+	.gnb {
+		flex: none;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 3px;
+		font-size: 16px;
+		padding: 0 20px;
+
+		.gnb-item {
+			position: relative;
+			flex: 1 1 45%;
+			min-width: 100px;
+			min-height: 140px;
+			z-index: 0;
+			transition: all 0.3s;
+
+			// 자식 요소인 .btn 설정
+			>.btn {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				gap: 8px;
+				width: 100%;
+				height: 100%;
+				background-color: var(--gnb-menu-bg-color);
+				color: var(--gnb-menu-font-color);
+				border-radius: 16px;
+				transition: all 0.3s;
+				margin-left: 0;
+				margin-top: 0;
+				font-weight: 600;
+				border: 0;
+				font-size: 1em;
+				cursor: pointer;
+
+				i {
+					font-size: 1.3em;
+				}
+
+				// Hover 상태
+				&:hover {
+					color: var(--primary-500);
+					box-shadow: 0 0 1.5em hsl(0 0% 0% / 0.1);
+					z-index: 2;
+
+					i[class*="-svg2-"] {
+						filter: saturate(10);
+					}
+
+					i[class*="-svg-"] {
+						--fcColor: var(--primary-700);
+					}
+				}
+
+				// Active 상태
+				&.active {
+					width: calc(100% + 16px);
+					height: calc(100% + 16px);
+					background-color: var(--primary-500);
+					color: var(--primary-900);
+					box-shadow: 0 3.5px 13.1px 3px hsla(140, 56%, 56%, 0.3);
+					margin-left: -8px;
+					margin-top: -8px;
+
+					i {
+						filter: brightness(150%) contrast(350%);
+					}
+				}
+			}
+
+			// active를 가진 버튼을 포함할 때 z-index 조절
+			&:has(> .active) {
+				z-index: 3;
+			}
+		}
+	}
+
+	.btn-wrap {
+		padding-left: 20px;
+		margin-top: 40px;
+		margin-bottom: 2em;
+
+		.btn {
+			font-size: 14px;
+			color: var(--dark-500);
+		}
+	}
+}
+
+// 미디어 쿼리 영역
+@media (max-width: 1440px) {
+	.global-nav-wrapper {
+		.gnb {
+			font-size: 12px;
+			margin-bottom: auto;
+
+			.gnb-item {
+				min-width: 64px;
+				min-height: 64px;
+
+				>.btn {
+					gap: 0;
+
+					&.active {
+						width: 100%;
+						height: 100%;
+						margin-left: 0;
+						margin-top: 0;
+					}
+				}
+			}
+		}
+
+		.btn-wrap {
+			padding-left: 0;
+			text-align: center;
+
+			.ctrl-logout {
+				overflow: hidden;
+				color: transparent !important;
+				position: relative;
+				min-height: 3em;
+
+				i {
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%, -50%) scale(1.7);
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 1024px) {
+	.global-nav-wrapper {
+		.gnb {
+			font-size: 14px;
+
+			.gnb-item {
+				min-width: 100px;
+				min-height: 100px;
+
+				>.btn {
+					gap: 4px;
+				}
+			}
+		}
+
+		.btn-wrap {
+			padding-left: 20px;
+			text-align: left;
+
+			.ctrl-logout {
+				color: inherit !important;
+				min-height: auto;
+
+				i {
+					position: static;
+					transform: none;
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 440px) {
+	.global-nav-wrapper .gnb .gnb-item {
+		flex-basis: 31%;
+		width: calc((100vw - 40px - 6px) / 4);
+		height: 100px;
+	}
+}

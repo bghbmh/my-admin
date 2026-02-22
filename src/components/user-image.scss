@@ -1,0 +1,87 @@
+@use "@/styles/mixins" as *; // 추가: _mixins.scss에 있는 변수들을 가져옵니다.
+
+.user-image-wrap {
+	position: absolute;
+	width: 189px;
+	height: 209px;
+	right: -10px;
+	bottom: 16px;
+	z-index: 0;
+
+	.visual-defs {
+		position: absolute;
+		width: 0;
+		height: 0;
+	}
+
+	.image-container {
+		position: relative;
+		width: 100%;
+		height: 100%;
+
+		.user-img {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			clip-path: url(#userImageClip);
+			left: -2px;
+			z-index: 2;
+		}
+
+		.shape-bg {
+			position: absolute;
+			inset: 0;
+			width: 100%;
+			height: 100%;
+
+			&.primary {
+				z-index: -1;
+
+				use {
+					fill: hsl(48, 91.3%, 49.4%);
+				}
+			}
+
+			&.secondary {
+				z-index: -2;
+				rotate: 0deg;
+				opacity: 1;
+				transition: all 0.7s;
+
+				use {
+					fill: hsl(48, 91.3%, 49.4%);
+					transition: all 1s;
+				}
+			}
+		}
+	}
+
+	// HeaderUserInfo의 부모(.user)에 hover가 일어날 때의 액션
+	// 이 컴포넌트 자체를 사용하는 곳에서 제어하거나, 
+	// 아래처럼 클래스 구조를 활용해 애니메이션을 넣을 수 있습니다.
+}
+
+/* 부모(.user) 호버 시 애니메이션 로직 */
+.user:hover .user-image-wrap {
+	.shape-bg.secondary {
+		rotate: -50deg;
+
+		use {
+			fill: hsl(171, 100%, 35.7%);
+		}
+	}
+}
+
+/* 반응형 설정 */
+@include respond-to('desktop') {
+	.user-image-wrap {
+		transform: scale(0.3) translate(100%, 100%);
+	}
+}
+
+@include respond-to('tablet') {
+	.user-image-wrap {
+		transform: scale(0.7) translate(13%, 13%);
+	}
+}

@@ -1,0 +1,37 @@
+.toggle {}
+
+.toggle.mode input {
+	justify-content: left;
+	width: 48px;
+	height: auto;
+	border-radius: 100em;
+	padding: 2px;
+	border: 0;
+	background-image: linear-gradient(290.51deg, #FF007A -21.01%, #FFD600 77.42%);
+	transition: background-image 3s;
+}
+
+.toggle.mode input::before {
+	border-radius: 100em;
+	background-color: #fff;
+	background-image: url('/img/common/icon-svg-sun.svg');
+	--maskCheckImg: none;
+	width: 24px;
+	height: 24px;
+	background-position: center;
+	background-repeat: no-repeat;
+	--tx: 0;
+	transform: translateX(var(--tx));
+	transition: transform .3s;
+}
+
+.toggle.mode input:checked {
+	background-image: linear-gradient(291.91deg, #0632DE 6.77%, #FF51E3 119.66%);
+}
+
+.toggle.mode input:checked:before {
+	--maskCheckImg: none;
+	background-image: url('/img/common/icon-svg-moon.svg');
+
+	--tx: calc(100% - 4px);
+}

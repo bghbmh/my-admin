@@ -1,0 +1,69 @@
+.page-header-wrapper {
+	--x: 40px;
+	position: sticky;
+	display: flex;
+	flex-direction: column;
+	height: 120px;
+	top: -4px;
+	background-color: var(--page-header-bc, rgba(249, 251, 250, 0.8));
+	gap: 1em 8px;
+	z-index: 5;
+	backdrop-filter: blur(10px);
+	padding: 1.7rem var(--x) 1rem;
+
+	// 부모 main.common의 패딩을 상쇄하기 위한 마이너스 마진
+	margin-left: calc(-1 * var(--x));
+	margin-right: calc(-1 * var(--x));
+
+	.page-header {
+		flex: 0;
+		display: flex;
+		align-items: center;
+
+		.page-title {
+			font-size: 28px;
+			font-weight: 800;
+			color: var(--font-color-default);
+			margin: 0 auto 0 0;
+			font-family: 'TheJamsil5Bold', sans-serif;
+		}
+
+		.button-wrap .btn {
+			color: var(--font-color-default);
+			display: flex;
+			align-items: center;
+			gap: 6px;
+		}
+	}
+
+	// 반응형
+	@media (max-width: 1440px) {
+		--x: 20px;
+
+		.page-header .page-title {
+			font-size: 24px;
+		}
+	}
+
+	@media (max-width: 1024px) {
+		.page-header .page-title {
+			padding-left: 3.5rem;
+		}
+
+		.btn.create-project {
+			width: 2.5em;
+			height: 2.5em;
+			overflow: hidden;
+
+			span {
+				display: none;
+			}
+
+			// 글자 숨기기
+		}
+	}
+
+	@media (max-width: 768px) {
+		height: auto;
+	}
+}

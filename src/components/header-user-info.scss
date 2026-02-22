@@ -1,0 +1,129 @@
+@use "@/styles/mixins" as *; // 추가: _mixins.scss에 있는 변수들을 가져옵니다.
+
+.header-user-info-wrap {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	box-sizing: border-box;
+	vertical-align: top;
+
+	padding: 0 30px 0 20px;
+	overflow: hidden;
+	transition: all .3s;
+
+
+
+	.user {
+		flex: none;
+		position: relative;
+		z-index: 0;
+		margin-bottom: 40px;
+		height: 280px;
+		padding: 26px 0;
+		box-sizing: content-box;
+
+		.info {
+			display: flex;
+			flex-direction: column;
+			height: 100%;
+
+			.option-wrap {
+				display: flex;
+				align-items: center;
+
+				.option {
+					font-size: 12px;
+					font-weight: 500;
+					color: var(--dark-500);
+					display: inline-flex;
+					align-items: center;
+					margin-right: auto;
+				}
+			}
+
+			.main {
+				margin-bottom: auto;
+
+				.name {
+					font-size: 36px;
+					font-weight: 800;
+					line-height: 1.3;
+					letter-spacing: 1.08px;
+					color: var(--dark-600);
+				}
+
+				.extra-info {
+					display: flex;
+					flex-direction: column;
+					font-size: 14px;
+					line-height: 1.5;
+					margin-top: 8px;
+
+					.item {
+						display: flex;
+						align-items: center;
+						gap: 8px;
+
+						&::before {
+							content: '';
+							display: inline-block;
+							width: 4px;
+							height: 4px;
+							border-radius: 50%;
+							background-color: var(--dark-200);
+						}
+					}
+				}
+			}
+		}
+
+		.ctrl-modal {
+			display: none
+		}
+	}
+}
+
+// 미디어 쿼리 통합
+@include respond-to('desktop') {
+	.header-user-info-wrap .user {
+		height: 100px;
+		margin: 0;
+
+		.info {
+			display: none;
+		}
+
+		.ctrl-modal {
+			position: absolute;
+			inset: 0;
+			display: block;
+			background: transparent;
+			border: 0;
+			z-index: 2;
+
+			i {
+				position: absolute;
+				bottom: 1em;
+				left: 50%;
+				transform: translateX(-50%);
+				background: #fff;
+				border-radius: 50%;
+				padding: 5px;
+
+				&:hover {
+					background: var(--primary-500);
+				}
+			}
+		}
+	}
+}
+
+@include respond-to('tablet') {
+	.header-user-info-wrap .user {
+		height: 240px;
+
+		.info {
+			display: flex;
+		}
+	}
+}

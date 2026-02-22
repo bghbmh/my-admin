@@ -1,0 +1,80 @@
+.breadcrumb-wrap {
+	flex: none;
+	--bmh-breadcrumb-padding-x: 4px;
+	--bmh-breadcrumb-font-size: 13px;
+
+	.breadcrumb-list {
+		display: flex;
+		align-items: center;
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		gap: 10px;
+	}
+
+	.breadcrumb-item {
+		display: flex;
+		align-items: center;
+
+		a {
+			display: flex;
+			align-items: center;
+			gap: 4px;
+			color: var(--font-color-default);
+			text-decoration: none;
+			font-size: var(--bmh-breadcrumb-font-size);
+			opacity: 0.7;
+			transition: opacity 0.2s;
+
+			&:hover {
+				opacity: 1;
+			}
+
+			&.home-link {
+				background-color: var(--dark-100);
+				color: var(--dark-700);
+				padding: 4px 10px;
+				line-height: 1;
+				border-radius: 1em;
+				opacity: 1;
+
+				svg {
+					width: 0.9em;
+					fill: currentColor;
+				}
+
+				&:hover {
+					background-color: var(--primary-500);
+					color: var(--dark-900);
+				}
+			}
+		}
+
+		// 구분선 (/) 표시
+		&+.breadcrumb-item::before {
+			content: "/";
+			font-size: 0.8em;
+			margin-right: 10px;
+			opacity: 0.3;
+			color: var(--font-color-default);
+		}
+
+		&.current a {
+			font-weight: 600;
+			opacity: 1;
+		}
+	}
+}
+
+// 모바일 대응 (기존 로직 유지)
+@media (max-width: 1024px) {
+	.breadcrumb-wrap .breadcrumb-item a.home-link {
+		padding: 4px 0;
+		background-color: transparent;
+		color: currentColor;
+
+		&:hover {
+			background-color: transparent;
+		}
+	}
+}

@@ -1,0 +1,149 @@
+/* base__부트스트랩 css 속성 추가 mnb */
+// css/scss/base.scss
+
+// =================================================================
+// 2. Include any default variable overrides here (SCSS 변수 덮어쓰기)
+// =================================================================
+
+// 1. CSS 변수 접두사 변경 (ex: --bmh-blue)
+$variable-prefix: "bmh-";
+
+// 2. 클래스 접두사 변경 (ex: .bmh-btn)
+
+// 3. 폰트 변경
+$font-family-sans-serif: (
+	'Pretendard Variable',
+	'Apple SD Gothic Neo',
+	'Malgun Gothic',
+	'Segoe UI',
+	'Roboto',
+	'Noto Sans',
+	'Helvetica Neue',
+	Arial,
+	sans-serif
+);
+
+$primary: hsl(140 56% 49%);
+$secondary: hsl(181 45% 57%);
+// 여기에 다른 모든 커스텀 변수 (예: $primary, $spacer 등)를 추가하세요.
+$body-color: hsl(198, 10%, 55%);
+
+
+@import "./variables"; // _variables.scss를 가져옴
+
+
+
+// =================================================================
+// 1. Include functions first (색상, 계산 함수 등)
+// =================================================================
+@import "bootstrap/scss/functions";
+
+// =================================================================
+// 3. Include remainder of required Bootstrap stylesheets 
+//    (변수 파일 및 다크 모드 설정 포함)
+// =================================================================
+// 여기서 위에서 정의한 모든 SCSS 변수들이 부트스트랩의 기본값을 덮어씁니다.
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/variables-dark"; // 다크 모드 변수 설정
+
+
+// =================================================================
+// 5. Include remainder of required parts (맵, 믹스인, :root CSS 변수 생성)
+// =================================================================
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+
+// CSS 변수(:root, [data-bs-theme=light/dark]) 블록이 생성되는 파일
+@import "bootstrap/scss/root";
+
+
+// =================================================================
+// 6. Optionally include any other parts as needed (필수 모듈 + 컴포넌트)
+// =================================================================
+@import "bootstrap/scss/utilities";
+@import "bootstrap/scss/reboot";
+@import "bootstrap/scss/type";
+@import "bootstrap/scss/images";
+@import "bootstrap/scss/containers";
+@import "bootstrap/scss/grid";
+@import "bootstrap/scss/helpers";
+
+// --- 핵심 컴포넌트 추가 ---
+@import "bootstrap/scss/forms"; // 폼 컨트롤, 체크박스 등
+@import "bootstrap/scss/buttons"; // 버튼
+@import "bootstrap/scss/transitions"; // 트랜지션 효과
+@import "bootstrap/scss/card"; // 카드
+@import "bootstrap/scss/alert"; // 알림
+@import "bootstrap/scss/breadcrumb"; // 브레드크럼
+@import "bootstrap/scss/pagination"; // 페이지네이션	
+@import "bootstrap/scss/nav"; // 네비게이션
+@import "bootstrap/scss/navbar"; // 네비게이션 바
+@import "bootstrap/scss/dropdown"; // 드롭다운
+@import "bootstrap/scss/badge"; // 뱃지
+@import "bootstrap/scss/modal"; // 모달
+
+// =================================================================
+// 7. Optionally include utilities API last (유틸리티 클래스 생성)
+// =================================================================
+@import "bootstrap/scss/utilities/api";
+
+
+// =================================================================
+// 8. Add additional custom code here (추가 사용자 정의 스타일)
+// =================================================================
+
+select {
+	--#{$prefix}form-select-bg-img: #{escape-svg($form-select-indicator)};
+
+	display: block;
+	width: 100%;
+	padding: $form-select-padding-y $form-select-indicator-padding $form-select-padding-y $form-select-padding-x;
+	font-family: $form-select-font-family;
+	@include font-size($form-select-font-size);
+	font-weight: $form-select-font-weight;
+	line-height: $form-select-line-height;
+	color: $form-select-color;
+	appearance: none;
+	background-color: $form-select-bg;
+	background-image: var(--#{$prefix}form-select-bg-img),
+	var(--#{$prefix}form-select-bg-icon, none);
+	background-repeat: no-repeat;
+	background-position: $form-select-bg-position;
+	background-size: $form-select-bg-size;
+	border: $form-select-border-width solid $form-select-border-color;
+	@include border-radius($form-select-border-radius, 0);
+	@include box-shadow($form-select-box-shadow);
+	@include transition($form-select-transition);
+
+	&:focus {
+		border-color: $form-select-focus-border-color;
+		outline: 0;
+
+		@if $enable-shadows {
+			@include box-shadow($form-select-box-shadow, $form-select-focus-box-shadow);
+		}
+
+		@else {
+			// Avoid using mixin so we can pass custom focus shadow properly
+			box-shadow: $form-select-focus-box-shadow;
+		}
+	}
+
+	&[multiple],
+	&[size]:not([size="1"]) {
+		padding-right: $form-select-padding-x;
+		background-image: none;
+	}
+
+	&:disabled {
+		color: $form-select-disabled-color;
+		background-color: $form-select-disabled-bg;
+		border-color: $form-select-disabled-border-color;
+	}
+
+	// Remove outline from select box in FF
+	&:-moz-focusring {
+		color: transparent;
+		text-shadow: 0 0 0 $form-select-color;
+	}
+}

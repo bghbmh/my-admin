@@ -1,0 +1,116 @@
+// 1. CSS 변수 접두사 변경 (ex: --bmh-blue)
+$variable-prefix: "bmh-";
+
+// 2. 클래스 접두사 변경 (ex: .bmh-btn)
+
+// 3. 폰트 변경
+$font-family-sans-serif: (
+	'Pretendard Variable',
+	'Apple SD Gothic Neo',
+	'Malgun Gothic',
+	'Segoe UI',
+	'Roboto',
+	'Noto Sans',
+	'Helvetica Neue',
+	Arial,
+	sans-serif
+);
+
+$primary: hsl(140 56% 49%); // var(--primary-500);
+$secondary: hsl(181 45% 57%);
+// 여기에 다른 모든 커스텀 변수 (예: $primary, $spacer 등)를 추가하세요.
+$body-color: hsl(198, 10%, 55%);
+
+
+
+// 1. 브레이크포인트 정의 (Map 구조)
+$breakpoints: (
+	'mobile': 768px,
+	'tablet': 1024px,
+	'desktop': 1024px,
+	// 1440px 이상은 데스크탑으로 간주
+	'wide': 1920px
+);
+
+// 2. 미디어쿼리 Mixin
+@mixin respond-to($breakpoint) {
+	// Map에서 해당 키값의 수치를 가져옵니다.
+	$value: map-get($breakpoints, $breakpoint);
+
+	@if $value {
+		@media screen and (max-width: $value) {
+			@content; // 이 자리에 실제 CSS 코드가 들어갑니다.
+		}
+	}
+
+	@else {
+		@warn "브레이크포인트 이름이 유효하지 않습니다: #{$breakpoint}";
+	}
+}
+
+
+
+
+/* 여백 추가   test jgf*/
+$spacers: (
+	0: 0,
+	1: 0.25rem,
+	2: 0.5rem,
+	3: 1rem,
+	4: 1.5rem,
+	5: 5rem
+);
+$margin-directions: (
+	"margin-left": "margin-left",
+	"margin-right": "margin-right"
+);
+
+@mixin margin-utility($prefix, $property) {
+	@each $size, $value in $spacers {
+		.#{$prefix}-#{$size} {
+			#{$property}: $value !important;
+		}
+	}
+
+	.#{$prefix}-auto {
+		#{$property}: auto !important;
+	}
+}
+
+@each $prefix, $property in $margin-directions {
+	@include margin-utility($prefix, $property);
+}
+
+
+
+
+
+$unit-values: (
+	"em": 1em,
+	"rem": 1rem,
+	"px": 1px,
+	"%": 1%,
+	) !default;
+
+$unit-labels: (
+	"em": "em",
+	"rem": "rem",
+	"px": "px",
+	"%": "per",
+	) !default;
+
+@mixin width-height($prefix: "", $start: 2, $end: 9, $offset: 0.5, $unit: "em", $interval: 1) {
+	$u-value: map-get($unit-values, $unit
+	); // 1em, 1rem, 1px, 1%
+$u-label: map-get($unit-labels, $unit);
+
+$i: $start;
+
+@while $i <=$end {
+	.#{$prefix}-#{$i}#{$u-label} {
+		#{$prefix}: (($i + $offset) * $u-value) !important;
+	}
+
+	$i: $i + $interval;
+}
+}
