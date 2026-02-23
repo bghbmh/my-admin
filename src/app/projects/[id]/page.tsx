@@ -1,5 +1,5 @@
 import PageHeader from "@/components/common/page-header";
-import ProjectSectionHeader from "@/components/common/section-header";
+import ProjectSectionHeader from "@/components/common/project-section-header";
 import ProjectViewDetail from "@/components/form/project-view-detail";
 import { ProjectDataType } from "@/types/project.data";
 

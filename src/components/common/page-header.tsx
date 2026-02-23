@@ -28,7 +28,14 @@ export default function PageHeader({ title, mode = "view", onAction }: PageHeade
 			<div className="page-header">
 				<h2 className="page-title">{title}</h2>
 
-				<div className="button-wrap">
+				<div className="button-wrap d-flex gap-2">
+					{/* 휴지통_임시 버튼 */}
+					<Link href="/trash"
+						className="btn default"
+					>
+						<span>휴지통</span>
+					</Link>
+
 					<Link href="/projects/create"
 						className="btn create-project"
 					>

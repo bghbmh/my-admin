@@ -1,12 +1,13 @@
 
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
+import React, { useState, useMemo } from "react";
 import { MAIN_CATEGORY } from "@/constants/config";
 import { ProjectDataType } from "@/types/project.data";
 import { useProjectDelete } from "@/hooks/useProjectDelete";
 
 import ProjectsListItem from "@/components/projects-list-item";
+import SectionHeader from "@/components/common/section-header";
 
 interface Props {
 	list: ProjectDataType[];
@@ -14,14 +15,14 @@ interface Props {
 
 export default function ProjectsListClient({ list }: Props) {
 
-	const [activeTab, setActiveTab] = useState(0);
+	const [activeTab, setActiveTab] = useState({ number: 0, name: "전체" });
 	const [selectedProjects, setSelectedProjects] = useState<string[]>([]);
 
 	const filteredProjects = useMemo(() => {
-		return activeTab === 0
+		return activeTab.number === 0
 			? list
 			: list.filter(project =>
-				project.category.find(cat => Number(cat.type) === activeTab)
+				project.category.find(cat => Number(cat.type) === activeTab.number)
 			);
 	}, [activeTab, list]);
 
@@ -51,27 +52,36 @@ export default function ProjectsListClient({ list }: Props) {
 				<div className="nav-list" role="tablist">
 					<button
 						type="button"
-						className={`btn nav-item ${activeTab === 0 ? "active" : ""}`}
+						className={`btn nav-item ${activeTab.number === 0 ? "active" : ""}`}
 						role="tab"
-						onClick={() => setActiveTab(0)} >
+						onClick={() => setActiveTab({ number: 0, name: "전체" })} >
 						<i className="icon-svg2-all" aria-hidden="true"></i>전체
 					</button>
 					{
 						MAIN_CATEGORY.map(category => (
 							<button key={category.type}
 								type="button"
-								className={`btn nav-item ${activeTab === category.type ? "active" : ""}`}
+								className={`btn nav-item ${activeTab.number === category.type ? "active" : ""}`}
 								role="tab"
-								onClick={() => setActiveTab(category.type)}>
+								onClick={() => setActiveTab({ number: category.type, name: category.name })}>
 								<i className={category.icon} aria-hidden="true"></i>{category.name}
 							</button>
 						))
 					}
 				</div>
 			</nav>
-			{
-				selectedProjects.length > 0 && (
-					<div className="option-control">
+
+			<SectionHeader
+				title={
+					<>
+						<i className="icon-svg2-me" aria-hidden="true"></i>
+						<h3 className="text">'{activeTab.name}' 보기</h3>
+						{selectedProjects.length > 0 && <small className="selected-count"> <b className="fcPrimary font-monospace">{selectedProjects.length}</b>개 선택됨</small>}
+
+					</>
+				}
+				actions={selectedProjects.length > 0 && (
+					<div className="btn-wrap">
 						<button type="button" onClick={handleCancel} className="btn cancel">취소</button>
 						<button
 							type="button"
@@ -79,13 +89,9 @@ export default function ProjectsListClient({ list }: Props) {
 							onClick={() => handleProjectDelete(selectedProjects, () => setSelectedProjects([]))}>
 							{isDeleting ? "삭제 중..." : "삭제"}
 						</button>
-						<span className="selected-count">
-							{selectedProjects.length}개 선택됨
-						</span>
 					</div>
-
-				)
-			}
+				)}
+			/>
 
 			<section className="  projects-list" >
 				{filteredProjects.map(project => (

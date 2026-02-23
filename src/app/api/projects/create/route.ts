@@ -11,14 +11,16 @@ export async function POST(req: Request) {
 		const curData = await fs.readFile(DBpath, 'utf-8');
 		const projects = JSON.parse(curData);
 
+		const timestamp = Date.now();
+
 		// 새 프로젝트 정보 구성
 		const newId = 'bmh' + Date.now();
 		const uploadNew = {
 			...clientData,
 			id: newId,
-			projectNum: Date.now(),
-			registerDate: Date.now(),
-			modifyDate: [Date.now()]
+			projectNum: timestamp,
+			registerDate: timestamp,
+			modifyDate: [timestamp]
 		};
 
 		// 폴더 생성 미리 해두기

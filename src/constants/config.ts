@@ -11,7 +11,7 @@ export const NO_ITEM_CONFIG = {
 
 export const MAIN_CATEGORY = [
 	{
-		type: 0,
+		type: 6,
 		name: "알 수 없음",
 		icon: ''
 	},
@@ -43,7 +43,7 @@ export const MAIN_CATEGORY = [
 ];
 export const SUB_CATEGORY = [
 	{
-		type: 0,
+		type: 6,
 		name: "알 수 없음",
 		icon: ''
 	},
