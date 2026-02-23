@@ -1,0 +1,181 @@
+@charset "utf-8";
+/* CSS Document */
+
+.zPagination {
+	--ui-pagination-font-size: 14px;
+	--ui-pagination-color: #333;
+	--ui-pagination-bg: transparent;
+	--ui-pagination-border-width: 0;
+	--ui-pagination-border-color: transparent;
+	--ui-pagination-border-radius: 6px;
+
+	--ui-pagination-hover-color: #fff;
+	--ui-pagination-hover-bg: rgb(0, 110, 255);
+	--ui-pagination-hover-border-color: rgb(0, 110, 255);
+	--ui-pagination-focus-color: rgb(0, 110, 255);
+	--ui-pagination-focus-bg: rgb(0, 110, 255);
+
+	--ui-pagination-focus-box-shadow: none;
+	--ui-pagination-active-color: hsl(0, 0%, 100%);
+	--ui-pagination-active-bg: rgb(0, 110, 255);
+
+	--ui-pagination-disabled-color: #777;
+	--ui-pagination-disabled-bg: #ccc;
+	--ui-pagination-disabled-border-color: #ccc;
+
+
+	--chevron-left: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15 18L9 12L15 6' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+
+	--chevron-left-double: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M18 17L13 12L18 7M11 17L6 12L11 7' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+
+
+	--chevron-right: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9 18L15 12L9 6' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+
+	--chevron-right-double: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 17L11 12L6 7M13 17L18 12L13 7' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+
+	display: inline-flex;
+	gap: 4px;
+	margin: 1.5em 0;
+	list-style: none;
+
+	justify-content: center;
+}
+
+/*
+.zPagination:not(:has(.page-link:nth-last-of-type(1))){ margin: 0em 0; }
+*/
+.zPagination .page-item-wrap {
+	/* flex: 1; */
+	display: inline-flex;
+	gap: 4px;
+}
+
+.zPagination .page-link {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+
+	vertical-align: middle;
+	cursor: pointer;
+	--fs: calc(1em - 1px);
+	--border-radius: var(--border-radius-6px, 6px);
+	min-height: 2.5em;
+	font-size: var(--fs);
+	border-radius: var(--border-radius);
+	border: 1px solid var(--border-color, transparent);
+	color: var(--fcColor, var(--dark-800));
+	background-color: var(--bcColor, transparent);
+	flex: none;
+	justify-content: center;
+	align-items: center;
+	gap: 4px;
+	padding: 0 1em;
+	font-weight: 400;
+	transition: all .2s ease-in-out;
+	display: inline-flex;
+
+	border-radius: var(--border-radius-6px);
+	width: 36px;
+	height: 36px;
+	text-align: center;
+	line-height: 36px;
+	padding: 0;
+	background-color: var(--ui-pagination-bg);
+	border-color: var(--ui-pagination-border-color);
+	overflow: hidden;
+	color: var(--ui-pagination-color);
+	position: relative;
+
+}
+
+.zPagination .page-link.first,
+.zPagination .page-link.last,
+.zPagination .page-link.prev,
+.zPagination .page-link.next {
+	color: transparent;
+	/* var(--ui-pagination-color)*/
+	max-width: 36px;
+	line-height: 1;
+	overflow: hidden;
+	padding: .4em;
+	box-sizing: border-box;
+	--mkimage: var(--chevron-left);
+}
+
+.zPagination .page-link.first::before,
+.zPagination .page-link.last::before,
+.zPagination .page-link.prev::before,
+.zPagination .page-link.next::before {
+
+	content: '';
+	position: absolute;
+	display: block;
+	width: 100%;
+	height: 100%;
+	line-height: 1;
+	font-family: unset;
+	background-color: currentColor;
+	color: var(--ui-pagination-color);
+	-webkit-mask-size: contain;
+	-webkit-mask-position-x: 50%;
+	-webkit-mask-position-y: calc(50% - 0px);
+	-webkit-mask-repeat: no-repeat;
+	mask-size: 1.4em;
+	mask-position-x: 50%;
+	mask-position-y: 50%;
+	mask-repeat: no-repeat;
+
+	-webkit-mask-image: var(--mkimage);
+	mask-image: var(--mkimage);
+
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+}
+
+.zPagination .page-link.first::before {
+	--mkimage: var(--chevron-left-double);
+}
+
+.zPagination .page-link.last::before {
+	--mkimage: var(--chevron-right-double);
+}
+
+.zPagination .page-link.prev::before {
+	--mkimage: var(--chevron-left);
+}
+
+.zPagination .page-link.next::before {
+	--mkimage: var(--chevron-right);
+}
+
+.zPagination .page-link:hover {
+	background-color: var(--ui-pagination-hover-bg);
+	border-color: var(--ui-pagination-hover-border-color);
+	color: var(--ui-pagination-hover-color);
+}
+
+.zPagination .page-link.first:hover,
+.zPagination .page-link.last:hover,
+.zPagination .page-link.prev:hover,
+.zPagination .page-link.next:hover {
+	--ui-pagination-hover-color: transparent;
+	--ui-pagination-hover-border-color: transparent;
+}
+
+.zPagination .page-link.current {
+	color: var(--ui-pagination-active-color);
+	background-color: var(--ui-pagination-active-bg);
+}
+
+.zPagination .page-link[disabled] {
+	opacity: .3;
+	cursor: not-allowed;
+}
+
+.zPagination .page-link.first[disabled]:hover,
+.zPagination .page-link.last[disabled]:hover,
+.zPagination .page-link.prev[disabled]:hover,
+.zPagination .page-link.next[disabled]:hover {
+	--ui-pagination-hover-bg: transparent;
+}

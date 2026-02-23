@@ -13,8 +13,8 @@ export default function ProjectCreatePage() {
 		"mainOpen": false,
 		"mainOpenImages": [],
 		"category": [
-			{ type: "0", name: "알 수 없음", label: "main" },
-			{ type: "0", name: "알 수 없음", label: "sub" }
+			{ type: "6", name: "알 수 없음", label: "main" },
+			{ type: "6", name: "알 수 없음", label: "sub" }
 		],
 		"hash": [],
 		"title": "",

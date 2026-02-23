@@ -4,10 +4,14 @@
 import React, { useState, useMemo } from "react";
 import { MAIN_CATEGORY } from "@/constants/config";
 import { ProjectDataType } from "@/types/project.data";
+
 import { useProjectDelete } from "@/hooks/useProjectDelete";
+import { usePagination } from "@/hooks/usePagination";
 
 import ProjectsListItem from "@/components/projects-list-item";
 import SectionHeader from "@/components/common/section-header";
+import Pagination from "@/components/common/Pagination";
+import '@/styles/bPagination.css'
 
 interface Props {
 	list: ProjectDataType[];
@@ -18,13 +22,35 @@ export default function ProjectsListClient({ list }: Props) {
 	const [activeTab, setActiveTab] = useState({ number: 0, name: "전체" });
 	const [selectedProjects, setSelectedProjects] = useState<string[]>([]);
 
+
 	const filteredProjects = useMemo(() => {
 		return activeTab.number === 0
 			? list
 			: list.filter(project =>
 				project.category.find(cat => Number(cat.type) === activeTab.number)
 			);
-	}, [activeTab, list]);
+	}, [list, activeTab]);
+
+	const {
+		currentPage,
+		setCurrentPage,
+		totalPages,
+		paginatedList,
+		pageNumbers
+	} = usePagination(filteredProjects, 4, 1)
+
+
+	console.log("알 수 없음:", filteredProjects.length, pageNumbers);
+
+
+
+	const changeTab = (number: number, name: string) => {
+		setActiveTab({ number, name });
+		setCurrentPage(1); // 탭 바뀔 때 1페이지로!
+		setSelectedProjects([]);
+	};
+
+
 
 	const handleSelectedProjects = (checked: boolean, id: string) => {
 		setSelectedProjects(prev => (
@@ -32,7 +58,6 @@ export default function ProjectsListClient({ list }: Props) {
 		))
 	}
 
-	console.log("Selected Projects:", selectedProjects);
 
 	const { handleProjectDelete, isDeleting } = useProjectDelete();
 
@@ -42,7 +67,6 @@ export default function ProjectsListClient({ list }: Props) {
 		console.log("취소"); //디버깅용 로그 
 	};
 
-	console.log("ProjectsListClient 지우고나서 뜨는제:", list);
 
 	return (
 		<>
@@ -63,7 +87,7 @@ export default function ProjectsListClient({ list }: Props) {
 								type="button"
 								className={`btn nav-item ${activeTab.number === category.type ? "active" : ""}`}
 								role="tab"
-								onClick={() => setActiveTab({ number: category.type, name: category.name })}>
+								onClick={() => changeTab(category.type, category.name)}>
 								<i className={category.icon} aria-hidden="true"></i>{category.name}
 							</button>
 						))
@@ -75,7 +99,9 @@ export default function ProjectsListClient({ list }: Props) {
 				title={
 					<>
 						<i className="icon-svg2-me" aria-hidden="true"></i>
-						<h3 className="text">'{activeTab.name}' 보기</h3>
+						<h3 className="text">'{activeTab.name}' 보기
+							<small className="font-number">{filteredProjects.length}</small>
+						</h3>
 						{selectedProjects.length > 0 && <small className="selected-count"> <b className="fcPrimary font-monospace">{selectedProjects.length}</b>개 선택됨</small>}
 
 					</>
@@ -94,13 +120,20 @@ export default function ProjectsListClient({ list }: Props) {
 			/>
 
 			<section className="  projects-list" >
-				{filteredProjects.map(project => (
+				{paginatedList.map(project => (
 					<ProjectsListItem
 						key={project.id}
 						projectData={project}
 						isSelected={selectedProjects.includes(project.id)}
 						onSelected={(checked) => handleSelectedProjects(checked, project.id)} />
 				))}
+
+				<Pagination
+					currentPage={currentPage}
+					totalPages={totalPages}
+					onPageChange={setCurrentPage}
+					pageNumbers={pageNumbers}
+				/>
 			</section>
 		</>
 	);
