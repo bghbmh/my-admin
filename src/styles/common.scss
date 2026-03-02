@@ -1,5 +1,10 @@
 @use "./mixins" as *; // 추가: _mixins.scss에 있는 변수들을 가져옵니다.
 
+
+:root {
+	--page-header-height: 120px;
+}
+
 // 로고 스타일
 .logo {
 	display: flex;
@@ -115,12 +120,13 @@ main.common {
 	display: inline-block;
 	flex: 1;
 	max-width: 100%;
-	min-height: 100%;
+	min-height: 100vh;
 	height: max-content;
 	padding: 0 40px 40px;
 	vertical-align: top;
 
-	.contents {
+	#main-common-container {
+		min-height: calc(100vh - 120px - 40px - 4px);
 
 		// 프로젝트 리스트가 포함된 경우
 		&.has-project-list {
@@ -136,28 +142,28 @@ main.common {
 }
 
 // 페이지 헤더
-.page-header {
-	height: 97px;
-	display: flex;
-	align-items: center;
+// .page-header {
+// 	height: 97px;
+// 	display: flex;
+// 	align-items: center;
 
-	.page-title {
-		font-size: 28px;
-		font-weight: 800;
-		color: var(--font-color-default);
-		margin: 0 auto 0 0;
-	}
+// 	.page-title {
+// 		font-size: 28px;
+// 		font-weight: 800;
+// 		color: var(--font-color-default);
+// 		margin: 0 auto 0 0;
+// 	}
 
-	@media (max-width: 1280px) {
-		.page-title {
-			font-size: 24px;
-		}
-	}
+// 	@media (max-width: 1280px) {
+// 		.page-title {
+// 			font-size: 24px;
+// 		}
+// 	}
 
-	@media (max-width: 768px) {
-		height: 64px;
-	}
-}
+// 	@media (max-width: 768px) {
+// 		height: 64px;
+// 	}
+// }
 
 // 기타 공통 섹션 및 리스트
 .section {
@@ -165,6 +171,39 @@ main.common {
 
 	&+.section {
 		margin-top: 30px;
+	}
+}
+
+.section-header {
+	display: flex;
+	align-items: center;
+	padding-top: 0;
+	gap: 8px;
+	padding: 0 0 16px;
+
+	.title {
+		margin-right: auto;
+
+		.text {
+			font-size: 24px;
+			font-weight: 900;
+			color: var(--font-color-default);
+			margin-bottom: 0;
+
+			font-family: 'KakaoBigSans';
+			font-weight: 800;
+
+			font-weight: 700;
+			font-family: 'TheJamsil5Bold';
+		}
+	}
+
+	@media (max-width: 1280px) {
+		.title {
+			.text {
+				font-size: 20px;
+			}
+		}
 	}
 }
 
@@ -180,5 +219,111 @@ main.common {
 .my-modal {
 	.btn-close {
 		background-color: red;
+	}
+}
+
+.none {
+	display: flex;
+	gap: 12px;
+	width: 100%;
+	max-width: 1280px;
+	align-items: center;
+	margin: auto;
+	justify-content: center;
+
+	border-left: 1px solid var(--item-border-color);
+	border-right: 1px solid var(--item-border-color);
+	border-radius: var(--border-radius-8px);
+	font-weight: 400;
+	font-size: 1em;
+	// font-family: "Paperlogy";
+	background-color: #ffffff;
+	color: var(--gray-9);
+
+	svg {
+		transform: scale(1.5);
+	}
+
+	&.list-items {
+		flex-direction: column;
+		font-size: 18px;
+		min-height: 60vh;
+	}
+
+	&.details {
+		font-size: 14px;
+		background-color: var(--gray-f9);
+		padding: 3em 1em;
+	}
+
+}
+
+
+.comparison-upload-grid {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+	padding: 20px;
+	background: #fafafa;
+	border: 1px dashed #d9d9d9;
+	border-radius: 8px;
+	justify-content: center;
+
+	.ant-upload-wrapper {
+		width: 100% !important;
+		height: 200px !important;
+	}
+
+	.upload-box {
+		text-align: center;
+	}
+
+	.before {
+		flex: 1 1 40%
+	}
+
+	.after {
+		flex: 1 1 40%
+	}
+
+	.box-label {
+		display: block;
+		margin-bottom: 12px;
+		font-weight: 600;
+		font-size: 13px;
+		color: #555;
+	}
+
+	.icon-center {
+		font-size: 24px;
+		color: #1890ff;
+		margin: 20px 10px 0;
+	}
+
+	.ant-upload.ant-upload-select {
+		width: 100% !important;
+		height: 100% !important;
+	}
+
+	.ant-upload-list-item-container,
+	.ant-upload-list-picture-card {
+		width: 100% !important;
+		height: 100% !important;
+	}
+
+	@media(max-width: 600px) {
+		flex-direction: column;
+
+		.before,
+		.after {
+			width: 100%;
+		}
+
+		.icon-center {
+			font-size: 16px;
+			margin: 0;
+			transform: rotate(90deg);
+		}
+
 	}
 }

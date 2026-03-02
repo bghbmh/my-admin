@@ -1,124 +1,69 @@
 [
-	{
-		"mainOpen": false,
-		"mainOpenImages": [],
-		"category": [
-			{
-				"name": "웹",
-				"type": "1",
-				"label": "main"
-			},
-			{
-				"name": "제작",
-				"type": "1",
-				"label": "sub"
-			}
-		],
-		"hash": [
-			"마크업",
-			"브랜딩"
-		],
-		"title": "hsfdsdfg dfgh asd",
-		"description": "ㅌㅊ퓨",
-		"extraInfo": [
-			{
-				"id": 1769509117114,
-				"label": "test",
-				"value": "zzz"
-			}
-		],
-		"externalLink": [
-			{
-				"id": 1769509123850,
-				"label": "제안용 컨셉시안",
-				"url": "https://www.figma.com/proto/6fEoguQSTtnyFeT6gILWWe/%EC%A0%9C%EC%95%88_%ED%95%9C%EA%B5%AD%EC%A0%9C%EC%95%BD%EB%B0%94%EC%9D%B4%EC%98%A4%ED%98%91%ED%9A%8C--Copy-?node-id=0-1&t=mgoPRopMP4A8VLg1-1"
-			}
-		],
-		"mainimage": [
-			{
-				"alt": "",
-				"name": "manage-main.png",
-				"size": 720894,
-				"type": "image/png",
-				"lastModified": 1751735066386,
-				"webUrl": "bmh1750777200022/images/manage-main.png"
-			}
-		],
-		"subimage": [
-			{
-				"alt": "",
-				"name": "manage-pf-list.png",
-				"size": 230724,
-				"type": "image/png",
-				"lastModified": 1769588759934,
-				"webUrl": "bmh1750777200022/images/manage-pf-list.png"
-			},
-			{
-				"alt": "",
-				"name": "manage-pf-view.png",
-				"size": 201983,
-				"type": "image/png",
-				"lastModified": 1769588759934,
-				"webUrl": "bmh1750777200022/images/manage-pf-view.png"
-			},
-			{
-				"alt": "",
-				"name": "manage-pf-list-item-deit.png",
-				"size": 229841,
-				"type": "image/png",
-				"lastModified": 1769588759934,
-				"webUrl": "bmh1750777200022/images/manage-pf-list-item-deit.png"
-			},
-			{
-				"alt": "",
-				"name": "모나리자.jpeg",
-				"size": 111704,
-				"type": "image/png",
-				"lastModified": 1769588759934,
-				"webUrl": "bmh1750777200022/images/모나리자.jpeg"
-			},
-			{
-				"alt": "",
-				"name": "이력서_20260118.pdf",
-				"size": 199389,
-				"type": "image/png",
-				"lastModified": 1769588759934,
-				"webUrl": "bmh1750777200022/files/이력서_20260118.pdf"
-			}
-		],
-		"mockup": [
-			{
-				"label": "test",
-				"alt": "",
-				"name": "main.html",
-				"size": 1537,
-				"type": "text/html",
-				"lastModified": 1769588759934,
-				"webUrl": "bmh1750777200022/files/html/main.html"
-			},
-			{
-				"label": "sample1",
-				"alt": "",
-				"name": "project-detail.html",
-				"size": 1537,
-				"type": "text/html",
-				"lastModified": 1769588759934,
-				"webUrl": "bmh1750777200022/files/html/project-detail.html"
-			},
-			{
-				"label": "zzz",
-				"alt": "",
-				"name": "test.html",
-				"size": 19876,
-				"type": "text/html",
-				"lastModified": 1769588759934,
-				"webUrl": "bmh1750777200022/files/test.html"
-			}
-		],
-		"order": 23,
-		"projectNum": 1750777200022,
-		"id": "bmh1750777200022",
-		"projectState": "before",
-		"member": []
-	}
+    {
+        "id": "bmh1772082439780",
+        "mainOpen": false,
+        "category": [
+            {
+                "type": "3",
+                "name": "콘텐츠",
+                "label": "main"
+            },
+            {
+                "type": "1",
+                "name": "제작",
+                "label": "sub"
+            }
+        ],
+        "hash": [],
+        "title": "이벤트페이지",
+        "description": "",
+        "overview": {
+            "synopsis": "",
+            "summary": null
+        },
+        "imageComparison": {
+            "use": false,
+            "before": null,
+            "after": null
+        },
+        "tools": [],
+        "extraInfo": [],
+        "titleImage": {
+            "alt": "mainOpen00.png",
+            "name": "mainOpen00.png",
+            "size": 173652,
+            "type": "image/png",
+            "lastModified": 1770881272000,
+            "url": "https://res.cloudinary.com/dhym4swda/image/upload/v1772082709/projects/qmeodtwrdcmqowwwesii.png"
+        },
+        "subimage": [
+            {
+                "alt": "p58.jpg",
+                "name": "p58.jpg",
+                "size": 76386,
+                "type": "image/jpeg",
+                "lastModified": 1770881272000,
+                "url": "https://res.cloudinary.com/dhym4swda/image/upload/v1772082710/projects/llmy7ohipgskcrhghkfy.jpg"
+            },
+            {
+                "alt": "p60.jpg",
+                "name": "p60.jpg",
+                "size": 88919,
+                "type": "image/jpeg",
+                "lastModified": 1770881272000,
+                "url": "https://res.cloudinary.com/dhym4swda/image/upload/v1772082711/projects/h943qfzysxqdhnr1a5i0.jpg"
+            }
+        ],
+        "mockup": [],
+        "externalLink": [],
+        "projectNum": 1772082439780,
+        "currentState": "complete",
+        "startDate": "",
+        "endDate": "",
+        "member": [],
+        "registerDate": 1772082439780,
+        "modifyDate": [
+            1772082439780
+        ]
+    }
 ]

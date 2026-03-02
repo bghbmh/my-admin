@@ -15,12 +15,11 @@ interface Props {
 	label: string;
 	value: string;
 	onChange: (
-		listname: any,
 		id: string,
 		name: string,
 		value: string
 	) => void;
-	onDelete: (listname: any, id: string) => void; // 선택 시 아이템 전체를 넘겨줌
+	onDelete: (id: string) => void; // 선택 시 아이템 전체를 넘겨줌
 }
 
 export default function ExtraInfoItem({ listname, id, label, value, onChange, onDelete }: Props) {
@@ -33,7 +32,7 @@ export default function ExtraInfoItem({ listname, id, label, value, onChange, on
 					name="label"
 					value={label}
 					placeholder="라벨"
-					onChange={e => onChange(listname, id, e.target.name, e.target.value)}
+					onChange={e => onChange(id, e.target.name, e.target.value)}
 				/>
 			</label>
 			<label className="info-value">
@@ -43,13 +42,13 @@ export default function ExtraInfoItem({ listname, id, label, value, onChange, on
 					name="value"
 					value={value}
 					placeholder="내용"
-					onChange={e => onChange(listname, id, e.target.name, e.target.value)}
+					onChange={e => onChange(id, e.target.name, e.target.value)}
 				/>
 			</label>
 			<button
 				type="button"
 				className="btn delete-one"
-				onClick={() => onDelete(listname, id)}
+				onClick={() => onDelete(id)}
 			>삭제</button>
 		</div>
 	</>);

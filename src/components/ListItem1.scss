@@ -1,0 +1,55 @@
+.list-item1 {
+	display: flex;
+	gap: 8px;
+	align-items: center;
+	padding: 6px 6px;
+	border-radius: var(--border-radius-default);
+	background-color: var(--section-background-color);
+	color: var(--text-dark-0);
+	cursor: pointer;
+
+	i {
+		padding: 18px !important;
+		box-sizing: content-box;
+		border-radius: var(--border-radius-default);
+	}
+
+	&.empty {
+		flex: 1 1 0%;
+		display: flex;
+		gap: 8px;
+		align-items: center;
+		justify-content: center;
+		background-color: var(--dark-50);
+		border: 1px dashed var(--dark-200);
+		border-radius: var(--border-radius-default);
+		color: var(--text-dark-1);
+
+		&::before {
+			content: "";
+			background-image: url("https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Face%20in%20Clouds.png");
+			display: block;
+			width: 3em;
+			height: 3em;
+			background-position: center center;
+			background-size: contain;
+			background-repeat: no-repeat;
+		}
+	}
+
+	@media(max-width: 1280px) {
+		i {
+			padding: 0px;
+		}
+	}
+
+	@media(max-width: 768px) {
+
+		padding: .5em;
+
+		i {
+			padding: 18px;
+		}
+	}
+
+}

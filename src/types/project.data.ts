@@ -12,32 +12,61 @@ export interface ExtraInfoItemType {
 
 export interface ExternalLinkType {
 	id: string;
+	type: string;
 	label: string;
 	url: string;
 }
 
-export interface MockupFileType {
-	label: string;
+export interface DefaultFileType {
 	alt: string;
 	name: string;
-	size: number | null;
+	size: number;
 	type: string;
-	lastModified: number | null;
-	webUrl: string;
+	lastModified: number;
+	url: string;
 }
+
+export interface MockupLinkType {
+	id: string;
+	type: string;
+	label: string;
+	url: string;
+}
+
+// overview의 summary 내부 아이템 타입
+export interface OverviewSummaryType {
+	id: string;
+	title: string;
+	description: string;
+}
+
+export interface OverviewType {
+	synopsis: string;
+	summary: OverviewSummaryType[];
+}
+
+
+export interface ImageComparisonType {
+	use: boolean;
+	before: DefaultFileType[];
+	after: DefaultFileType[];
+}
+
 
 export interface ProjectDataType {
 	id: string | '';
 	mainOpen: boolean;
-	mainOpenImages: string[];
 	category: CategoryItemType[];
 	hash: string[];
 	title: string;
 	description: string;
+	overview: OverviewType;
+	imageComparison: ImageComparisonType;
+	tools: string[];
 	extraInfo: ExtraInfoItemType[];
-	mainimage: any[];
-	subimage: any[];
-	mockup: MockupFileType[];
+	titleImage: DefaultFileType[];
+	subimage: DefaultFileType[];
+	mockup: MockupLinkType[];
 	externalLink: ExternalLinkType[];
 	projectNum: number;
 	currentState: string;
@@ -47,3 +76,30 @@ export interface ProjectDataType {
 	registerDate: number;
 	modifyDate: number[];
 }
+
+export const DEFAULT_PROJECT_DATA: ProjectDataType = {
+	id: '',
+	mainOpen: false,
+	category: [
+		{ type: "6", name: "알 수 없음", label: "main" },
+		{ type: "6", name: "알 수 없음", label: "sub" }
+	],
+	hash: [],
+	title: "",
+	description: "",
+	overview: { synopsis: "", summary: [] },
+	imageComparison: { use: false, before: [], after: [] },
+	tools: [],
+	extraInfo: [],
+	titleImage: [],
+	subimage: [],
+	mockup: [],
+	externalLink: [],
+	projectNum: 0,
+	currentState: "unknown",
+	startDate: "",
+	endDate: "",
+	member: [],
+	registerDate: 0,
+	modifyDate: []
+};

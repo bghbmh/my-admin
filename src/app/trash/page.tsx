@@ -20,7 +20,7 @@ export default async function TrashPage() {
 	return (
 		<>
 			<PageHeader title="휴지통" />
-			<div className="contents">
+			<div id="main-common-container"  >
 				<TrashListClient list={trashList} />
 			</div>
 		</>

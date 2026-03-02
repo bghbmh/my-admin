@@ -2,11 +2,12 @@
 
 import React, { useState } from "react";
 import { NO_ITEM_CONFIG } from "@/constants/config";
+import { getImageUrl } from "@/utils/format";
 import "./image-gallery.scss";
 
 interface ImagesCountProps {
 	images: {
-		webUrl: string;
+		url: string;
 		name: string;
 		alt: string;
 	}[];
@@ -18,8 +19,8 @@ export default function ItemImagesCount({ images }: ImagesCountProps) {
 		<>
 			{images && images.length > 0 ? (
 
-				<figure key={images[0].webUrl} className="item-images-count">
-					<img src={`/uploads/${images[0].webUrl}`} alt={images[0].alt || images[0].name} />
+				<figure key={images[0].url} className="item-images-count">
+					<img src={getImageUrl(images[0].url)} alt={images[0].alt || images[0].name} />
 					<span className="plus-more" aria-label={`업로드된 이미지가 ${images.length}개 더 있습니다`}><i className="icon">+</i>{images.length}</span>
 				</figure>
 

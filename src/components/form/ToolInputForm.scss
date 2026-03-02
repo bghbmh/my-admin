@@ -1,0 +1,189 @@
+/* @import url('../bootstrap-icons/font/bootstrap-icons.css'); */
+.tool-form-container {
+
+	.title {
+		font-size: 13px;
+		display: block;
+		margin-bottom: .5em;
+	}
+
+	.chip-outline {
+		display: inline-flex;
+		align-items: center;
+		gap: .25em;
+		padding: 0.5em 1em 0.5em 0.5em;
+		border: 1px solid #c6c6c6;
+		border-radius: var(--border-radius-8px);
+		cursor: pointer;
+
+		input {
+
+			border: 0;
+
+			flex: none;
+			width: 1.5em;
+			height: 1.5em;
+			line-height: 1;
+			background-color: transparent !important; // !important는 최대한 SCSS 밖에서 처리하는게 좋지만, 기존 CSS 유지
+
+			background-color: var(--dark-50);
+			display: inline-flex;
+			justify-content: center;
+			align-items: center;
+			border-radius: var(--border-radius-4px);
+			cursor: pointer;
+
+			&::before {
+				opacity: 1;
+
+				content: "\e5ca";
+				display: inline-block;
+				font-family: 'Material Symbols Outlined';
+				font-style: normal;
+				text-transform: none;
+				line-height: .8;
+				-webkit-font-smoothing: antialiased;
+				-moz-osx-font-smoothing: grayscale;
+
+				color: var(--dark-100);
+				font-variation-settings: 'FILL' 0, 'wght' 700, 'GRAD' 0, 'opsz' 48;
+				font-size: 1.3em;
+			}
+
+			// 상태 의사 클래스 중첩
+			&:checked {
+				background-color: var(--primary-500);
+				border: 0;
+
+				&::before {
+					color: #fff;
+				}
+			}
+		}
+
+		// 부모 선택자(&)를 이용한 상태 처리
+		&:not(:has(:disabled)):hover {
+			background-color: var(--primary-50);
+			border-color: var(--primary-200);
+
+			input::before {
+				color: var(--primary-300);
+			}
+		}
+
+		&:has(input:checked) {
+			background-color: var(--primary-50);
+			border-color: var(--primary-500) !important;
+
+			input:checked::before {
+				color: var(--primary-500) !important;
+			}
+		}
+
+		&:has(input:disabled) {
+			background-color: var(--dark-100);
+
+			>* {
+				opacity: .3;
+			}
+		}
+
+		&:has(input:checked:disabled) {
+			background-color: var(--primary-50);
+		}
+	}
+
+	.chip-list-wrap {}
+
+	.chip-list {
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		align-items: flex-start;
+		flex-wrap: wrap;
+		gap: 10px;
+		padding: 24px;
+		border-radius: 12px;
+		background-color: var(--body-background-color);
+
+		.chip-outline {
+			position: relative;
+			background-color: #fff;
+			border-radius: 100em;
+			overflow: hidden;
+			font-size: 13px;
+			padding: 0.6em 1.2em;
+			line-height: 1;
+			transition: all .2s;
+
+			input {
+				position: absolute;
+				left: -100%;
+			}
+		}
+	}
+
+	.selected-chip-list {
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		align-items: center;
+		gap: 10px;
+		flex-wrap: wrap;
+		font-size: 13px;
+		min-height: 35px;
+
+		&__item {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.25em;
+			padding: 0.5em .8em 0.5em 1em;
+			border: solid 1px #e8e8e8;
+			border-radius: 100em;
+
+			.btn {
+				--fs: 15px;
+				color: #555;
+				min-height: auto;
+				background-image: url("/img/common/icon-svg-x-close.svg");
+				background-size: calc(1em - 1px);
+				background-repeat: no-repeat;
+				background-position: center;
+				min-height: auto;
+				width: 1em;
+				height: 1em;
+				padding: 0 2px 0 4px;
+				box-sizing: content-box;
+
+				&:hover {
+					--border-color: transparent
+				}
+
+			}
+		}
+
+	}
+
+	.custom-tools-input {
+		font-size: 13px;
+	}
+
+	@media(max-width: 1024px) {
+		.chip-list {
+			padding: 8px;
+			gap: 6px;
+		}
+
+		.selected-chip-list {
+			gap: 6px;
+
+			&__item {
+				padding: 0.4em .6em 0.4em .8em;
+				gap: 0.2em;
+				font-size: 14px;
+			}
+		}
+	}
+
+
+}

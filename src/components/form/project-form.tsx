@@ -3,12 +3,12 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import "@/styles/bUploadFile.css";
+import '@/styles/bUploadFile.css'
 import "./project-edit-view.scss";
 
-import { CategoryItemType, ProjectDataType, ExtraInfoItemType, MockupFileType } from "@/types/project.data";
+import { ProjectDataType, DEFAULT_PROJECT_DATA } from "@/types/project.data";
 import { MAIN_CATEGORY, SUB_CATEGORY, HASH_LIST, STATE_STEP } from "@/constants/config";
-import { Upload, UploadFile, UploadProps } from 'antd';
+import { EMPTY_UI_DATA, UiProjectFormDataType, transformToUiFileList } from "@/types/project.ui";
 
 import { useProjectSubmit } from "@/hooks/useProjectSubmit";
 
@@ -16,8 +16,16 @@ import IconText from "./icon-text";
 import RadioGroupList from "./RadioGroupList";
 import CheckboxGroupList from "./CheckboxGroupList";
 import StateGroupList from "./state-group-list";
-import ExtraInfoItem from "./ExtraInfoItem";
-import ExternalLinkItem from "./ExternalLinkItem";
+
+import MockupUploadSection from "./MockupUploadSection";
+import TitleImageUploadSection from "./TitleImageUploadSection";
+import ImageUploadSection from "./ImageUploadSection";
+import ExternalLinkSection from "./ExternalLinkSection";
+import ExtraInfoSection from "./ExtraInfoSection";
+import SummarySection from "./SummarySection";
+import ImageComparisonSection from "./ImageComparisonSection";
+
+import ToolInputForm from "./ToolInputForm";
 
 interface testProps {
 	id: string;
@@ -25,48 +33,29 @@ interface testProps {
 	mode: "edit" | "create";
 }
 
-interface CustomMockupFile extends UploadFile {
-	label: string;
-}
-
 export default function ProjectForm({ id, initialData, mode }: testProps) {
-	// 1. 상태 관리(기존 this._item 역할)
-	const [formData, setFormData] = useState<ProjectDataType>(initialData);
-	const [imageFileList, setimageFileList] = useState<UploadFile[]>([]);
-	const [mockupFileList, setMockupFileList] = useState<CustomMockupFile[]>([]);
+
+	// 1. 상태 관리 통합 (초기값은 빈 구조로 설정하여 에러 방지)
+	const [formData, setFormData] = useState<UiProjectFormDataType>(EMPTY_UI_DATA);
 
 	useEffect(() => {
-		if (mode === "edit" && initialData) {
-			if (initialData.subimage) {
-				setimageFileList(initialData.subimage.map((img: any, idx: number) => ({
-					uid: `img-${idx}`,
-					status: 'done',
-					name: img.name,
-					size: img.size,
-					type: img.type,
-					lastModified: img.lastModified,
-					url: `/uploads/${img.webUrl}`,
-					alt: img.name
-
-				})));
-			}
-
-			if (initialData.mockup) {
-				setMockupFileList(initialData.mockup.map((page: any, idx: number) => ({
-					uid: `mock-${idx}`,
-					status: 'done',
-					name: page.name,
-					size: page.size,
-					type: page.type || 'text/html', // 타입이 없으면 기본값
-					lastModified: page.lastModified,
-					url: `/uploads/${page.webUrl}`,
-					alt: page.alt || page.name,
-					label: page.label || page.name,
-				})));
-			}
+		if (initialData && mode === "edit") {
+			const uiData: UiProjectFormDataType = {
+				...initialData,
+				imageComparison: {
+					use: initialData.imageComparison.use,
+					before: transformToUiFileList(initialData.imageComparison.before, 'before'),
+					after: transformToUiFileList(initialData.imageComparison.after, 'after'),
+				},
+				titleImage: transformToUiFileList(initialData.titleImage, 'titleimage'),
+				subimage: transformToUiFileList(initialData.subimage, 'subimage')
+			};
+			setFormData(uiData);
 		}
-	}, [initialData, mode]);
+	}, [initialData]);
 
+	// 데이터 로딩 중 예외 처리
+	if (!formData) return <div className="loading">데이터를 불러오는 중입니다...</div>;
 
 	// 입력 핸들러
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -106,48 +95,45 @@ export default function ProjectForm({ id, initialData, mode }: testProps) {
 		}));
 	};
 
-	// 추가항목 핸들러
-	const handleListChange = (listname: "extraInfo" | "externalLink", id: string, name: string, value: string) => {
+
+	//overview
+	const handleSynopsisChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+		const { name, value } = e.target;
+
 		setFormData(prev => ({
 			...prev,
-			[listname]: prev[listname].map((item: any) => item.id === id ? { ...item, [name]: value } : item)
+			overview: {
+				...prev.overview,
+				[name]: value
+			}
 		}));
 	};
-
-	// 추가항목 핸들러
-	const handleListDelete = (listname: "extraInfo" | "externalLink", id: string) => {
-		setFormData(prev => ({
-			...prev,
-			[listname]: prev[listname].filter((item: any) => item.id !== id)
-		}));
-	};
-
-	// 추가항목 핸들러
-	const handleListAdd = (listname: "extraInfo" | "externalLink", defaultValue: any) => {
-		const newItem = { ...defaultValue, id: crypto.randomUUID() };
-		setFormData(prev => ({
-			...prev,
-			[listname]: [...prev[listname], newItem]
-		}));
-	};
-
-	// 목업 파일 라벨 변경 핸들러
-	const handleMockupLabelChange = (uid: string, name: string, value: string) => {
-		setMockupFileList(prev =>
-			prev.map(file => file.uid === uid ? { ...file, [name]: value } : file)
-		);
-	};
-
 
 	// 프로젝트 데이터 폼 핸들러
 	const router = useRouter();
 
 	// 2. 훅 호출 (반드시 여기, 최상단에서!)
 	console.log("useProjectSubmit 호출 - mode:", mode, "id:", id);
-	const { handleSubmit } = useProjectSubmit(mode, id);
+	// const { handleSubmit } = useProjectSubmit(mode, id);
 	// const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 	// 	handleSubmit(e, formData, imageFileList, mockupFileList);
 	// };
+
+	const { handleSubmit: originalSubmit } = useProjectSubmit(mode, id);
+
+	const handleSubmit = (e: React.FormEvent<HTMLFormElement>, data: any) => {
+		e.preventDefault();
+
+		// 💡 데모 모드 체크 (Vercel 환경일 때)
+		// 브라우저 주소창에 'vercel'이 포함되어 있으면 저장을 막습니다.
+		if (typeof window !== 'undefined' && window.location.hostname.includes('vercel')) {
+			alert("현재 페이지는 포트폴리오 데모 모드입니다. \n데이터 저장 및 삭제 기능은 작동하지 않습니다. 😊");
+			return;
+		}
+
+		// 로컬 환경(localhost)일 때만 실제 저장이 실행됨
+		originalSubmit(e, data);
+	};
 
 	const handleCancel = (e: React.MouseEvent<HTMLButtonElement>) => {
 		e.preventDefault();
@@ -183,8 +169,10 @@ export default function ProjectForm({ id, initialData, mode }: testProps) {
 	};
 
 	return (
-		<form id="project-main-form" className="tCom011" onSubmit={e => handleSubmit(e, formData, imageFileList, mockupFileList)}>
+		<form id="project-main-form" className="tCom011"
+			onSubmit={e => handleSubmit(e, formData)}>
 			<div className="project-info">
+				{/* 제목 */}
 				<dl>
 					<dt>제목 <IconText title="필수" className="required" /></dt>
 					<dd>
@@ -235,6 +223,25 @@ export default function ProjectForm({ id, initialData, mode }: testProps) {
 					</dd>
 				</dl>
 
+				{/* 기술스택 Tools */}
+				<dl>
+					<dt>기술스택 Tools</dt>
+					<dd>
+						<ToolInputForm
+							tools={formData.tools}
+							onChange={arr => {
+								setFormData(prev => {
+									console.log("newList-", arr)
+									return {
+										...prev,
+										tools: arr
+									}
+								})
+							}}
+						/>
+					</dd>
+				</dl>
+
 				<dl>
 					<dt>검색 키워드</dt>
 					<dd>
@@ -250,125 +257,130 @@ export default function ProjectForm({ id, initialData, mode }: testProps) {
 				<dl>
 					<dt>추가 정보</dt>
 					<dd>
-						<div className="extra-info-group">
-							{
-								formData.extraInfo.map(item => (
-									<ExtraInfoItem
-										key={item.id}
-										listname="extraInfo"
-										id={item.id}
-										label={item.label}
-										value={item.value}
-										onChange={handleListChange}
-										onDelete={handleListDelete}
-									/>
-								))
-							}
-						</div>
+						<ExtraInfoSection
+							items={formData.extraInfo}
+							onChange={newList => {
 
-						<button type="button" className="btn add-item" onClick={() => handleListAdd("extraInfo", { label: "", value: "" })}>
-							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM232 344l0-64-64 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l64 0 0-64c0-13.3 10.7-24 24-24s24 10.7 24 24l0 64 64 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-64 0 0 64c0 13.3-10.7 24-24 24s-24-10.7-24-24z" /></svg>추가
-						</button>
+								setFormData(prev => {
+									console.log("newList-", newList, prev.extraInfo)
+									return {
+										...prev,
+										extraInfo: newList
+									}
+								})
+							}}
+
+						/>
 					</dd>
 				</dl>
 
 				<dl>
 					<dt>외부링크 추가</dt>
 					<dd>
-						<div className="extra-info-group">
-							{
-								formData.externalLink.map(item => (
-									<ExternalLinkItem
-										key={item.id}
-										listname="externalLink"
-										id={item.id}
-										label={item.label}
-										url={item.url}
-										onChange={handleListChange}
-										onDelete={handleListDelete}
-									/>
-								))
-							}
-						</div>
+						<ExternalLinkSection
+							items={formData.externalLink}
+							onChange={newList => setFormData(prev => ({
+								...prev,
+								externalLink: newList
+							}))}
+						/>
+					</dd>
+				</dl>
 
-						<button type="button" className="btn add-item" onClick={() => handleListAdd("externalLink", { label: "", url: "" })}>
-							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM232 344l0-64-64 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l64 0 0-64c0-13.3 10.7-24 24-24s24 10.7 24 24l0 64 64 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-64 0 0 64c0 13.3-10.7 24-24 24s-24-10.7-24-24z" /></svg>추가
-						</button>
+				{/* 1. 기존 외부링크 섹션 아래 혹은 목업 섹션 위에 추가 */}
+				<dl>
+					<dt>아이프레임 미리보기 (Mockup)</dt>
+					<dd>
+						<p className="guide-text" style={{ fontSize: '12px', color: '#888', marginBottom: '8px' }}>
+							* 깃허브 페이지 주소(https://...)를 입력하면 상세페이지에서 아이프레임으로 출력됩니다.
+						</p>
+						<ExternalLinkSection
+							items={formData.mockup} // 기존 mockup 리스트 활용
+							onChange={newList => setFormData(prev => ({
+								...prev,
+								mockup: newList
+							}))}
+						/>
+					</dd>
+				</dl>
+
+				{/* 목업 미리보기 - 이제 formData에서 직접 관리 */}
+				<dl>
+					<dt>문서</dt>
+					<dd>
+						{/* <MockupUploadSection
+							fileList={formData.normalfile}
+							onChange={newList => setFormData(prev => ({
+								...prev,
+								mockup: newList
+							}))}
+						/> */}
 					</dd>
 				</dl>
 
 				<dl>
-					<dt>목업 미리보기</dt>
-					<dd >
-						<div className="upload-type1">
-							<Upload
-								listType="picture"
-								fileList={mockupFileList} //화면에 그려질 "데이터
-								onChange={({ fileList: newMockup }) => { //무언가 변했을 때 "새 데이터 세트"를 받아와서 원본을 교체하는 작업
-									const updated = newMockup.map(file => ({
-										...file,
-										label: (file as CustomMockupFile).label || file.name
-									}));
-									setMockupFileList(updated);
-								}}
-								itemRender={(
-									originNode: React.ReactElement,
-									file: CustomMockupFile | UploadFile,
-									currFileList: object[],
-									actions: { remove: Function }
-								) => (
-									<figure className="item">
-										<img src="https://bghbmh.github.io/simple-ui-test/UploadFiles/icon-svg-double-paper.svg" alt="이미지"></img>
-										<figcaption>
-											<label>
-												<span className="guide">라벨</span>
-												<input
-													name="label"
-													type="text"
-													value={(file as CustomMockupFile).label || ""}
-													placeholder="라벨을 입력하세요"
-													onChange={e => handleMockupLabelChange(file.uid, e.target.name, e.target.value)} />
-											</label>
-											<span className="option title">{file.name}</span>
-											<span className="option">{(file.size! / 1024).toFixed(2)} KB</span>
-										</figcaption>
-										<div className="ctrl">
-											<button type="button" className="btn delete-one" aria-label="삭제" onClick={() => actions.remove()}></button>
-										</div>
-									</figure>
+					<dt>개요</dt>
+					<dd className="description">
+						<b className="title">간단 설명, 한 줄 요약</b>
+						<label className="width-100per">
+							<textarea
+								name="synopsis"
+								rows={2}
+								className="width-100per resize-none"
+								placeholder="내용을 입력하세요"
+								value={formData.overview.synopsis}
+								onChange={handleSynopsisChange} />
+						</label>
 
-								)}
-							>
-								<button type="button" className="upload-file-btn">
-									<span className="area">
-										미리보기 할 목업 파일을 여기에 끌어다 놓거나,<br />
-										파일 선택 버튼으로 직접 선택해주세요.
-										<span className="btn primary">파일 선택 (다중)</span>
-									</span>
-								</button>
-								<div className="option-ctrl-wrap" >
-									{mockupFileList.length > 0 && (<>
-										<div className="file-count">
-											<span className="guide-text">선택한 파일 수</span>
-											<span className="guide-count">{mockupFileList.length}</span>개
-										</div>
-										<button
-											type="button"
-											className="btn delete-all" aria-label="전체삭제"
-											onClick={(e) => {
-												e.stopPropagation();
-												setMockupFileList([]);
-											}}>전체삭제</button>
-									</>)}
-								</div>
+						<b className="title">핵심 요약</b>
+						<SummarySection
+							items={formData.overview.summary}
+							onChange={newList => setFormData((prev) => ({
+								...prev,
+								overview: { ...prev.overview, summary: newList }
+							}))}
+						/>
+					</dd>
+				</dl>
 
-							</Upload>
-						</div>
+				{/* 디자인 비교 (B/A) */}
+				<dl>
+					<dt className="d-flex align-items-center gap-2">
+						디자인 비교 (B/A)
+						<label className="switch margin-left-auto" style={{ fontWeight: 'normal', fontSize: '13px', cursor: 'pointer' }}>
+							<input
+								type="checkbox"
+								className="switch"
+								checked={formData.imageComparison.use}
+								onChange={(e) => setFormData(prev => ({
+									...prev,
+									imageComparison: {
+										...prev.imageComparison,
+										use: e.target.checked
+									}
+								}))}
+							/>
+						</label>
+					</dt>
+					<dd>
+						{formData.imageComparison.use ? (
+							<ImageComparisonSection
+								data={formData.imageComparison}
+								onChange={(newComparison) => setFormData(prev => ({
+									...prev,
+									imageComparison: newComparison
+								}))}
+							/>
+						) : (
+							<p className="guide-text" style={{ color: '#bfbfbf', margin: '0 0 10px 0' }}>
+								디자인 전/후 비교 기능이 비활성화되어 있습니다.
+							</p>
+						)}
 					</dd>
 				</dl>
 
 				<dl>
-					<dt>설명</dt>
+					<dt>추가 설명</dt>
 					<dd className="description">
 						<label className="width-100per">
 							<textarea
@@ -384,60 +396,47 @@ export default function ProjectForm({ id, initialData, mode }: testProps) {
 
 			</div>
 
-			<div className="image-wrap">
-				메인 이미지서브 이미지 test
-				<div className="bg-info">hh</div>
-				<div className="upload-type3">
-					<Upload
-						listType="picture"
-						fileList={imageFileList}
-						onChange={({ fileList: newImageFileList }) => setimageFileList(newImageFileList)}
-						itemRender={(originNode: React.ReactElement,
-							file: CustomMockupFile | UploadFile,
-							currFileList: object[],
-							actions: { remove: Function }) => {
-
-							return (
-
-								<figure className="item">
-									<img
-										src={file.url || file.thumbUrl || undefined}
-										alt={file.name}
-										style={{ display: (file.url || file.thumbUrl) ? "block" : "none" }}
-									/>
-									<figcaption>
-										<span className="option title">{file.name}</span>
-										<span className="option">{(file.size! / 1024).toFixed(2)} KB</span>
-									</figcaption>
-									<div className="ctrl">
-										<button type="button" className="btn delete-one" aria-label="삭제" onClick={() => actions.remove()}></button>
-									</div>
-								</figure>
-
-							)
-						}}
-					>
-
-						<button type="button" className="upload-file-btn">
-							<span className="area">파일 선택</span>
-						</button>
-						<div className="option-ctrl-wrap" >
-							<div className="file-count">
-								<span className="guide-text">선택한 파일 수 ttt</span>
-								<span className="guide-count">{imageFileList.length}</span>개
-							</div>
-							<button
-								type="button"
-								className="btn delete-all" aria-label="전체삭제"
-								onClick={(e) => {
-									e.stopPropagation()
-									setimageFileList([])
-								}}>전체삭제</button>
-						</div>
-
-					</Upload>
+			{/* 이미지 업로드 영역 - 상태 통합 완료 */}
+			<dl className="image-wrap">
+				<div>
+					<dt>메인이미지</dt>
+					<dd>
+						<TitleImageUploadSection
+							titleImage={formData.titleImage}
+							onChange={(newFiles) => setFormData(prev => ({ ...prev, titleImage: newFiles }))}
+						/>
+					</dd>
 				</div>
-			</div>
+				<div>
+					<dt>서브 이미지</dt>
+					<dd>
+						<ImageUploadSection
+							fileList={formData.subimage}
+							onChange={(newFiles) => setFormData(prev => ({ ...prev, subimage: newFiles }))}
+						/>
+					</dd>
+				</div>
+
+				<div className="d-flex align-items-center mt-4">
+					<dt className="margin-right-auto padding-0">메인노출여부</dt>
+					<dd className="margin-0 d-inline-flex">
+						<label className="switch">
+							<span className="guide">메인노출여부</span>
+							<input
+								type="checkbox"
+								className="switch"
+								name="mainOpen"
+								checked={formData.mainOpen}
+								onChange={e => setFormData(prev => ({
+									...prev,
+									mainOpen: e.target.checked
+								}))}
+							/>
+						</label>
+					</dd>
+				</div>
+
+			</dl>
 
 			{/* 하단 버튼 */}
 			<div className="bottom-btn-wrap justify-content-between gap-2">

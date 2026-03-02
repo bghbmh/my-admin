@@ -1,0 +1,417 @@
+// 변수 설정 (유지보수 용이)
+$primary-color: #40a562;
+$text-main: #1e293b;
+$text-sub: #94a3b8;
+$border-color: #f1f3f5;
+
+.system-settings-container {
+	background: #fff;
+	border: 1px solid #f0f0f0;
+	border-radius: 24px;
+	min-height: calc(100vh - var(--page-header-height) - 40px - 4px);
+	padding: 0;
+	overflow: hidden;
+	box-shadow: 0 10px 40px #00000008;
+
+	// 1. 상단 탭 (중복 제거 및 간결화)
+	.settings-tabs {
+		padding: 0 30px;
+		border-bottom: 1px solid $border-color;
+
+		ul {
+			display: flex;
+			list-style: none;
+			gap: 32px;
+			padding: 0;
+
+			li {
+				padding: 20px 4px;
+				font-size: 15px;
+				font-weight: 500;
+				color: $text-sub;
+				cursor: pointer;
+				position: relative;
+				transition: 0.2s;
+
+				&:hover {
+					color: $primary-color;
+				}
+
+				&.active {
+					color: $primary-color;
+
+					&::after {
+						content: '';
+						position: absolute;
+						bottom: -1px;
+						left: 0;
+						right: 0;
+						height: 2px;
+						background: $primary-color;
+					}
+				}
+			}
+		}
+	}
+
+	// 2. 본문 영역
+	.settings-content {
+		min-height: 40vh;
+		background-color: #fff;
+		padding: 30px 30px;
+
+		.settings-form {
+			animation: fadeIn 0.3s ease-in-out;
+
+			.content-header {
+				margin-bottom: 32px;
+
+				h2 {
+					font-size: 22px;
+					color: $text-main;
+					margin-bottom: 8px;
+				}
+
+				p {
+					color: $text-sub;
+					font-size: 14px;
+				}
+			}
+		}
+
+		// --- 화면 설정 (누락된 스위치 스타일 추가) ---
+		.setting-row {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 20px;
+			background: #f8fafc;
+			border-radius: 16px;
+			margin-bottom: 12px;
+
+			.info {
+				strong {
+					display: block;
+					font-size: 15px;
+					color: #334155;
+					margin-bottom: 4px;
+				}
+
+				p {
+					font-size: 13px;
+					color: #64748b;
+					margin: 0;
+				}
+			}
+		}
+
+		// --- 카테고리 관리 ---
+		// --- 카테고리 관리 스타일 (tag-list 포함) ---
+		.category-management {
+			.category-group {
+				margin-bottom: 40px;
+
+				h3 {
+					font-size: 16px;
+					color: #64748b;
+					margin-bottom: 16px;
+					display: flex;
+					align-items: center;
+					gap: 8px;
+				}
+
+				// 컴포넌트에서 사용하신 클래스명
+				.tag-list,
+				.tag-cloud {
+					display: flex;
+					flex-wrap: wrap;
+					gap: 10px;
+					padding: 20px;
+					background: #f8fafc;
+					border-radius: 16px;
+					border: 1px dashed #e2e8f0;
+
+					.tag-item {
+						display: flex;
+						align-items: center;
+						gap: 8px;
+						padding: 6px 14px;
+						background: #fff;
+						border: 1px solid #e2e8f0;
+						border-radius: 10px;
+						font-size: 14px;
+						color: #475569;
+						font-weight: 500;
+						transition: 0.2s;
+
+						&:hover {
+							border-color: $primary-color;
+							color: $primary-color;
+						}
+
+						button {
+							border: none;
+							background: none;
+							color: #cbd5e1;
+							cursor: pointer;
+							font-size: 18px;
+							line-height: 1;
+							display: flex;
+							align-items: center;
+							padding: 0;
+							margin-left: 4px;
+							transition: 0.2s;
+
+							&:hover {
+								color: #ef4444;
+							}
+						}
+					}
+
+					.add-tag-btn {
+						padding: 6px 16px;
+						border: 1px solid $primary-color;
+						background: #fff;
+						color: $primary-color;
+						border-radius: 10px;
+						font-size: 14px;
+						font-weight: 600;
+						cursor: pointer;
+						transition: 0.2s;
+
+						&:hover {
+							background: $primary-color;
+							color: #fff;
+						}
+					}
+				}
+			}
+		}
+
+		// --- 데이터 관리 ---
+		.data-management {
+			.data-card {
+				background: #f8fafc;
+				border-radius: 16px;
+				justify-content: space-between;
+				align-items: center;
+				margin-bottom: 12px;
+				padding: 20px;
+				display: flex;
+
+				.info {
+					strong {
+						display: block;
+						font-size: 16px;
+						color: $text-main;
+						margin-bottom: 4px;
+					}
+
+					p {
+						font-size: 13px;
+						color: $text-sub;
+						margin: 0;
+					}
+				}
+
+				.action-btns {
+					display: flex;
+					gap: 12px;
+				}
+			}
+		}
+	}
+}
+
+// 4. 공통 버튼 스타일 (중복 속성 정리)
+.action-btn {
+	padding: 10px 20px;
+	border-radius: 10px;
+	font-size: 14px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: 0.2s;
+	border: 1px solid transparent;
+
+	&.outline {
+		border-color: #e2e8f0;
+		background: #fff;
+		color: #64748b;
+
+		&:hover {
+			border-color: $primary-color;
+			color: $primary-color;
+		}
+	}
+
+	&.primary {
+		background: $primary-color;
+		color: #fff;
+
+		&:hover {
+			background: darken($primary-color, 10%);
+		}
+	}
+
+	&.danger {
+		background: #fff;
+		border-color: #fee2e2;
+		color: #ef4444;
+
+		&:hover {
+			background: #ef4444;
+			color: #fff;
+			border-color: #ef4444;
+		}
+	}
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(5px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+
+.tool-form-container {
+	padding: 20px;
+	border: 1px solid #ddd;
+	border-radius: 12px;
+	background: #fff;
+
+	.title {
+		font-size: 13px;
+		font-weight: 700;
+		display: block;
+		margin-bottom: 0.8em;
+		color: #555;
+	}
+
+	// 상단 선택된 리스트
+	.selected-summary {
+		margin-bottom: 20px;
+		padding-bottom: 15px;
+		border-bottom: 1px solid #f0f0f0;
+
+		.selected-chip-list {
+			display: flex;
+			flex-direction: row;
+			gap: 10px;
+			flex-wrap: wrap;
+			min-height: 35px;
+
+			&__item {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.25em;
+				padding: 0.5em 0.8em 0.5em 1.2em;
+				border: solid 1px #e8e8e8;
+				border-radius: 100em;
+				background: #fbfbfb;
+				font-size: 13px;
+				color: #334155;
+
+				.btn {
+					width: 1.2em;
+					height: 1.2em;
+					min-height: auto;
+					margin-left: 4px;
+					border: none;
+					background: url("/img/common/icon-svg-x-close.svg") no-repeat center;
+					background-size: contain;
+					cursor: pointer;
+					opacity: 0.6;
+
+					&:hover {
+						opacity: 1;
+					}
+
+					.d-none {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+
+	// 하단 선택 가능한 리스트
+	.chip-list {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 10px;
+		padding: 24px;
+		border-radius: 12px;
+		background-color: #f8fafc; // var(--body-background-color) 대용
+
+		.chip-outline {
+			position: relative;
+			background-color: #fff;
+			border: 1px solid #c6c6c6;
+			border-radius: 100em;
+			font-size: 13px;
+			padding: 0.6em 1.2em;
+			cursor: pointer;
+			transition: all 0.2s;
+			user-select: none;
+
+			&:hover {
+				background-color: #f0f7ff; // var(--primary-50)
+				border-color: var(--primary-600);
+			}
+
+			// 체크되었을 때 스타일 (React 상태와 연동)
+			&:has(input:checked) {
+				background-color: var(--primary-600);
+				border-color: var(--primary-600);
+				color: #fff;
+				font-weight: 600;
+			}
+		}
+	}
+
+	// 직접 입력 영역
+	.custom-tools-input {
+		margin-top: 20px;
+
+		.d-flex {
+			display: flex;
+			gap: 8px;
+		}
+
+		.width-100per {
+			width: 100%;
+		}
+
+		input[type="text"] {
+			padding: 10px 14px;
+			border: 1px solid #e2e8f0;
+			border-radius: 8px;
+			font-size: 14px;
+			outline: none;
+
+			&:focus {
+				border-color: $primary-color;
+			}
+		}
+
+		.btn.dark {
+			padding: 0 20px;
+			background: #1e293b;
+			color: #fff;
+			border: none;
+			border-radius: 8px;
+			font-weight: 600;
+			cursor: pointer;
+
+			&:hover {
+				background: #000;
+			}
+		}
+	}
+}

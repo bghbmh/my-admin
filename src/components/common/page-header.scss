@@ -3,7 +3,7 @@
 	position: sticky;
 	display: flex;
 	flex-direction: column;
-	height: 120px;
+	height: var(--page-header-height);
 	top: -4px;
 	background-color: var(--page-header-bc, rgba(249, 251, 250, 0.8));
 	gap: 1em 8px;

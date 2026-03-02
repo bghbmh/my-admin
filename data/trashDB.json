@@ -1,116 +1,304 @@
 [
     {
-        "id": "bmh1771775889648",
+        "id": "bmh1772090662078",
         "mainOpen": false,
-        "mainOpenImages": [],
         "category": [
             {
-                "type": "6",
-                "name": "알 수 없음",
+                "type": "1",
+                "name": "웹",
                 "label": "main"
             },
             {
-                "type": "6",
-                "name": "알 수 없음",
+                "type": "1",
+                "name": "제작",
                 "label": "sub"
             }
         ],
-        "hash": [],
-        "title": "new pro",
+        "hash": [
+            "브랜딩"
+        ],
+        "title": "test",
         "description": "",
+        "overview": {
+            "synopsis": "",
+            "summary": null
+        },
+        "imageComparison": {
+            "use": false,
+            "before": null,
+            "after": null
+        },
+        "tools": [],
         "extraInfo": [],
-        "mainimage": [],
+        "titleImage": {
+            "alt": "mainOpen12.png",
+            "name": "mainOpen12.png",
+            "size": 95275,
+            "type": "image/png",
+            "lastModified": 1770881272000,
+            "url": "https://res.cloudinary.com/dhym4swda/image/upload/v1772090663/projects/l6qlmkxodaob73ywgygz.png"
+        },
         "subimage": [],
-        "mockup": [],
+        "mockup": [
+            {
+                "alt": "components.html",
+                "name": "components.html",
+                "size": 69898,
+                "type": "text/html",
+                "lastModified": 1770881272000,
+                "url": "bmh1772090662078/files/components.html",
+                "label": "components.html"
+            }
+        ],
         "externalLink": [],
-        "projectNum": 1771775889648,
-        "currentState": "unknown",
+        "projectNum": 1772090662078,
+        "currentState": "complete",
         "startDate": "",
         "endDate": "",
         "member": [],
-        "registerDate": 1771775889648,
+        "registerDate": 1772090662078,
         "modifyDate": [
-            1771775889648
+            1772090663887
         ],
-        "deletedAt": 1771776001916,
-        "trashFolderName": "bmh1771775889648_1771776001916"
+        "trashFolderName": "bmh1772090662078_1772090992586",
+        "deletedAt": 1772090992586
     },
     {
-        "id": "bmh1771775905180",
-        "mainOpen": false,
-        "mainOpenImages": [],
+        "id": "bmh1772094234985",
+        "mainOpen": true,
         "category": [
             {
-                "type": "6",
-                "name": "알 수 없음",
+                "type": "1",
+                "name": "웹",
                 "label": "main"
             },
             {
-                "type": "6",
-                "name": "알 수 없음",
+                "type": "2",
+                "name": "구축",
                 "label": "sub"
             }
         ],
-        "hash": [],
-        "title": "add project",
+        "hash": [
+            "디자인",
+            "반응형",
+            "마크업",
+            "웹"
+        ],
+        "title": "GRS 아카데미 홈페이지 구축",
         "description": "",
-        "extraInfo": [],
-        "mainimage": [],
+        "overview": {
+            "synopsis": "사용자 경험(UX) 중심의 화면 설계 및 스타일 가이드 정립 • 비즈니스 로직에 최적화된 고해상도(Hi-Fi) 프로토타이핑 • 브랜드 아이덴티티를 반영한 UI 테마 및 공통 CSS 아키텍처 설계",
+            "summary": [
+                {
+                    "id": "c4251a33-8804-490c-a3cb-5cf987b62c17",
+                    "title": "",
+                    "description": "사용자 경험(UX) 중심의 화면 설계 및 스타일 가이드 정립"
+                },
+                {
+                    "id": "1fd68234-e3c8-4aa7-a34d-1f5a96a17a8e",
+                    "title": "",
+                    "description": "비즈니스 로직에 최적화된 고해상도(Hi-Fi) 프로토타이핑"
+                },
+                {
+                    "id": "b4bbb835-c8f5-42b5-9dfd-9a6435ee8cd1",
+                    "title": "",
+                    "description": "브랜드 아이덴티티를 반영한 UI 테마 및 공통 CSS 아키텍처 설계"
+                }
+            ]
+        },
+        "imageComparison": {
+            "use": false,
+            "before": null,
+            "after": null
+        },
+        "tools": [],
+        "extraInfo": [
+            {
+                "id": "ac3a6723-d555-4715-9bd1-bb109e88201d",
+                "label": "디자인",
+                "value": "100% 참여"
+            },
+            {
+                "id": "614c48ea-3de7-4b82-83e7-6e6d75d36585",
+                "label": "퍼블리싱",
+                "value": "100% 참여"
+            }
+        ],
+        "titleImage": {
+            "alt": "grs-main.png",
+            "name": "grs-main.png",
+            "size": 1350559,
+            "type": "image/png",
+            "lastModified": 1770881272000,
+            "url": "https://res.cloudinary.com/dhym4swda/image/upload/v1772094236/projects/mlgmnbfelhjdhgqmgsnc.png"
+        },
         "subimage": [],
         "mockup": [],
-        "externalLink": [],
-        "projectNum": 1771775905180,
-        "currentState": "unknown",
+        "externalLink": [
+            {
+                "id": "75344a75-9b73-4c79-9528-54bb8a893d0a",
+                "type": "link",
+                "label": "figma",
+                "url": "https://www.figma.com/proto/AtxlWIs0p43Ymb3UUgq5sz/%EB%A1%AF%EB%8D%B0-grs-academy?node-id=60-5016&p=f&viewport=544%2C337%2C0.08&t=oKcr5JlSMsoYFC5y-0&scaling=scale-down&content-scaling=fixed&starting-point-node-id=60%3A5016&show-proto-sidebar=1"
+            },
+            {
+                "id": "e1dd19c7-36c8-4fd4-974f-2a331f1263ee",
+                "type": "link",
+                "label": "outlink",
+                "url": "https://grsdesign.hullaro.com/userMain/goUserMain?lang=ko"
+            }
+        ],
+        "projectNum": 1772094234985,
+        "currentState": "complete",
         "startDate": "",
         "endDate": "",
         "member": [],
-        "registerDate": 1771775905180,
+        "registerDate": 1772094234985,
         "modifyDate": [
-            1771775905180
+            1772094237681,
+            1772094608631
         ],
-        "deletedAt": 1771776001916,
-        "trashFolderName": "bmh1771775905180_1771776001916"
+        "trashFolderName": "bmh1772094234985_1772094653461",
+        "deletedAt": 1772094653461
     },
     {
-        "id": "bmh1771775941715",
+        "id": "bmh1772102124613",
         "mainOpen": false,
-        "mainOpenImages": [],
         "category": [
             {
-                "type": "6",
-                "name": "알 수 없음",
+                "type": "1",
+                "name": "웹",
                 "label": "main"
             },
             {
-                "type": "6",
-                "name": "알 수 없음",
+                "type": "2",
+                "name": "구축",
                 "label": "sub"
             }
         ],
-        "hash": [],
-        "title": "last_tttt_test",
+        "hash": [
+            "디자인",
+            "마크업",
+            "반응형",
+            "웹"
+        ],
+        "title": "연세의료원 직원교육 시스템 구축",
         "description": "",
-        "extraInfo": [],
-        "mainimage": [],
-        "subimage": [],
-        "mockup": [],
+        "overview": {
+            "synopsis": "",
+            "summary": null
+        },
+        "imageComparison": {
+            "use": false,
+            "before": null,
+            "after": null
+        },
+        "tools": [
+            "html",
+            "css",
+            "javascript",
+            "Figma"
+        ],
+        "extraInfo": [
+            {
+                "id": "37999f95-35bb-409f-a23a-f9a48b8113ac",
+                "label": "디자인",
+                "value": "100% 참여"
+            },
+            {
+                "id": "8117fef0-8d91-44ce-ade9-2ba3e691e9f8",
+                "label": "퍼블리싱",
+                "value": "100% 참여"
+            }
+        ],
+        "titleImage": {
+            "alt": "mainOpen19.png",
+            "name": "mainOpen19.png",
+            "size": 140941,
+            "type": "image/png",
+            "lastModified": 1770881272000,
+            "url": "https://res.cloudinary.com/dhym4swda/image/upload/v1772102125/projects/ackspnbhyigtj0lfekvv.png"
+        },
+        "subimage": [
+            {
+                "alt": "3-2_데스크탑11.png",
+                "name": "3-2_데스크탑11.png",
+                "size": 1180581,
+                "type": "image/png",
+                "lastModified": 1770881272000,
+                "url": "https://res.cloudinary.com/dhym4swda/image/upload/v1772102131/projects/fmf9jgnqm6qz9aqv6n5p.png"
+            },
+            {
+                "alt": "나의학습_내학습과정.png",
+                "name": "나의학습_내학습과정.png",
+                "size": 147812,
+                "type": "image/png",
+                "lastModified": 1770881272000,
+                "url": "https://res.cloudinary.com/dhym4swda/image/upload/v1772102126/projects/mchmtke6nyjf1aedhgct.png"
+            },
+            {
+                "alt": "나의학습_내학습현황.png",
+                "name": "나의학습_내학습현황.png",
+                "size": 94451,
+                "type": "image/png",
+                "lastModified": 1770881272000,
+                "url": "https://res.cloudinary.com/dhym4swda/image/upload/v1772102126/projects/uubdppjhxzimdqxkjiuk.png"
+            }
+        ],
+        "mockup": [
+            {
+                "alt": "0_메인.html",
+                "name": "0_메인.html",
+                "size": 43024,
+                "type": "text/html",
+                "lastModified": 1770881272000,
+                "url": "bmh1772102124613/files/0_메인.html",
+                "label": "메인"
+            },
+            {
+                "alt": "나의학습_UI-HRD-F001_내학습현황.html",
+                "name": "나의학습_UI-HRD-F001_내학습현황.html",
+                "size": 24351,
+                "type": "text/html",
+                "lastModified": 1770881272000,
+                "url": "bmh1772102124613/files/나의학습_UI-HRD-F001_내학습현황.html",
+                "label": "서브1"
+            },
+            {
+                "alt": "나의학습_UI-HRD-F009_내학습과정.html",
+                "name": "나의학습_UI-HRD-F009_내학습과정.html",
+                "size": 23660,
+                "type": "text/html",
+                "lastModified": 1770881272000,
+                "url": "bmh1772102124613/files/나의학습_UI-HRD-F009_내학습과정.html",
+                "label": "서브2"
+            },
+            {
+                "alt": "cum_component_sample.html",
+                "name": "cum_component_sample.html",
+                "size": 55022,
+                "type": "text/html",
+                "lastModified": 1770881272000,
+                "url": "bmh1772102124613/files/cum_component_sample.html",
+                "label": "서브3"
+            }
+        ],
         "externalLink": [],
-        "projectNum": 1771775941715,
-        "currentState": "unknown",
+        "projectNum": 1772102124613,
+        "currentState": "complete",
         "startDate": "",
         "endDate": "",
         "member": [],
-        "registerDate": 1771775941715,
+        "registerDate": 1772102124613,
         "modifyDate": [
-            1771775941715
+            1772102162631
         ],
-        "deletedAt": 1771830147856,
-        "trashFolderName": "bmh1771775941715_1771830147856"
+        "trashFolderName": "bmh1772102124613_1772102219533",
+        "deletedAt": 1772102219533
     },
     {
-        "id": "bmh1771773516342",
+        "id": "bmh1772104069185",
         "mainOpen": false,
-        "mainOpenImages": [],
         "category": [
             {
                 "type": "6",
@@ -124,29 +312,38 @@
             }
         ],
         "hash": [],
-        "title": "zzz_test1234",
+        "title": "ㄴㅇㄹ",
         "description": "",
+        "overview": {
+            "synopsis": "",
+            "summary": null
+        },
+        "imageComparison": {
+            "use": false,
+            "before": null,
+            "after": null
+        },
+        "tools": [],
         "extraInfo": [],
-        "mainimage": [],
+        "titleImage": null,
         "subimage": [],
         "mockup": [],
         "externalLink": [],
-        "projectNum": 1771773516342,
+        "projectNum": 1772104069185,
         "currentState": "unknown",
         "startDate": "",
         "endDate": "",
         "member": [],
-        "registerDate": 1771773516342,
+        "registerDate": 1772104069185,
         "modifyDate": [
-            1771773516342
+            1772104069220
         ],
-        "deletedAt": 1771830147856,
-        "trashFolderName": "bmh1771773516342_1771830147856"
+        "trashFolderName": "bmh1772104069185_1772121942238",
+        "deletedAt": 1772121942238
     },
     {
-        "id": "bmh1771824327331",
+        "id": "bmh1772122004897",
         "mainOpen": false,
-        "mainOpenImages": [],
         "category": [
             {
                 "type": "6",
@@ -160,347 +357,95 @@
             }
         ],
         "hash": [],
-        "title": "page",
+        "title": "new_test",
         "description": "",
+        "overview": {
+            "synopsis": "",
+            "summary": null
+        },
+        "imageComparison": {
+            "use": false,
+            "before": null,
+            "after": null
+        },
+        "tools": [],
         "extraInfo": [],
-        "mainimage": [],
+        "titleImage": null,
         "subimage": [],
         "mockup": [],
         "externalLink": [],
-        "projectNum": 1771824327331,
+        "projectNum": 1772122004897,
         "currentState": "unknown",
         "startDate": "",
         "endDate": "",
         "member": [],
-        "registerDate": 1771824327331,
+        "registerDate": 1772122004897,
         "modifyDate": [
-            1771824327331
+            1772122005092
         ],
-        "deletedAt": 1771830147856,
-        "trashFolderName": "bmh1771824327331_1771830147856"
+        "trashFolderName": "bmh1772122004897_1772126194473",
+        "deletedAt": 1772126194473
     },
     {
-        "id": "bmh1771824338130",
+        "id": "bmh1772090709134",
         "mainOpen": false,
-        "mainOpenImages": [],
         "category": [
             {
-                "type": "6",
-                "name": "알 수 없음",
+                "type": "5",
+                "name": "UI",
                 "label": "main"
             },
             {
-                "type": "6",
-                "name": "알 수 없음",
+                "type": "2",
+                "name": "구축",
                 "label": "sub"
             }
         ],
         "hash": [],
-        "title": "a__001",
+        "title": "new pro_modify date test",
         "description": "",
+        "overview": {
+            "synopsis": "",
+            "summary": null
+        },
+        "imageComparison": {
+            "use": false,
+            "before": null,
+            "after": null
+        },
+        "tools": [],
         "extraInfo": [],
-        "mainimage": [],
-        "subimage": [],
-        "mockup": [],
-        "externalLink": [],
-        "projectNum": 1771824338130,
-        "currentState": "unknown",
-        "startDate": "",
-        "endDate": "",
-        "member": [],
-        "registerDate": 1771824338130,
-        "modifyDate": [
-            1771824338130
-        ],
-        "deletedAt": 1771830147856,
-        "trashFolderName": "bmh1771824338130_1771830147856"
-    },
-    {
-        "id": "bmh1771824344893",
-        "mainOpen": false,
-        "mainOpenImages": [],
-        "category": [
+        "titleImage": {
+            "alt": "mainOpen00.png",
+            "name": "mainOpen00.png",
+            "size": 173652,
+            "type": "image/png",
+            "lastModified": 1770881272000,
+            "url": "https://res.cloudinary.com/dhym4swda/image/upload/v1772090709/projects/uyxqqgtjb5ves2kvea0u.png"
+        },
+        "subimage": [
             {
-                "type": "6",
-                "name": "알 수 없음",
-                "label": "main"
-            },
-            {
-                "type": "6",
-                "name": "알 수 없음",
-                "label": "sub"
+                "alt": "p58.jpg",
+                "name": "p58.jpg",
+                "size": 76386,
+                "type": "image/jpeg",
+                "lastModified": 1770881272000,
+                "url": "https://res.cloudinary.com/dhym4swda/image/upload/v1772090756/projects/fv9z8d0bbrnnpogal2pw.jpg"
             }
         ],
-        "hash": [],
-        "title": "a_002",
-        "description": "",
-        "extraInfo": [],
-        "mainimage": [],
-        "subimage": [],
         "mockup": [],
         "externalLink": [],
-        "projectNum": 1771824344893,
-        "currentState": "unknown",
+        "projectNum": 1772090709134,
+        "currentState": "complete",
         "startDate": "",
         "endDate": "",
         "member": [],
-        "registerDate": 1771824344893,
+        "registerDate": 1772090709134,
         "modifyDate": [
-            1771824344893
+            1772090710193,
+            1772090757038
         ],
-        "deletedAt": 1771830156713,
-        "trashFolderName": "bmh1771824344893_1771830156713"
-    },
-    {
-        "id": "bmh1771824578728",
-        "mainOpen": false,
-        "mainOpenImages": [],
-        "category": [
-            {
-                "type": "6",
-                "name": "알 수 없음",
-                "label": "main"
-            },
-            {
-                "type": "6",
-                "name": "알 수 없음",
-                "label": "sub"
-            }
-        ],
-        "hash": [],
-        "title": "b___001",
-        "description": "",
-        "extraInfo": [],
-        "mainimage": [],
-        "subimage": [],
-        "mockup": [],
-        "externalLink": [],
-        "projectNum": 1771824578728,
-        "currentState": "unknown",
-        "startDate": "",
-        "endDate": "",
-        "member": [],
-        "registerDate": 1771824578728,
-        "modifyDate": [
-            1771824578728
-        ],
-        "deletedAt": 1771830156713,
-        "trashFolderName": "bmh1771824578728_1771830156713"
-    },
-    {
-        "id": "bmh1771829413880",
-        "mainOpen": false,
-        "mainOpenImages": [],
-        "category": [
-            {
-                "type": "6",
-                "name": "알 수 없음",
-                "label": "main"
-            },
-            {
-                "type": "6",
-                "name": "알 수 없음",
-                "label": "sub"
-            }
-        ],
-        "hash": [],
-        "title": "c",
-        "description": "",
-        "extraInfo": [],
-        "mainimage": [],
-        "subimage": [],
-        "mockup": [],
-        "externalLink": [],
-        "projectNum": 1771829413880,
-        "currentState": "unknown",
-        "startDate": "",
-        "endDate": "",
-        "member": [],
-        "registerDate": 1771829413880,
-        "modifyDate": [
-            1771829413880
-        ],
-        "deletedAt": 1771830156713,
-        "trashFolderName": "bmh1771829413880_1771830156713"
-    },
-    {
-        "id": "bmh1771829428682",
-        "mainOpen": false,
-        "mainOpenImages": [],
-        "category": [
-            {
-                "type": "6",
-                "name": "알 수 없음",
-                "label": "main"
-            },
-            {
-                "type": "6",
-                "name": "알 수 없음",
-                "label": "sub"
-            }
-        ],
-        "hash": [],
-        "title": "c_002",
-        "description": "",
-        "extraInfo": [],
-        "mainimage": [],
-        "subimage": [],
-        "mockup": [],
-        "externalLink": [],
-        "projectNum": 1771829428682,
-        "currentState": "unknown",
-        "startDate": "",
-        "endDate": "",
-        "member": [],
-        "registerDate": 1771829428682,
-        "modifyDate": [
-            1771829428682
-        ],
-        "deletedAt": 1771830156713,
-        "trashFolderName": "bmh1771829428682_1771830156713"
-    },
-    {
-        "id": "bmh1771829437441",
-        "mainOpen": false,
-        "mainOpenImages": [],
-        "category": [
-            {
-                "type": "6",
-                "name": "알 수 없음",
-                "label": "main"
-            },
-            {
-                "type": "6",
-                "name": "알 수 없음",
-                "label": "sub"
-            }
-        ],
-        "hash": [],
-        "title": "c___003",
-        "description": "",
-        "extraInfo": [],
-        "mainimage": [],
-        "subimage": [],
-        "mockup": [],
-        "externalLink": [],
-        "projectNum": 1771829437441,
-        "currentState": "unknown",
-        "startDate": "",
-        "endDate": "",
-        "member": [],
-        "registerDate": 1771829437441,
-        "modifyDate": [
-            1771829437441
-        ],
-        "deletedAt": 1771830164284,
-        "trashFolderName": "bmh1771829437441_1771830164284"
-    },
-    {
-        "id": "bmh1771829619868",
-        "mainOpen": false,
-        "mainOpenImages": [],
-        "category": [
-            {
-                "type": "6",
-                "name": "알 수 없음",
-                "label": "main"
-            },
-            {
-                "type": "6",
-                "name": "알 수 없음",
-                "label": "sub"
-            }
-        ],
-        "hash": [],
-        "title": "d___001",
-        "description": "",
-        "extraInfo": [],
-        "mainimage": [],
-        "subimage": [],
-        "mockup": [],
-        "externalLink": [],
-        "projectNum": 1771829619868,
-        "currentState": "unknown",
-        "startDate": "",
-        "endDate": "",
-        "member": [],
-        "registerDate": 1771829619868,
-        "modifyDate": [
-            1771829619868
-        ],
-        "deletedAt": 1771830164284,
-        "trashFolderName": "bmh1771829619868_1771830164284"
-    },
-    {
-        "id": "bmh1771829927306",
-        "mainOpen": false,
-        "mainOpenImages": [],
-        "category": [
-            {
-                "type": "6",
-                "name": "알 수 없음",
-                "label": "main"
-            },
-            {
-                "type": "6",
-                "name": "알 수 없음",
-                "label": "sub"
-            }
-        ],
-        "hash": [],
-        "title": "d___002",
-        "description": "",
-        "extraInfo": [],
-        "mainimage": [],
-        "subimage": [],
-        "mockup": [],
-        "externalLink": [],
-        "projectNum": 1771829927306,
-        "currentState": "unknown",
-        "startDate": "",
-        "endDate": "",
-        "member": [],
-        "registerDate": 1771829927306,
-        "modifyDate": [
-            1771829927306
-        ],
-        "deletedAt": 1771830164284,
-        "trashFolderName": "bmh1771829927306_1771830164284"
-    },
-    {
-        "id": "bmh1771829954071",
-        "mainOpen": false,
-        "mainOpenImages": [],
-        "category": [
-            {
-                "type": "6",
-                "name": "알 수 없음",
-                "label": "main"
-            },
-            {
-                "type": "6",
-                "name": "알 수 없음",
-                "label": "sub"
-            }
-        ],
-        "hash": [],
-        "title": "d___003",
-        "description": "",
-        "extraInfo": [],
-        "mainimage": [],
-        "subimage": [],
-        "mockup": [],
-        "externalLink": [],
-        "projectNum": 1771829954071,
-        "currentState": "unknown",
-        "startDate": "",
-        "endDate": "",
-        "member": [],
-        "registerDate": 1771829954071,
-        "modifyDate": [
-            1771829954071
-        ],
-        "deletedAt": 1771830164284,
-        "trashFolderName": "bmh1771829954071_1771830164284"
+        "trashFolderName": "bmh1772090709134_1772168323059",
+        "deletedAt": 1772168323059
     }
 ]

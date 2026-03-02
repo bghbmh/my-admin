@@ -82,7 +82,7 @@ export default function ProjectSectionHeader({ title, id, mode }: SectionHeaderP
 					</DropDownTypeA>
 				</div>
 			</header >
-			<hr className="solid" />
+			<hr className="solid mt-0" />
 
 		</>
 	);

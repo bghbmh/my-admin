@@ -13,7 +13,7 @@ export const MAIN_CATEGORY = [
 	{
 		type: 6,
 		name: "알 수 없음",
-		icon: ''
+		icon: 'icon-svg2-web'
 	},
 	{
 		type: 1,
@@ -109,3 +109,6 @@ export const HASH_LIST = ["디자인",
 	"브랜딩",
 	"ui-test"
 ];
+
+
+export const DEFAULT_TOOL_LIST = ["html", "css", "javascript", "React", "Next.js", "TypeScript", "Tailwind CSS", "Figma", "Photoshop", "Illustrator"];

@@ -11,13 +11,14 @@ interface Props {
 	params: Promise<{ id: string }>;
 }
 
+import { DB_PATH } from "@/constants/paths";
+
 export default async function ProjectViewPage({ params }: Props) {
 
 	const { id } = await params;
 
-	// 1. 서버에서 직접 최신 JSON 파일 읽기
-	const dbPath = path.join(process.cwd(), "data", "testDB00.json");
-	const fileContent = await fs.readFile(dbPath, "utf-8");
+	// 1. 서버에서 직접 최신 JSON 파일 읽기 
+	const fileContent = await fs.readFile(DB_PATH, "utf-8");
 	const projectData: ProjectDataType[] = JSON.parse(fileContent);
 
 	// 2. ID에 해당하는 프로젝트 찾기
@@ -31,10 +32,10 @@ export default async function ProjectViewPage({ params }: Props) {
 	return (
 		<>
 			{/* 1. 메뉴명 (1depth) */}
-			<PageHeader title="프로젝트" mode="view" />
+			<PageHeader title="프로젝트" mode="view" currentTitle={curProject.title} />
 
 			{/* 2. 실제 콘텐츠 영역 (RootLayout의 main.common 안에 들어옴) */}
-			<div className="contents">
+			<div id="main-common-container"  >
 				<section className="section type2 project-detail" >
 					<ProjectSectionHeader id={id} title={`${curProject.title}`} mode="view" />
 

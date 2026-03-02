@@ -3,6 +3,8 @@
 	--bmh-breadcrumb-padding-x: 4px;
 	--bmh-breadcrumb-font-size: 13px;
 
+	font-size: var(--bmh-breadcrumb-font-size);
+
 	.breadcrumb-list {
 		display: flex;
 		align-items: center;
@@ -16,13 +18,21 @@
 		display: flex;
 		align-items: center;
 
+		.text {
+			display: block;
+			max-width: 8em;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+
 		a {
 			display: flex;
 			align-items: center;
 			gap: 4px;
 			color: var(--font-color-default);
 			text-decoration: none;
-			font-size: var(--bmh-breadcrumb-font-size);
+			font-size: 1em;
 			opacity: 0.7;
 			transition: opacity 0.2s;
 

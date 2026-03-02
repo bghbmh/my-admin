@@ -20,9 +20,12 @@ export default function ProjectsListItem({ projectData, isSelected, onSelected }
 
 	//console.log("projectData in ProjectsListItem:", projectData);
 	//const router = useRouter();
+	const mainCat = projectData.category.find(cat => cat.label === "main");
+	const subCat = projectData.category.find(cat => cat.label === "sub");
 
-	const mainCategoryInfo = MAIN_CATEGORY.find(mc => mc.type === Number(projectData.category[0].type));
+	const mainCategoryInfo = MAIN_CATEGORY.find(mc => mc.type === Number(mainCat?.type));
 	const stateInfo = STATE_STEP.find(state => state.type === projectData.currentState);
+
 
 	return (
 		<>
@@ -37,8 +40,8 @@ export default function ProjectsListItem({ projectData, isSelected, onSelected }
 					<div className={`category c-type-${mainCategoryInfo?.type}`}>
 						<i className={mainCategoryInfo?.icon} aria-hidden="true"></i>
 						<dl className="text">
-							<dt data-type={projectData.category[0].type}>{projectData.category[0].name}</dt>
-							<dd data-type={projectData.category[1].type}>{projectData.category[1].name}</dd>
+							<dt data-type={mainCat?.type}>{mainCat?.name}</dt>
+							<dd data-type={subCat?.type}>{subCat?.name}</dd>
 						</dl>
 					</div>
 					<div className="title">

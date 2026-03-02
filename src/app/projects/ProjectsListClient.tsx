@@ -1,7 +1,7 @@
-
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useMemo, useEffect } from "react";
+import { useSearchParams, useRouter, usePathname } from "next/navigation"; // URL 관련 훅 추가
 import { MAIN_CATEGORY } from "@/constants/config";
 import { ProjectDataType } from "@/types/project.data";
 
@@ -11,6 +11,7 @@ import { usePagination } from "@/hooks/usePagination";
 import ProjectsListItem from "@/components/projects-list-item";
 import SectionHeader from "@/components/common/section-header";
 import Pagination from "@/components/common/Pagination";
+import { ICONSET } from '@/types/icon.data';
 import '@/styles/bPagination.css'
 
 interface Props {
@@ -18,18 +19,34 @@ interface Props {
 }
 
 export default function ProjectsListClient({ list }: Props) {
+	const router = useRouter();
+	const pathname = usePathname();
+	const searchParams = useSearchParams();
 
-	const [activeTab, setActiveTab] = useState({ number: 0, name: "전체" });
-	const [selectedProjects, setSelectedProjects] = useState<string[]>([]);
+	// 1. URL에서 category 파라미터 읽기 (없으면 0)
+	const categoryParam = Number(searchParams.get("category")) || 0;
+	const pageParam = Number(searchParams.get("page")) || 1;
 
+	// 현재 활성화된 탭 정보 계산
+	const activeTab = useMemo(() => {
+		const found = MAIN_CATEGORY.find(c => c.type === categoryParam);
+		return found ? { number: found.type, name: found.name } : { number: 0, name: "전체" };
+	}, [categoryParam]);
 
+	const [selectedProjects, setSelectedProjects] = React.useState<string[]>([]);
+
+	// 2. 필터링 로직 (URL 파라미터 기준)
 	const filteredProjects = useMemo(() => {
-		return activeTab.number === 0
+		const filtered = categoryParam === 0
 			? list
-			: list.filter(project =>
-				project.category.find(cat => Number(cat.type) === activeTab.number)
-			);
-	}, [list, activeTab]);
+			: list.filter(p => {
+				const mainCat = p.category.find(cat => cat.label === "main");
+				return Number(mainCat?.type) === categoryParam;
+			});
+
+		return [...filtered].sort((a, b) => b.registerDate - a.registerDate);
+	}, [list, categoryParam]);
+
 
 	const {
 		currentPage,
@@ -37,61 +54,61 @@ export default function ProjectsListClient({ list }: Props) {
 		totalPages,
 		paginatedList,
 		pageNumbers
-	} = usePagination(filteredProjects, 4, 1)
+	} = usePagination(filteredProjects, 10, 3, pageParam);
 
-
-	console.log("알 수 없음:", filteredProjects.length, pageNumbers);
-
-
-
-	const changeTab = (number: number, name: string) => {
-		setActiveTab({ number, name });
-		setCurrentPage(1); // 탭 바뀔 때 1페이지로!
-		setSelectedProjects([]);
-	};
-
-
+	// [추가] URL의 페이지 번호가 바뀌면 페이지네이션 훅의 상태를 동기화합니다.
+	useEffect(() => {
+		setCurrentPage(pageParam);
+	}, [pageParam, setCurrentPage]);
 
 	const handleSelectedProjects = (checked: boolean, id: string) => {
 		setSelectedProjects(prev => (
 			checked ? [...prev, id] : prev.filter(prevId => prevId !== id)
-		))
-	}
-
+		));
+	};
 
 	const { handleProjectDelete, isDeleting } = useProjectDelete();
 
-	const handleCancel = (e: React.MouseEvent<HTMLButtonElement>) => {
-		e.preventDefault();
+	// 3. 탭 클릭 시 URL 변경 함수
+	const changeTab = (type: number) => {
+		const params = new URLSearchParams(searchParams.toString());
+		if (type === 0) {
+			params.delete("category");
+		} else {
+			params.set("category", type.toString());
+		}
+		params.set("page", "1"); // 카테고리 바꿀 때 페이지 초기화
+		router.push(`${pathname}?${params.toString()}`);
 		setSelectedProjects([]);
-		console.log("취소"); //디버깅용 로그 
 	};
 
+	// 4. 페이지 변경 시 URL을 바꾸는 함수
+	const handlePageChange = (newPage: number) => {
+		const params = new URLSearchParams(searchParams.toString());
+		params.set("page", newPage.toString());
+
+		// URL을 변경하면 새로고침해도 이 값이 유지됩니다.
+		router.push(`${pathname}?${params.toString()}`);
+	};
 
 	return (
 		<>
-			{/* 2. 실제 콘텐츠 영역 (RootLayout의 main.common 안에 들어옴) */}
-
 			<nav className="projects-nav" aria-label="프로젝트 카테고리">
 				<div className="nav-list" role="tablist">
 					<button
 						type="button"
-						className={`btn nav-item ${activeTab.number === 0 ? "active" : ""}`}
-						role="tab"
-						onClick={() => setActiveTab({ number: 0, name: "전체" })} >
+						className={`btn nav-item ${categoryParam === 0 ? "active" : ""}`}
+						onClick={() => changeTab(0)}>
 						<i className="icon-svg2-all" aria-hidden="true"></i>전체
 					</button>
-					{
-						MAIN_CATEGORY.map(category => (
-							<button key={category.type}
-								type="button"
-								className={`btn nav-item ${activeTab.number === category.type ? "active" : ""}`}
-								role="tab"
-								onClick={() => changeTab(category.type, category.name)}>
-								<i className={category.icon} aria-hidden="true"></i>{category.name}
-							</button>
-						))
-					}
+					{MAIN_CATEGORY.map(category => (
+						<button key={category.type}
+							type="button"
+							className={`btn nav-item ${categoryParam === category.type ? "active" : ""}`}
+							onClick={() => changeTab(category.type)}>
+							<i className={category.icon} aria-hidden="true"></i>{category.name}
+						</button>
+					))}
 				</div>
 			</nav>
 
@@ -102,16 +119,19 @@ export default function ProjectsListClient({ list }: Props) {
 						<h3 className="text">'{activeTab.name}' 보기
 							<small className="font-number">{filteredProjects.length}</small>
 						</h3>
-						{selectedProjects.length > 0 && <small className="selected-count"> <b className="fcPrimary font-monospace">{selectedProjects.length}</b>개 선택됨</small>}
-
+						{selectedProjects.length > 0 &&
+							<small className="selected-count">
+								<b className="fcPrimary font-monospace">{selectedProjects.length}</b>개 선택됨
+							</small>
+						}
 					</>
 				}
 				actions={selectedProjects.length > 0 && (
 					<div className="btn-wrap">
-						<button type="button" onClick={handleCancel} className="btn cancel">취소</button>
+						<button type="button" onClick={() => setSelectedProjects([])} className="btn cancel">취소</button>
 						<button
 							type="button"
-							className="btn delete "
+							className="btn delete"
 							onClick={() => handleProjectDelete(selectedProjects, () => setSelectedProjects([]))}>
 							{isDeleting ? "삭제 중..." : "삭제"}
 						</button>
@@ -119,21 +139,35 @@ export default function ProjectsListClient({ list }: Props) {
 				)}
 			/>
 
-			<section className="  projects-list" >
-				{paginatedList.map(project => (
-					<ProjectsListItem
-						key={project.id}
-						projectData={project}
-						isSelected={selectedProjects.includes(project.id)}
-						onSelected={(checked) => handleSelectedProjects(checked, project.id)} />
-				))}
-
-				<Pagination
-					currentPage={currentPage}
-					totalPages={totalPages}
-					onPageChange={setCurrentPage}
-					pageNumbers={pageNumbers}
-				/>
+			<section className="projects-list">
+				{filteredProjects.length > 0 ? (
+					<>
+						{paginatedList.map(project => (
+							<ProjectsListItem
+								key={project.id}
+								projectData={project}
+								isSelected={selectedProjects.includes(project.id)}
+								onSelected={(checked) => handleSelectedProjects(checked, project.id)}
+							/>
+						))}
+						<Pagination
+							currentPage={currentPage}
+							totalPages={totalPages}
+							// onPageChange={setCurrentPage}
+							onPageChange={handlePageChange}
+							pageNumbers={pageNumbers}
+						/>
+					</>
+				) : (
+					<div className="none list-items">
+						<ICONSET type="question" />
+						<div>해당 카테고리에 등록된 프로젝트가 없습니다</div>
+						<a className="btn create-project primary" href="/projects/create">
+							<i className="icon-svg2-folder-plus" aria-hidden="true"></i>
+							<span>새 프로젝트 추가</span>
+						</a>
+					</div>
+				)}
 			</section>
 		</>
 	);

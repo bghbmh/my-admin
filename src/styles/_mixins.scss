@@ -99,9 +99,10 @@ $unit-labels: (
 	"%": "per",
 	) !default;
 
+// 1em, 1rem, 1px, 1%
 @mixin width-height($prefix: "", $start: 2, $end: 9, $offset: 0.5, $unit: "em", $interval: 1) {
 	$u-value: map-get($unit-values, $unit
-	); // 1em, 1rem, 1px, 1%
+	);
 $u-label: map-get($unit-labels, $unit);
 
 $i: $start;

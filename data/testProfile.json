@@ -1,0 +1,31 @@
+[
+	{
+		"id": 1728845897477,
+		"pw": "asdf1234",
+		"nickname": {
+			"check": true,
+			"value": "miniBig"
+		},
+		"name": "박민희",
+		"titleimage": [
+			{
+				"alt": "test-user0.png",
+				"name": "test-user0.png",
+				"size": 12345678,
+				"type": "image/png",
+				"lastModified": 1728845897477,
+				"url": "/img/profile/test-user0.png"
+			}
+		],
+		"image": [],
+		"email": "bghbmh@miniBig.com",
+		"phone": "010-3469-1323",
+		"business": {
+			"company": "모나리자",
+			"team": "그림",
+			"role": "나",
+			"bio": "Front-end Developer & UI Designer"
+		},
+		"theme": "light"
+	}
+]

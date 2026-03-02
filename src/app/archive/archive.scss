@@ -1,0 +1,289 @@
+.archive-split-container {
+	display: flex;
+	height: 85vh;
+	background: #fff;
+	border-radius: 24px;
+	overflow: hidden;
+	border: 1px solid #f0f0f0;
+
+	// 상세 정보 컬럼
+	.detail-column {
+		flex: 1;
+		overflow-y: auto;
+		padding: 40px;
+		border-right: 1px solid #f1f3f5;
+
+		.detail-header {
+			margin-bottom: 30px;
+
+			.meta {
+				display: flex;
+				align-items: center;
+				gap: 8px;
+				font-size: 14px;
+				color: #4f46e5;
+				font-weight: 700;
+				margin-bottom: 10px;
+
+				.status-dot {
+					width: 8px;
+					height: 8px;
+					border-radius: 50%;
+
+					&.complete {
+						color: #16a34a;
+						background-color: #16a34a;
+					}
+
+					// 완료 - 초록
+					&.ongoing {
+						color: #2563eb;
+						background-color: #2563eb;
+					}
+
+					// 진행중 - 파랑
+					&.before {
+						color: #ea580c;
+						background-color: #ea580c;
+					}
+
+					// 진행전 - 주황
+					&.unknown {
+						color: #94a3b8;
+						background-color: #94a3b8;
+					}
+
+					// 알수없음 - 회색
+
+				}
+			}
+
+			h1 {
+				font-size: 32px;
+				font-weight: 800;
+				color: #1e293b;
+				margin-bottom: 8px;
+			}
+
+			.period {
+				font-size: 14px;
+				color: #94a3b8;
+			}
+		}
+
+		.main-preview {
+			width: 100%;
+			border-radius: 16px;
+			overflow: hidden;
+			margin-bottom: 30px;
+			height: 30vh;
+			background: #f8fafc;
+
+			img {
+				display: block;
+				width: 100%;
+				height: 100%;
+				object-fit: contain;
+			}
+		}
+
+		.info-section {
+			margin-bottom: 30px;
+
+			h3 {
+				font-size: 18px;
+				font-weight: 700;
+				color: #334155;
+				margin-bottom: 12px;
+			}
+
+			p {
+				line-height: 1.7;
+				color: #64748b;
+				font-size: 15px;
+			}
+
+			.tool-chips {
+				display: flex;
+				gap: 8px;
+				flex-wrap: wrap;
+
+				.chip {
+					background: #f1f5f9;
+					padding: 6px 12px;
+					border-radius: 8px;
+					font-size: 13px;
+					color: #475569;
+				}
+			}
+		}
+
+		.go-page-btn {
+			padding: 14px 24px;
+			background: #1e293b;
+			color: #fff;
+			border: none;
+			border-radius: 12px;
+			font-weight: 600;
+			cursor: pointer;
+			transition: 0.2s;
+
+			&:hover {
+				background: #000;
+			}
+		}
+
+		.empty-state {
+			height: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: #cbd5e1;
+		}
+	}
+
+	// 사이드바 목록
+	.list-sidebar {
+		width: 350px;
+		background: #fafbfc;
+		display: flex;
+		flex-direction: column;
+
+		.sidebar-header {
+			padding: 24px 24px 12px 24px;
+			border-bottom: 1px solid #f1f3f5;
+
+			h2 {
+				font-size: 18px;
+				font-weight: 800;
+				margin-bottom: 16px;
+			}
+
+			.filter-tabs ul {
+				display: flex;
+				list-style: none;
+				padding: 0;
+				gap: 16px;
+
+				li {
+					font-size: 13px;
+					font-weight: 600;
+					color: #94a3b8;
+					cursor: pointer;
+					padding-bottom: 8px;
+					position: relative;
+					transition: 0.2s;
+
+					&:hover {
+						color: #4f46e5;
+					}
+
+					&.active {
+						color: #4f46e5;
+
+						&::after {
+							content: '';
+							position: absolute;
+							bottom: -1px;
+							left: 0;
+							right: 0;
+							height: 2px;
+							background: #4f46e5;
+						}
+					}
+				}
+			}
+		}
+
+		.sidebar-scroll {
+			flex: 1;
+			overflow-y: auto;
+			padding: 16px 12px;
+			display: flex;
+			flex-direction: column;
+			gap: 8px;
+
+			.no-data {
+				padding: 40px;
+				text-align: center;
+				color: #cbd5e1;
+				font-size: 13px;
+			}
+		}
+
+		.list-item {
+			display: flex;
+			gap: 12px;
+			padding: 12px;
+			border-radius: 16px;
+			cursor: pointer;
+			transition: 0.2s;
+
+			&:hover {
+				background: #f1f5f9;
+			}
+
+			&.active {
+				background: #fff;
+				box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+				border: 1px solid #e2e8f0;
+			}
+
+			.item-thumb {
+				width: 60px;
+				height: 60px;
+				border-radius: 10px;
+				overflow: hidden;
+				background: #e2e8f0;
+				flex-shrink: 0;
+
+				img {
+					width: 100%;
+					height: 100%;
+					object-fit: cover;
+				}
+			}
+
+			.item-info {
+				overflow: hidden;
+
+				.cat {
+					font-size: 10px;
+					font-weight: 700;
+					color: #4f46e5;
+				}
+
+				h4 {
+					font-size: 14px;
+					font-weight: 700;
+					color: #334155;
+					white-space: nowrap;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					margin: 2px 0;
+				}
+
+				.state-tag {
+					font-size: 10px;
+					font-weight: 600;
+
+					&.complete {
+						color: #16a34a;
+					}
+
+					&.ongoing {
+						color: #2563eb;
+					}
+
+					&.before {
+						color: #ea580c;
+					}
+
+					&.unknown {
+						color: #94a3b8;
+					}
+				}
+			}
+		}
+	}
+}

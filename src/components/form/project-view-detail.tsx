@@ -4,10 +4,12 @@ import React, { cache, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-import { CategoryItemType, ProjectDataType, ExtraInfoItemType, MockupFileType } from "@/types/project.data";
+import { CategoryItemType, ProjectDataType, ExtraInfoItemType } from "@/types/project.data";
 
 import { NO_ITEM_CONFIG, MAIN_CATEGORY, SUB_CATEGORY, HASH_LIST, STATE_STEP } from "@/constants/config";
 import { Upload, UploadFile, UploadProps } from 'antd';
+
+import { ProjectIcon, ICONSET, IconType } from "@/types/icon.data";
 
 import ImageGallery from "@/components/image-gallery";
 import "./project-edit-view.scss";
@@ -45,6 +47,9 @@ export default function ProjectViewDetail({ id, initialData, mode = "view" }: te
 		}
 	};
 
+	const mainCat = initialData.category.find(cat => cat.label === "main");
+	const subCat = initialData.category.find(cat => cat.label === "sub");
+
 	return (
 		<>
 			<div className="tCom010">
@@ -60,16 +65,16 @@ export default function ProjectViewDetail({ id, initialData, mode = "view" }: te
 						<dt>카테고리</dt>
 						<dd>
 							<div className="text">{<>
-								<span data-type={initialData.category[0].type}>
-									{initialData.category[0].name}
-								</span> / <span data-type={initialData.category[1].type}>{initialData.category[1].name}</span>
+
+								<span data-type={mainCat?.type}>{mainCat?.name}</span> / <span data-type={subCat?.type}>{subCat?.name}</span>
 							</>}
 							</div>
 						</dd>
 					</dl>
 					<dl>
 						<dt>기간</dt>
-						<dd>{initialData.startDate} ~ {initialData.endDate}</dd>
+						<dd>{initialData.startDate === "" && initialData.endDate === "" && <div className="none details  p-0 bg-transparent justify-content-start">등록한 내용이 없습니다</div>}
+						</dd>
 					</dl>
 
 					<dl>
@@ -77,8 +82,19 @@ export default function ProjectViewDetail({ id, initialData, mode = "view" }: te
 						<dd>
 							<figure className="member no-user ">
 								<figcaption><span>참여자가 없습니다</span></figcaption>
-								<img src={NO_ITEM_CONFIG.member} alt="참여자가 없습니다" />
+								<img src={NO_ITEM_CONFIG.member.src} alt="참여자가 없습니다" />
 							</figure>
+						</dd>
+					</dl>
+
+					<dl className="flex-none w-100">
+						<dt>기술스택 Tools</dt>
+						<dd className=" d-flex gap-2 flex-wrap ">
+
+							{initialData.tools.length > 0 ? (initialData.tools.join(", ")) : (<div className="none details">등록한 내용이 없습니다</div>)
+
+								// initialData.tools.map((tool, idx) => <span key={idx} className=" " >{tool}</span>)
+							}
 						</dd>
 					</dl>
 
@@ -98,8 +114,8 @@ export default function ProjectViewDetail({ id, initialData, mode = "view" }: te
 					<dl className="flex-none w-100">
 						<dt>미리보기<small>test-small 미리보기</small></dt>
 						<dd>
-							<div className="sample-file ">
-								{
+							{/* <div className="sample-file ">
+								{initialData.mockup.length > 0 ? (
 									initialData.mockup.map((m, idx) => (
 										<figure key={idx} className="item">
 											<img src="/img/common/icon-svg-double-paper.svg" alt={m.name} />
@@ -109,7 +125,25 @@ export default function ProjectViewDetail({ id, initialData, mode = "view" }: te
 											</figcaption>
 										</figure>
 									))
-								}
+								) : (
+									<div className="none details">등록한 내용이 없습니다</div>
+								)}
+
+							</div> */}
+
+							<div className="external-link-list">
+								{initialData.mockup.length > 0 ? (
+									initialData.mockup.map(link => (
+										<a key={link.id} target="_blank" href={link.url} className="link">
+											<span className="icon">
+												<ICONSET type={link.type} />
+											</span>
+											{link.label}</a>
+									))
+								) : (
+									<div className="none details">등록한 내용이 없습니다</div>
+
+								)}
 
 							</div>
 
@@ -120,28 +154,72 @@ export default function ProjectViewDetail({ id, initialData, mode = "view" }: te
 						<dt>외부링크 추가</dt>
 						<dd >
 							<div className="external-link-list">
-								{
+								{initialData.externalLink.length > 0 ? (
 									initialData.externalLink.map(link => (
 										<a key={link.id} target="_blank" href={link.url} className="link">
 											<span className="icon">
-												<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l82.7 0L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3l0 82.7c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160c0-17.7-14.3-32-32-32L320 0zM80 32C35.8 32 0 67.8 0 112L0 432c0 44.2 35.8 80 80 80l320 0c44.2 0 80-35.8 80-80l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 112c0 8.8-7.2 16-16 16L80 448c-8.8 0-16-7.2-16-16l0-320c0-8.8 7.2-16 16-16l112 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 32z"></path></svg>
+												<ICONSET type={link.type} />
 											</span>
 											{link.label}</a>
 									))
-								}
+								) : (
+									<div className="none details">등록한 내용이 없습니다</div>
+
+								)}
 
 							</div>
 
 						</dd>
 					</dl>
 
+					<dl className=" flex-none w-100">
+						<dt >간단 설명, 한 줄 요약</dt>
+						<dd className="synopsis">{initialData.overview.synopsis}</dd>
+					</dl>
+
+					<dl className=" flex-none w-100">
+						<dt >핵심 요약</dt>
+						{initialData.overview.summary ? (initialData.overview.summary.map((s, idx) =>
+							<dd key={idx} className="summary">
+								{s.title === '' ? '' : (<b className="title">{s.title}</b>)}
+								{s.description}
+							</dd>
+						)) : (
+							<div className="none details">등록한 내용이 없습니다</div>
+						)}
+					</dl>
+
 					<dl className="flex-none w-100">
-						<dt>설명</dt>
-						<dd className="description">{initialData.description}</dd>
+						<dt>추가 설명</dt>
+						{initialData.description === "" ? (
+							<div className="none details">등록한 내용이 없습니다</div>
+						) : (<dd className="description">{initialData.description}</dd>)}
 					</dl>
 				</div>
 				<aside className="info-option">
-					<ImageGallery img={initialData.subimage} />
+					<dl>
+						<dt>타이틀이미지</dt>
+						<dd>{
+							<div className="titleImage">
+								{initialData.titleImage.length > 0 ? (
+									<figure className="item">
+										<img src={initialData.titleImage[0].url} alt={initialData.titleImage[0].name} />
+										<figcaption>
+											<span className="option title">{initialData.titleImage[0].name}</span>
+											{initialData.titleImage[0].size !== undefined ? (<span className="option">{`${initialData.titleImage[0].size} / 1024).toFixed(2) + KB`}</span>) : ('')}
+										</figcaption>
+									</figure>
+
+								) : (<div className="none details">등록한 이미지가 없습니다</div>)}
+							</div>
+						}</dd>
+					</dl>
+					<dl>
+						<dt>서브이미지</dt>
+						<dd><ImageGallery images={initialData.subimage} /></dd>
+					</dl>
+
+
 					<button type="button" className="btn">캐러셀로 보기</button>
 				</aside>
 
@@ -158,8 +236,8 @@ export default function ProjectViewDetail({ id, initialData, mode = "view" }: te
 
 					<button type="button" className="btn delete mobile-elem mt-5" onClick={handleDelete}>삭제</button>
 
-				</div>
-			</div>
+				</div >
+			</div >
 		</>
 
 	);

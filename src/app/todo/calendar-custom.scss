@@ -1,0 +1,36 @@
+.todo-calendar-wrapper {
+	background: #fff;
+	padding: 20px;
+	border-radius: 12px;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+
+	/* FullCalendar 내부 스타일 수정 */
+	.fc {
+		--fc-border-color: #eee;
+		--fc-button-bg-color: #f8f9fa;
+		--fc-button-border-color: #ddd;
+		--fc-button-text-color: #333;
+		--fc-button-hover-bg-color: #e9ecef;
+		--fc-today-bg-color: #fff9db;
+
+		.fc-toolbar-title {
+			font-size: 1.25rem;
+			font-weight: 700;
+		}
+
+		.fc-col-header-cell {
+			padding: 10px 0;
+			background: #fcfcfc;
+			color: #666;
+			font-weight: 500;
+		}
+
+		// 이벤트 바 스타일
+		.fc-event {
+			cursor: pointer;
+			border: none;
+			padding: 2px 4px;
+			border-radius: 4px;
+		}
+	}
+}

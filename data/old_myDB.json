@@ -1,0 +1,1623 @@
+[
+	{
+		"id": "bmh1772030019424",
+		"mainOpen": false,
+		"category": [
+			{
+				"type": "3",
+				"name": "콘텐츠",
+				"label": "main"
+			},
+			{
+				"type": "1",
+				"name": "제작",
+				"label": "sub"
+			}
+		],
+		"hash": [],
+		"title": "이벤트페이지",
+		"description": "",
+		"overview": {
+			"synopsis": "",
+			"summary": null
+		},
+		"imageComparison": {
+			"use": false,
+			"before": null,
+			"after": null
+		},
+		"tools": [],
+		"extraInfo": [],
+		"titleImage": {
+			"alt": "mainOpen00.png",
+			"name": "mainOpen00.png",
+			"size": 168661,
+			"type": "image/png",
+			"lastModified": 1772029413014,
+			"webUrl": "bmh1772030019424/images/mainOpen00.png"
+		},
+		"subimage": [
+			{
+				"alt": "p58.jpg",
+				"name": "p58.jpg",
+				"size": 76386,
+				"type": "image/jpeg",
+				"lastModified": 1770881272000,
+				"webUrl": "bmh1772030019424/images/p58.jpg"
+			},
+			{
+				"alt": "p60.jpg",
+				"name": "p60.jpg",
+				"size": 88919,
+				"type": "image/jpeg",
+				"lastModified": 1770881272000,
+				"webUrl": "bmh1772030019424/images/p60.jpg"
+			}
+		],
+		"mockup": [],
+		"externalLink": [],
+		"projectNum": 1772030019424,
+		"currentState": "complete",
+		"startDate": "",
+		"endDate": "",
+		"member": [],
+		"registerDate": 1772030019424,
+		"modifyDate": [
+			1772030019424
+		]
+	},
+	{
+		"id": "bmh1772030422011",
+		"mainOpen": false,
+		"category": [
+			{
+				"type": "2",
+				"name": "인쇄",
+				"label": "main"
+			},
+			{
+				"type": "1",
+				"name": "제작",
+				"label": "sub"
+			}
+		],
+		"hash": [
+			"인쇄"
+		],
+		"title": "교과서용 컷",
+		"description": "",
+		"overview": {
+			"synopsis": "",
+			"summary": null
+		},
+		"imageComparison": {
+			"use": false,
+			"before": null,
+			"after": null
+		},
+		"tools": [],
+		"extraInfo": [],
+		"titleImage": {
+			"alt": "mainOpen02.png",
+			"name": "mainOpen02.png",
+			"size": 397133,
+			"type": "image/png",
+			"lastModified": 1770881272000,
+			"webUrl": "bmh1772030422011/images/mainOpen02.png"
+		},
+		"subimage": [
+			{
+				"alt": "c08.png",
+				"name": "c08.png",
+				"size": 192252,
+				"type": "image/png",
+				"lastModified": 1770881272000,
+				"webUrl": "bmh1772030422011/images/c08.png"
+			},
+			{
+				"alt": "c09.png",
+				"name": "c09.png",
+				"size": 997109,
+				"type": "image/png",
+				"lastModified": 1770881272000,
+				"webUrl": "bmh1772030422011/images/c09.png"
+			}
+		],
+		"mockup": [],
+		"externalLink": [],
+		"projectNum": 1772030422011,
+		"currentState": "complete",
+		"startDate": "",
+		"endDate": "",
+		"member": [],
+		"registerDate": 1772030422011,
+		"modifyDate": [
+			1772030422011
+		]
+	},
+	{
+		"id": "bmh1772030491189",
+		"mainOpen": false,
+		"category": [
+			{
+				"type": "2",
+				"name": "인쇄",
+				"label": "main"
+			},
+			{
+				"type": "1",
+				"name": "제작",
+				"label": "sub"
+			}
+		],
+		"hash": [
+			"인쇄",
+			"디자인"
+		],
+		"title": "보드게임",
+		"description": "",
+		"overview": {
+			"synopsis": "",
+			"summary": null
+		},
+		"imageComparison": {
+			"use": false,
+			"before": null,
+			"after": null
+		},
+		"tools": [],
+		"extraInfo": [],
+		"titleImage": {
+			"alt": "mainOpen.png",
+			"name": "mainOpen.png",
+			"size": 412366,
+			"type": "image/png",
+			"lastModified": 1770881272000,
+			"webUrl": "bmh1772030491189/images/mainOpen.png"
+		},
+		"subimage": [
+			{
+				"alt": "paper06.png",
+				"name": "paper06.png",
+				"size": 183775,
+				"type": "image/png",
+				"lastModified": 1770881272000,
+				"webUrl": "bmh1772030491189/images/paper06.png"
+			}
+		],
+		"mockup": [],
+		"externalLink": [],
+		"projectNum": 1772030491189,
+		"currentState": "complete",
+		"startDate": "",
+		"endDate": "",
+		"member": [],
+		"registerDate": 1772030491189,
+		"modifyDate": [
+			1772030491189
+		]
+	},
+	{
+		"id": "bmh1772030570638",
+		"mainOpen": false,
+		"category": [
+			{
+				"type": "2",
+				"name": "인쇄",
+				"label": "main"
+			},
+			{
+				"type": "1",
+				"name": "제작",
+				"label": "sub"
+			}
+		],
+		"hash": [
+			"디자인",
+			"인쇄",
+			"콘텐츠"
+		],
+		"title": "수업 포스터",
+		"description": "",
+		"overview": {
+			"synopsis": "",
+			"summary": null
+		},
+		"imageComparison": {
+			"use": false,
+			"before": null,
+			"after": null
+		},
+		"tools": [],
+		"extraInfo": [],
+		"titleImage": {
+			"alt": "mainOpen.png",
+			"name": "mainOpen.png",
+			"size": 189792,
+			"type": "image/png",
+			"lastModified": 1770881272000,
+			"webUrl": "bmh1772030570638/images/mainOpen.png"
+		},
+		"subimage": [
+			{
+				"alt": "paper12.png",
+				"name": "paper12.png",
+				"size": 146101,
+				"type": "image/png",
+				"lastModified": 1770881272000,
+				"webUrl": "bmh1772030570638/images/paper12.png"
+			},
+			{
+				"alt": "paper14.png",
+				"name": "paper14.png",
+				"size": 886466,
+				"type": "image/png",
+				"lastModified": 1770881272000,
+				"webUrl": "bmh1772030570638/images/paper14.png"
+			},
+			{
+				"alt": "paper15.png",
+				"name": "paper15.png",
+				"size": 1453629,
+				"type": "image/png",
+				"lastModified": 1770881272000,
+				"webUrl": "bmh1772030570638/images/paper15.png"
+			},
+			{
+				"alt": "paper16.png",
+				"name": "paper16.png",
+				"size": 792630,
+				"type": "image/png",
+				"lastModified": 1770881272000,
+				"webUrl": "bmh1772030570638/images/paper16.png"
+			}
+		],
+		"mockup": [],
+		"externalLink": [],
+		"projectNum": 1772030570638,
+		"currentState": "complete",
+		"startDate": "",
+		"endDate": "",
+		"member": [],
+		"registerDate": 1772030570638,
+		"modifyDate": [
+			1772030570638
+		]
+	},
+	{
+		"id": "bmh1772030774215",
+		"mainOpen": false,
+		"category": [
+			{
+				"type": "1",
+				"name": "웹",
+				"label": "main"
+			},
+			{
+				"type": "1",
+				"name": "제작",
+				"label": "sub"
+			}
+		],
+		"hash": [
+			"디자인",
+			"반응형",
+			"마크업",
+			"모바일"
+		],
+		"title": "모바일",
+		"description": "",
+		"overview": {
+			"synopsis": "",
+			"summary": null
+		},
+		"imageComparison": {
+			"use": false,
+			"before": null,
+			"after": null
+		},
+		"tools": [],
+		"extraInfo": [
+			{
+				"id": "50b215d6-cd79-441c-9b33-1ad0498aaed4",
+				"label": "",
+				"value": ""
+			}
+		],
+		"titleImage": {
+			"alt": "mainOpen05.png",
+			"name": "mainOpen05.png",
+			"size": 190171,
+			"type": "image/png",
+			"lastModified": 1770881272000,
+			"webUrl": "bmh1772030774215/images/mainOpen05.png"
+		},
+		"subimage": [
+			{
+				"alt": "w19.jpg",
+				"name": "w19.jpg",
+				"size": 1624989,
+				"type": "image/jpeg",
+				"lastModified": 1770881272000,
+				"webUrl": "bmh1772030774215/images/w19.jpg"
+			}
+		],
+		"mockup": [],
+		"externalLink": [],
+		"projectNum": 1772030774215,
+		"currentState": "complete",
+		"startDate": "",
+		"endDate": "",
+		"member": [],
+		"registerDate": 1772030774215,
+		"modifyDate": [
+			1772030774215
+		]
+	},
+	{
+		"id": "bmh1772030912250",
+		"mainOpen": false,
+		"category": [
+			{
+				"type": "2",
+				"name": "인쇄",
+				"label": "main"
+			},
+			{
+				"type": "1",
+				"name": "제작",
+				"label": "sub"
+			}
+		],
+		"hash": [
+			"디자인",
+			"인쇄",
+			"마케팅"
+		],
+		"title": "안내서",
+		"description": "",
+		"overview": {
+			"synopsis": "보험 안내 브로슈어",
+			"summary": null
+		},
+		"imageComparison": {
+			"use": false,
+			"before": null,
+			"after": null
+		},
+		"tools": [],
+		"extraInfo": [],
+		"titleImage": {
+			"alt": "mainOpen06.png",
+			"name": "mainOpen06.png",
+			"size": 235640,
+			"type": "image/png",
+			"lastModified": 1770881272000,
+			"webUrl": "bmh1772030912250/images/mainOpen06.png"
+		},
+		"subimage": [
+			{
+				"alt": "paper27.png",
+				"name": "paper27.png",
+				"size": 874069,
+				"type": "image/png",
+				"lastModified": 1770881272000,
+				"webUrl": "bmh1772030912250/images/paper27.png"
+			}
+		],
+		"mockup": [],
+		"externalLink": [],
+		"projectNum": 1772030912250,
+		"currentState": "complete",
+		"startDate": "",
+		"endDate": "",
+		"member": [],
+		"registerDate": 1772030912250,
+		"modifyDate": [
+			1772030912250
+		]
+	},
+	{
+		"id": "bmh1772031019757",
+		"mainOpen": false,
+		"category": [
+			{
+				"type": "3",
+				"name": "콘텐츠",
+				"label": "main"
+			},
+			{
+				"type": "1",
+				"name": "제작",
+				"label": "sub"
+			}
+		],
+		"hash": [],
+		"title": "수업 안내문",
+		"description": "",
+		"overview": {
+			"synopsis": "",
+			"summary": null
+		},
+		"imageComparison": {
+			"use": false,
+			"before": null,
+			"after": null
+		},
+		"tools": [],
+		"extraInfo": [],
+		"titleImage": {
+			"alt": "mainOpen07.png",
+			"name": "mainOpen07.png",
+			"size": 153128,
+			"type": "image/png",
+			"lastModified": 1770881272000,
+			"webUrl": "bmh1772031019757/images/mainOpen07.png"
+		},
+		"subimage": [
+			{
+				"alt": "p35.png",
+				"name": "p35.png",
+				"size": 108573,
+				"type": "image/png",
+				"lastModified": 1770881272000,
+				"webUrl": "bmh1772031019757/images/p35.png"
+			},
+			{
+				"alt": "p43.jpg",
+				"name": "p43.jpg",
+				"size": 228146,
+				"type": "image/jpeg",
+				"lastModified": 1770881272000,
+				"webUrl": "bmh1772031019757/images/p43.jpg"
+			}
+		],
+		"mockup": [],
+		"externalLink": [],
+		"projectNum": 1772031019757,
+		"currentState": "complete",
+		"startDate": "",
+		"endDate": "",
+		"member": [],
+		"registerDate": 1772031019757,
+		"modifyDate": [
+			1772031019757
+		]
+	},
+	{
+		"id": "bmh1772031067250",
+		"mainOpen": false,
+		"category": [
+			{
+				"type": "2",
+				"name": "인쇄",
+				"label": "main"
+			},
+			{
+				"type": "1",
+				"name": "제작",
+				"label": "sub"
+			}
+		],
+		"hash": [],
+		"title": "청첩장",
+		"description": "",
+		"overview": {
+			"synopsis": "",
+			"summary": null
+		},
+		"imageComparison": {
+			"use": false,
+			"before": null,
+			"after": null
+		},
+		"tools": [],
+		"extraInfo": [],
+		"titleImage": {
+			"alt": "mainOpen08.png",
+			"name": "mainOpen08.png",
+			"size": 236950,
+			"type": "image/png",
+			"lastModified": 1770881272000,
+			"webUrl": "bmh1772031067250/images/mainOpen08.png"
+		},
+		"subimage": [
+			{
+				"alt": "paper31.png",
+				"name": "paper31.png",
+				"size": 1438225,
+				"type": "image/png",
+				"lastModified": 1770881272000,
+				"webUrl": "bmh1772031067250/images/paper31.png"
+			}
+		],
+		"mockup": [],
+		"externalLink": [],
+		"projectNum": 1772031067250,
+		"currentState": "complete",
+		"startDate": "",
+		"endDate": "",
+		"member": [],
+		"registerDate": 1772031067250,
+		"modifyDate": [
+			1772031067250
+		]
+	},
+	{
+		"id": "bmh1772031123803",
+		"mainOpen": false,
+		"category": [
+			{
+				"type": "1",
+				"name": "웹",
+				"label": "main"
+			},
+			{
+				"type": "3",
+				"name": "리뉴얼",
+				"label": "sub"
+			}
+		],
+		"hash": [],
+		"title": "지식서비스플랫폼 리뉴얼",
+		"description": "",
+		"overview": {
+			"synopsis": "",
+			"summary": null
+		},
+		"imageComparison": {
+			"use": false,
+			"before": null,
+			"after": null
+		},
+		"tools": [],
+		"extraInfo": [
+			{
+				"id": "40353a86-12e2-4846-a4ae-a83402d6804c",
+				"label": "디자인",
+				"value": "100% 참여"
+			},
+			{
+				"id": "c171c503-7f74-4be8-9386-bc77a4aa4bf1",
+				"label": "퍼블리싱",
+				"value": "100% 참여"
+			}
+		],
+		"titleImage": {
+			"alt": "mainOpen.png",
+			"name": "mainOpen.png",
+			"size": 220816,
+			"type": "image/png",
+			"lastModified": 1770881272000,
+			"webUrl": "bmh1772031123803/images/mainOpen.png"
+		},
+		"subimage": [
+			{
+				"alt": "me14.png",
+				"name": "me14.png",
+				"size": 2928891,
+				"type": "image/png",
+				"lastModified": 1770881272000,
+				"webUrl": "bmh1772031123803/images/me14.png"
+			}
+		],
+		"mockup": [],
+		"externalLink": [],
+		"projectNum": 1772031123803,
+		"currentState": "complete",
+		"startDate": "",
+		"endDate": "",
+		"member": [],
+		"registerDate": 1772031123803,
+		"modifyDate": [
+			1772031123803
+		]
+	},
+	{
+		"id": "bmh1772031219606",
+		"mainOpen": false,
+		"category": [
+			{
+				"type": "1",
+				"name": "웹",
+				"label": "main"
+			},
+			{
+				"type": "2",
+				"name": "구축",
+				"label": "sub"
+			}
+		],
+		"hash": [],
+		"title": "CDMS 구축",
+		"description": "",
+		"overview": {
+			"synopsis": "Bootstrap 5 기반의 디자인 시스템 구축 및 UI 컴포넌트 표준화",
+			"summary": [
+				{
+					"id": "0ec972db-2f62-47cb-8644-ab5b0b9d7c4c",
+					"title": " ",
+					"description": "디자인 컴포넌트 표준화를 통해 파편화된 UI를 통합Bootstrap 5 커스터마이징을 통한 디자인 가이드 및 UI 키트 구축"
+				},
+				{
+					"id": "eaba56ab-aed0-4e7d-9a64-3dfc49e16e58",
+					"title": " ",
+					"description": "재사용성을 극대화한 모듈형 컴포넌트 설계로 신규 페이지 구축 속도 개선"
+				},
+				{
+					"id": "b15c0f28-373a-449f-8cef-05a184779eb0",
+					"title": " ",
+					"description": "디자인 시스템 표준화를 통한 다중 플랫폼 UI/UX 일관성 유지"
+				}
+			]
+		},
+		"imageComparison": {
+			"use": false,
+			"before": null,
+			"after": null
+		},
+		"tools": [],
+		"extraInfo": [
+			{
+				"id": "e2a338cb-4482-4563-9669-e2b53416cca7",
+				"label": "디자인",
+				"value": "100% 참여"
+			},
+			{
+				"id": "e224ed6c-c020-4be8-8dcd-06dd7851ed65",
+				"label": "퍼블리싱",
+				"value": "100% 참여"
+			}
+		],
+		"titleImage": {
+			"alt": "mainOpen12.png",
+			"name": "mainOpen12.png",
+			"size": 95275,
+			"type": "image/png",
+			"lastModified": 1770881272000,
+			"webUrl": "bmh1772031219606/images/mainOpen12.png"
+		},
+		"subimage": [
+			{
+				"alt": "me11.png",
+				"name": "me11.png",
+				"size": 705542,
+				"type": "image/png",
+				"lastModified": 1770881272000,
+				"webUrl": "bmh1772031219606/images/me11.png"
+			}
+		],
+		"mockup": [],
+		"externalLink": [],
+		"projectNum": 1772031219606,
+		"currentState": "complete",
+		"startDate": "",
+		"endDate": "",
+		"member": [],
+		"registerDate": 1772031219606,
+		"modifyDate": [
+			1772031219606
+		]
+	},
+	{
+		"id": "bmh1772031297194",
+		"mainOpen": false,
+		"category": [
+			{
+				"type": "5",
+				"name": "UI",
+				"label": "main"
+			},
+			{
+				"type": "5",
+				"name": "sample",
+				"label": "sub"
+			}
+		],
+		"hash": [],
+		"title": "파일업로드",
+		"description": "",
+		"overview": {
+			"synopsis": "개인 작업, 간단한 라이브러리 제작",
+			"summary": null
+		},
+		"imageComparison": {
+			"use": false,
+			"before": null,
+			"after": null
+		},
+		"tools": [],
+		"extraInfo": [],
+		"titleImage": {
+			"alt": "mainOpen13.png",
+			"name": "mainOpen13.png",
+			"size": 21419,
+			"type": "image/png",
+			"lastModified": 1770881272000,
+			"webUrl": "bmh1772031297194/images/mainOpen13.png"
+		},
+		"subimage": [],
+		"mockup": [],
+		"externalLink": [],
+		"projectNum": 1772031297194,
+		"currentState": "complete",
+		"startDate": "",
+		"endDate": "",
+		"member": [],
+		"registerDate": 1772031297194,
+		"modifyDate": [
+			1772031297194
+		]
+	},
+	{
+		"id": "bmh1772031348579",
+		"mainOpen": false,
+		"category": [
+			{
+				"type": "1",
+				"name": "웹",
+				"label": "main"
+			},
+			{
+				"type": "3",
+				"name": "리뉴얼",
+				"label": "sub"
+			}
+		],
+		"hash": [],
+		"title": "KFIA 모바일버전개선",
+		"description": "",
+		"overview": {
+			"synopsis": "모바일버전개선",
+			"summary": null
+		},
+		"imageComparison": {
+			"use": false,
+			"before": null,
+			"after": null
+		},
+		"tools": [],
+		"extraInfo": [
+			{
+				"id": "212a1cae-ff2e-4081-9496-5990d28b0784",
+				"label": "디자인",
+				"value": "100% 참여"
+			},
+			{
+				"id": "5afb92fb-8399-4b6d-94d3-dd9f3058de86",
+				"label": "퍼블리싱",
+				"value": "100% 참여"
+			}
+		],
+		"titleImage": {
+			"alt": "mainOpen14.png",
+			"name": "mainOpen14.png",
+			"size": 157348,
+			"type": "image/png",
+			"lastModified": 1770881272000,
+			"webUrl": "bmh1772031348579/images/mainOpen14.png"
+		},
+		"subimage": [],
+		"mockup": [],
+		"externalLink": [],
+		"projectNum": 1772031348579,
+		"currentState": "complete",
+		"startDate": "",
+		"endDate": "",
+		"member": [],
+		"registerDate": 1772031348579,
+		"modifyDate": [
+			1772031348579
+		]
+	},
+	{
+		"id": "bmh1772031430925",
+		"mainOpen": false,
+		"category": [
+			{
+				"type": "1",
+				"name": "웹",
+				"label": "main"
+			},
+			{
+				"type": "2",
+				"name": "구축",
+				"label": "sub"
+			}
+		],
+		"hash": [],
+		"title": "한양사이버대학교 LMS  구축",
+		"description": "",
+		"overview": {
+			"synopsis": "프로젝트 표준 UI/UX 패턴 정의 및 가이드라인 수립 • 웹 표준 및 접근성을 준수한 공통 레이아웃 설계 • 효율적인 유지보수를 위한 UI 가이드 및 명세서 최적화",
+			"summary": null
+		},
+		"imageComparison": {
+			"use": false,
+			"before": null,
+			"after": null
+		},
+		"tools": [],
+		"extraInfo": [
+			{
+				"id": "49d1b4a3-cb1c-4f08-8795-3fca65b10d18",
+				"label": "퍼블리싱",
+				"value": "90% 참여"
+			}
+		],
+		"titleImage": {
+			"alt": "mainOpen15.png",
+			"name": "mainOpen15.png",
+			"size": 258037,
+			"type": "image/png",
+			"lastModified": 1770881272000,
+			"webUrl": "bmh1772031430925/images/mainOpen15.png"
+		},
+		"subimage": [
+			{
+				"alt": "me19_1.JPG",
+				"name": "me19_1.JPG",
+				"size": 1220095,
+				"type": "image/jpeg",
+				"lastModified": 1770881272000,
+				"webUrl": "bmh1772031430925/images/me19_1.JPG"
+			},
+			{
+				"alt": "me19_2.JPG",
+				"name": "me19_2.JPG",
+				"size": 1045980,
+				"type": "image/jpeg",
+				"lastModified": 1770881272000,
+				"webUrl": "bmh1772031430925/images/me19_2.JPG"
+			}
+		],
+		"mockup": [],
+		"externalLink": [],
+		"projectNum": 1772031430925,
+		"currentState": "complete",
+		"startDate": "",
+		"endDate": "",
+		"member": [],
+		"registerDate": 1772031430925,
+		"modifyDate": [
+			1772031430925
+		]
+	},
+	{
+		"id": "bmh1772031517074",
+		"mainOpen": false,
+		"category": [
+			{
+				"type": "1",
+				"name": "웹",
+				"label": "main"
+			},
+			{
+				"type": "3",
+				"name": "리뉴얼",
+				"label": "sub"
+			}
+		],
+		"hash": [],
+		"title": "KFIA",
+		"description": "",
+		"overview": {
+			"synopsis": "",
+			"summary": null
+		},
+		"imageComparison": {
+			"use": false,
+			"before": null,
+			"after": null
+		},
+		"tools": [],
+		"extraInfo": [
+			{
+				"id": "f5d95024-f571-45f6-a17a-0d68327bdb21",
+				"label": "디자인",
+				"value": ""
+			}
+		],
+		"titleImage": {
+			"alt": "mainOpen.png",
+			"name": "mainOpen.png",
+			"size": 196032,
+			"type": "image/png",
+			"lastModified": 1770881272000,
+			"webUrl": "bmh1772031517074/images/mainOpen.png"
+		},
+		"subimage": [
+			{
+				"alt": "me18-1.png",
+				"name": "me18-1.png",
+				"size": 895915,
+				"type": "image/png",
+				"lastModified": 1770881272000,
+				"webUrl": "bmh1772031517074/images/me18-1.png"
+			},
+			{
+				"alt": "me18-2.png",
+				"name": "me18-2.png",
+				"size": 154622,
+				"type": "image/png",
+				"lastModified": 1770881272000,
+				"webUrl": "bmh1772031517074/images/me18-2.png"
+			},
+			{
+				"alt": "me18-3.png",
+				"name": "me18-3.png",
+				"size": 71031,
+				"type": "image/png",
+				"lastModified": 1770881272000,
+				"webUrl": "bmh1772031517074/images/me18-3.png"
+			}
+		],
+		"mockup": [],
+		"externalLink": [],
+		"projectNum": 1772031517074,
+		"currentState": "complete",
+		"startDate": "",
+		"endDate": "",
+		"member": [],
+		"registerDate": 1772031517074,
+		"modifyDate": [
+			1772031517074
+		]
+	},
+	{
+		"id": "bmh1772031680254",
+		"mainOpen": false,
+		"category": [
+			{
+				"type": "1",
+				"name": "웹",
+				"label": "main"
+			},
+			{
+				"type": "3",
+				"name": "리뉴얼",
+				"label": "sub"
+			}
+		],
+		"hash": [],
+		"title": "KMCU 교수학습지원센터 리뉴얼",
+		"description": "",
+		"overview": {
+			"synopsis": "기존 페이지의 구조 개선 및 UI 재사용성 강화",
+			"summary": [
+				{
+					"id": "d09d7572-3aa2-4db0-b636-5217694c6869",
+					"title": "UI 구조화",
+					"description": "순수 HTML/CSS로 구조화 → 다른 서브페이지에 재사용 가능"
+				},
+				{
+					"id": "64829747-c3ac-4a16-8d6d-7c6ec3405184",
+					"title": "디자인 개선",
+					"description": "반응형 레이아웃 적용으로 모바일/태블릿 접근성 강화"
+				},
+				{
+					"id": "d55c7ab7-830c-4594-aaa0-ba667232f3de",
+					"title": "유지보수 및 신규 페이지 제작 시 스타일 일관성 확보",
+					"description": ""
+				}
+			]
+		},
+		"imageComparison": {
+			"use": false,
+			"before": null,
+			"after": null
+		},
+		"tools": [],
+		"extraInfo": [
+			{
+				"id": "27e207ec-c480-4904-a1fa-bfc79c0b8616",
+				"label": "디자인",
+				"value": "서브페이지 100% 참여"
+			},
+			{
+				"id": "a8f26e8c-b0dc-4285-b476-18cd735c0ae9",
+				"label": "퍼블리싱",
+				"value": "100% 참여"
+			}
+		],
+		"titleImage": {
+			"alt": "mainOpen18.png",
+			"name": "mainOpen18.png",
+			"size": 305482,
+			"type": "image/png",
+			"lastModified": 1770881272000,
+			"webUrl": "bmh1772031680254/images/mainOpen18.png"
+		},
+		"subimage": [],
+		"mockup": [],
+		"externalLink": [],
+		"projectNum": 1772031680254,
+		"currentState": "complete",
+		"startDate": "",
+		"endDate": "",
+		"member": [],
+		"registerDate": 1772031680254,
+		"modifyDate": [
+			1772031680254
+		]
+	},
+	{
+		"id": "bmh1772031736531",
+		"mainOpen": false,
+		"category": [
+			{
+				"type": "1",
+				"name": "웹",
+				"label": "main"
+			},
+			{
+				"type": "2",
+				"name": "구축",
+				"label": "sub"
+			}
+		],
+		"hash": [],
+		"title": "연세의료원 직원교육 시스템 구축",
+		"description": "",
+		"overview": {
+			"synopsis": "",
+			"summary": null
+		},
+		"imageComparison": {
+			"use": false,
+			"before": null,
+			"after": null
+		},
+		"tools": [],
+		"extraInfo": [
+			{
+				"id": "5bd98452-62e5-4826-a4ad-de6c7a0029f7",
+				"label": "디자인",
+				"value": "100% 참여"
+			},
+			{
+				"id": "2a6b1f2d-aa78-4ff6-b8a4-101364eca37f",
+				"label": "퍼블리싱",
+				"value": "100% 참여"
+			}
+		],
+		"titleImage": {
+			"alt": "mainOpen19.png",
+			"name": "mainOpen19.png",
+			"size": 140941,
+			"type": "image/png",
+			"lastModified": 1770881272000,
+			"webUrl": "bmh1772031736531/images/mainOpen19.png"
+		},
+		"subimage": [
+			{
+				"alt": "3-2_데스크탑11.png",
+				"name": "3-2_데스크탑11.png",
+				"size": 1180581,
+				"type": "image/png",
+				"lastModified": 1770881272000,
+				"webUrl": "bmh1772031736531/images/3-2_데스크탑11.png"
+			},
+			{
+				"alt": "나의학습_내학습과정.png",
+				"name": "나의학습_내학습과정.png",
+				"size": 147812,
+				"type": "image/png",
+				"lastModified": 1770881272000,
+				"webUrl": "bmh1772031736531/images/나의학습_내학습과정.png"
+			},
+			{
+				"alt": "나의학습_내학습현황.png",
+				"name": "나의학습_내학습현황.png",
+				"size": 94451,
+				"type": "image/png",
+				"lastModified": 1770881272000,
+				"webUrl": "bmh1772031736531/images/나의학습_내학습현황.png"
+			}
+		],
+		"mockup": [],
+		"externalLink": [],
+		"projectNum": 1772031736531,
+		"currentState": "complete",
+		"startDate": "",
+		"endDate": "",
+		"member": [],
+		"registerDate": 1772031736531,
+		"modifyDate": [
+			1772031736531
+		]
+	},
+	{
+		"id": "bmh1772031805070",
+		"mainOpen": false,
+		"category": [
+			{
+				"type": "5",
+				"name": "UI",
+				"label": "main"
+			},
+			{
+				"type": "5",
+				"name": "sample",
+				"label": "sub"
+			}
+		],
+		"hash": [],
+		"title": "타임피커",
+		"description": "",
+		"overview": {
+			"synopsis": "개인 작업, 간단한 라이브러리 제작",
+			"summary": null
+		},
+		"imageComparison": {
+			"use": false,
+			"before": null,
+			"after": null
+		},
+		"tools": [],
+		"extraInfo": [
+			{
+				"id": "df35c19a-effa-43fc-aad8-e3cab5c72af9",
+				"label": "디자인",
+				"value": ""
+			},
+			{
+				"id": "4a1ac4f5-5393-4d12-8f1c-de9903ca5b16",
+				"label": "마크업",
+				"value": "javascript"
+			}
+		],
+		"titleImage": {
+			"alt": "mainOpen20.png",
+			"name": "mainOpen20.png",
+			"size": 9808,
+			"type": "image/png",
+			"lastModified": 1770881272000,
+			"webUrl": "bmh1772031805070/images/mainOpen20.png"
+		},
+		"subimage": [],
+		"mockup": [],
+		"externalLink": [],
+		"projectNum": 1772031805070,
+		"currentState": "complete",
+		"startDate": "",
+		"endDate": "",
+		"member": [],
+		"registerDate": 1772031805070,
+		"modifyDate": [
+			1772031805070
+		]
+	},
+	{
+		"id": "bmh1772031876833",
+		"mainOpen": false,
+		"category": [
+			{
+				"type": "1",
+				"name": "웹",
+				"label": "main"
+			},
+			{
+				"type": "2",
+				"name": "구축",
+				"label": "sub"
+			}
+		],
+		"hash": [
+			"디자인",
+			"반응형",
+			"마크업",
+			"웹"
+		],
+		"title": "프로젝트관리",
+		"description": "",
+		"overview": {
+			"synopsis": "개인 작업",
+			"summary": null
+		},
+		"imageComparison": {
+			"use": false,
+			"before": null,
+			"after": null
+		},
+		"tools": [],
+		"extraInfo": [
+			{
+				"id": "dbec8bc6-267b-488f-a5ac-f1cd1618fe63",
+				"label": "프론트",
+				"value": "웹컴포넌트, js, nodejs"
+			},
+			{
+				"id": "6ae28dd4-251b-4a1c-8126-a20231fcb165",
+				"label": "디자인",
+				"value": ""
+			}
+		],
+		"titleImage": {
+			"alt": "mainOpen.png",
+			"name": "mainOpen.png",
+			"size": 228875,
+			"type": "image/png",
+			"lastModified": 1770881272000,
+			"webUrl": "bmh1772031876833/images/mainOpen.png"
+		},
+		"subimage": [
+			{
+				"alt": "manage-main.png",
+				"name": "manage-main.png",
+				"size": 720878,
+				"type": "image/png",
+				"lastModified": 1770881272000,
+				"webUrl": "bmh1772031876833/images/manage-main.png"
+			},
+			{
+				"alt": "manage-pf-list-item-deit.png",
+				"name": "manage-pf-list-item-deit.png",
+				"size": 768686,
+				"type": "image/png",
+				"lastModified": 1770881272000,
+				"webUrl": "bmh1772031876833/images/manage-pf-list-item-deit.png"
+			},
+			{
+				"alt": "manage-pf-list.png",
+				"name": "manage-pf-list.png",
+				"size": 392938,
+				"type": "image/png",
+				"lastModified": 1770881272000,
+				"webUrl": "bmh1772031876833/images/manage-pf-list.png"
+			}
+		],
+		"mockup": [],
+		"externalLink": [
+			{
+				"id": "94af2108-7bf5-40c5-b669-3b4aab35c17c",
+				"type": "link",
+				"label": "github",
+				"url": "https://github.com/bghbmh/wowAdmin"
+			}
+		],
+		"projectNum": 1772031876833,
+		"currentState": "ongoing",
+		"startDate": "",
+		"endDate": "",
+		"member": [],
+		"registerDate": 1772031876833,
+		"modifyDate": [
+			1772031876833
+		]
+	},
+	{
+		"id": "bmh1772032075143",
+		"mainOpen": true,
+		"category": [
+			{
+				"type": "1",
+				"name": "웹",
+				"label": "main"
+			},
+			{
+				"type": "3",
+				"name": "리뉴얼",
+				"label": "sub"
+			}
+		],
+		"hash": [
+			"디자인",
+			"마크업",
+			"반응형",
+			"웹"
+		],
+		"title": "숭실대 글로벌미래교육원 LMS 리뉴얼",
+		"description": "",
+		"overview": {
+			"synopsis": "UX 중심의 화면 설계 및 반응형 웹 적용, 스타일 가이드 정립 • 비즈니스 로직에 최적화된 고해상도(Hi-Fi) 프로토타이핑 • 브랜드 아이덴티티를 반영한 UI 테마 및 공통 CSS 아키텍처 설계",
+			"summary": [
+				{
+					"id": "638c3272-a181-407a-8eae-f673c02f75c7",
+					"title": "카드형 정보 구조로 전환",
+					"description": "정보 우선순위 + 시각적 그룹화를 형성해 카드 단위로 묶어 한눈에 보기 쉽게 재구성"
+				},
+				{
+					"id": "c547dc29-9f8e-407e-bd11-abff92aa73e3",
+					"title": "좌측 메뉴 구조 개선 (접힘/확장 + 호버 안내)",
+					"description": "콘텐츠 영역 확 및 마우스 오버 시 아이콘 설명(텍스트) 노출"
+				},
+				{
+					"id": "b7c1fcff-2109-467e-8609-75a0de444721",
+					"title": "시각 스타일 개선",
+					"description": "여백 정리 및 글자 계층 구조 정립 + 중성톤+포인트컬러 활용으로 브랜드 톤 통일"
+				}
+			]
+		},
+		"imageComparison": {
+			"use": false,
+			"before": {
+				"name": "before.png",
+				"size": 298334,
+				"type": "image/png",
+				"lastModified": 1770881272000,
+				"alt": "before.png",
+				"webUrl": "blob:http://localhost:1323/b244ef4e-b8bf-417d-bc34-d9ee940a6bee"
+			},
+			"after": {
+				"name": "after.png",
+				"size": 310848,
+				"type": "image/png",
+				"lastModified": 1770881272000,
+				"alt": "after.png",
+				"webUrl": "blob:http://localhost:1323/5a2af8e2-9ee7-4584-bf5e-4fa2c84e6222"
+			}
+		},
+		"tools": [],
+		"extraInfo": [
+			{
+				"id": "9e19c07f-5e57-475f-829f-44305aacd5f0",
+				"label": "디자인",
+				"value": "100% 참여"
+			},
+			{
+				"id": "6ffcaf75-4880-48e3-b708-6e4b50ea2034",
+				"label": "퍼블리싱",
+				"value": "100% 참여"
+			}
+		],
+		"titleImage": {
+			"alt": "mainOpen21.png",
+			"name": "mainOpen21.png",
+			"size": 255327,
+			"type": "image/png",
+			"lastModified": 1770881272000,
+			"webUrl": "bmh1772032075143/images/mainOpen21.png"
+		},
+		"subimage": [
+			{
+				"alt": "아이디-비밀번호찾기.png",
+				"name": "아이디-비밀번호찾기.png",
+				"size": 2309812,
+				"type": "image/png",
+				"lastModified": 1770881272000,
+				"webUrl": "bmh1772032075143/images/아이디-비밀번호찾기.png"
+			},
+			{
+				"alt": "게시글 상세보기-공통.png",
+				"name": "게시글 상세보기-공통.png",
+				"size": 235063,
+				"type": "image/png",
+				"lastModified": 1770881272000,
+				"webUrl": "bmh1772032075143/images/게시글 상세보기-공통.png"
+			},
+			{
+				"alt": "메인페이지.png",
+				"name": "메인페이지.png",
+				"size": 244817,
+				"type": "image/png",
+				"lastModified": 1770881272000,
+				"webUrl": "bmh1772032075143/images/메인페이지.png"
+			},
+			{
+				"alt": "수강신청 & 확인.png",
+				"name": "수강신청 & 확인.png",
+				"size": 215395,
+				"type": "image/png",
+				"lastModified": 1770881272000,
+				"webUrl": "bmh1772032075143/images/수강신청 & 확인.png"
+			},
+			{
+				"alt": "전체공지사항.png",
+				"name": "전체공지사항.png",
+				"size": 158968,
+				"type": "image/png",
+				"lastModified": 1770881272000,
+				"webUrl": "bmh1772032075143/images/전체공지사항.png"
+			}
+		],
+		"mockup": [],
+		"externalLink": [
+			{
+				"id": "cd5e8757-6975-4bff-ab9b-89f6789733f6",
+				"type": "link",
+				"label": "figma",
+				"url": "https://www.figma.com/proto/SWs9NH9QWRn9s7HpIRCCrQ/%EC%88%AD%EC%8B%A4%EB%8C%80_%EA%B8%80%EB%A1%9C%EB%B2%8C%EB%AF%B8%EB%9E%98%EA%B5%90%EC%9C%A1%EC%9B%90?page-id=170%3A2531&node-id=195-3468&p=f&viewport=910%2C934%2C0.06&t=3PLtJrtShYeX618D-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=195%3A3468&show-proto-sidebar=1"
+			}
+		],
+		"projectNum": 1772032075143,
+		"currentState": "complete",
+		"startDate": "",
+		"endDate": "",
+		"member": [],
+		"registerDate": 1772032075143,
+		"modifyDate": [
+			1772032075143
+		]
+	},
+	{
+		"id": "bmh1772032464585",
+		"mainOpen": false,
+		"category": [
+			{
+				"type": "1",
+				"name": "웹",
+				"label": "main"
+			},
+			{
+				"type": "2",
+				"name": "구축",
+				"label": "sub"
+			}
+		],
+		"hash": [
+			"디자인",
+			"마크업",
+			"반응형",
+			"웹"
+		],
+		"title": "HRD 평생교육 시스템 고도화",
+		"description": "",
+		"overview": {
+			"synopsis": "uxui 디자인 개선 및 디자인 가이드 작성 • React/Next.js 기반의 공통 UI 컴포넌트 설계 및 프론트엔드 스타일 가이드 구축",
+			"summary": [
+				{
+					"id": "65593aef-3b9c-4abc-ba42-49fe9bf91f8a",
+					"title": "",
+					"description": "관리자 시스템 고도화"
+				},
+				{
+					"id": "82c9d2d4-e1d9-4fa2-83b5-7ffac6114783",
+					"title": "",
+					"description": "uxui 디자인 개선 및 디자인 가이드 작성"
+				},
+				{
+					"id": "33432c46-6b33-4857-a220-4e4f7dfb1073",
+					"title": "",
+					"description": "eact/Next.js 기반의 공통 UI 컴포넌트 설계 및 프론트엔드 스타일 가이드 구축"
+				}
+			]
+		},
+		"imageComparison": {
+			"use": false,
+			"before": null,
+			"after": null
+		},
+		"tools": [],
+		"extraInfo": [
+			{
+				"id": "e64686a9-8311-4206-8746-86f58cf78796",
+				"label": "디자인",
+				"value": "100% 참여"
+			},
+			{
+				"id": "d9e1433d-4536-41cc-95db-ccef1c4ae291",
+				"label": "퍼블리싱",
+				"value": "100% 참여"
+			}
+		],
+		"titleImage": {
+			"alt": "mainOpen99.png",
+			"name": "mainOpen99.png",
+			"size": 82714,
+			"type": "image/png",
+			"lastModified": 1770881272000,
+			"webUrl": "bmh1772032464585/images/mainOpen99.png"
+		},
+		"subimage": [],
+		"mockup": [],
+		"externalLink": [
+			{
+				"id": "2df980d6-2897-4de4-8fe1-6a6acfcbcf6f",
+				"type": "link",
+				"label": "figma",
+				"url": "https://www.figma.com/proto/iPBDrNFefjIxsCYoCuYAs4/%ED%8F%89%EC%83%9D%EA%B5%90%EC%9C%A1_%EA%B4%80%EB%A6%AC%EC%9E%90-%EA%B0%95%EC%82%AC?node-id=0-1&p=f&viewport=-824%2C-4626%2C0.61&t=KrCQoc7re6mfw3O1-0&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=2069%3A9832&show-proto-sidebar=1"
+			},
+			{
+				"id": "50393ed5-9670-4dad-806b-19859160cec8",
+				"type": "link",
+				"label": "github",
+				"url": "https://github.com/bghbmh/simple-ui-test/tree/main/hrd-admin-test"
+			}
+		],
+		"projectNum": 1772032464585,
+		"currentState": "complete",
+		"startDate": "",
+		"endDate": "",
+		"member": [],
+		"registerDate": 1772032464585,
+		"modifyDate": [
+			1772032464585
+		]
+	},
+	{
+		"id": "bmh1772032571747",
+		"mainOpen": false,
+		"category": [
+			{
+				"type": "1",
+				"name": "웹",
+				"label": "main"
+			},
+			{
+				"type": "2",
+				"name": "구축",
+				"label": "sub"
+			}
+		],
+		"hash": [
+			"디자인",
+			"마크업",
+			"반응형",
+			"웹"
+		],
+		"title": "롯데 GRS 아카데미 홈페이지 구축",
+		"description": "",
+		"overview": {
+			"synopsis": "사용자 경험(UX) 중심의 화면 설계 및 스타일 가이드 정립 • 비즈니스 로직에 최적화된 고해상도(Hi-Fi) 프로토타이핑 • 브랜드 아이덴티티를 반영한 UI 테마 및 공통 CSS 아키텍처 설계",
+			"summary": [
+				{
+					"id": "e1490c01-f725-415b-9ca7-5d5a7cbd7eb2",
+					"title": "",
+					"description": "사용자 경험(UX) 중심의 화면 설계 및 스타일 가이드 정립"
+				},
+				{
+					"id": "223d25f7-23cc-4590-a2f1-9d8ea1f63ddf",
+					"title": "",
+					"description": "비즈니스 로직에 최적화된 고해상도(Hi-Fi) 프로토타이핑"
+				},
+				{
+					"id": "3d700529-6786-4336-9ba0-645a231a78ad",
+					"title": "",
+					"description": "브랜드 아이덴티티를 반영한 UI 테마 및 공통 CSS 아키텍처 설계"
+				}
+			]
+		},
+		"imageComparison": {
+			"use": false,
+			"before": null,
+			"after": null
+		},
+		"tools": [],
+		"extraInfo": [
+			{
+				"id": "8c68a65b-08e6-42a3-b464-b84604b0bfe7",
+				"label": "디자인",
+				"value": "100% 참여"
+			},
+			{
+				"id": "86f2cc76-0444-48b6-8528-c71031135eb5",
+				"label": "퍼블리싱",
+				"value": "100% 참여"
+			}
+		],
+		"titleImage": {
+			"alt": "grs-main.png",
+			"name": "grs-main.png",
+			"size": 1350559,
+			"type": "image/png",
+			"lastModified": 1770881272000,
+			"webUrl": "bmh1772032571747/images/grs-main.png"
+		},
+		"subimage": [],
+		"mockup": [],
+		"externalLink": [
+			{
+				"id": "199c6cfc-cdca-440c-8108-784b3019a914",
+				"type": "link",
+				"label": "figma",
+				"url": "https://www.figma.com/proto/AtxlWIs0p43Ymb3UUgq5sz/%EB%A1%AF%EB%8D%B0-grs-academy?node-id=60-5016&p=f&viewport=544%2C337%2C0.08&t=oKcr5JlSMsoYFC5y-0&scaling=scale-down&content-scaling=fixed&starting-point-node-id=60%3A5016&show-proto-sidebar=1"
+			},
+			{
+				"id": "134a897c-dc3f-4710-b730-7685f3055ade",
+				"type": "link",
+				"label": "outlink",
+				"url": "https://grsdesign.hullaro.com/userMain/goUserMain?lang=ko"
+			}
+		],
+		"projectNum": 1772032571747,
+		"currentState": "complete",
+		"startDate": "",
+		"endDate": "",
+		"member": [],
+		"registerDate": 1772032571747,
+		"modifyDate": [
+			1772032571747
+		]
+	}
+]

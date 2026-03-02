@@ -2,12 +2,22 @@
 // hooks/usePagination.ts
 import React, { useState, useEffect, useMemo } from "react";
 
-export function usePagination<T>(list: T[], itemsInPages: number = 5, pageRange: number = 0) {
-	const [currentPage, setCurrentPage] = useState(1);
+export function usePagination<T>(
+	list: T[],
+	itemsInPages: number = 5,
+	pageRange: number = 0,
+	initialPage: number = 1 // 초기 페이지 매개변수 추가
+) {
+	const [currentPage, setCurrentPage] = useState(initialPage);
 
 	useEffect(() => {
 		setCurrentPage(1);
-	}, [list.length]);
+	}, [list]);
+
+	// [중요] 새로고침이 아니라 'URL'이 바뀔 때(뒤로가기 등)를 위해 상태 동기화
+	useEffect(() => {
+		setCurrentPage(initialPage);
+	}, [initialPage]);
 
 	const totalPages = useMemo(() => {
 		return Math.ceil(list.length / itemsInPages);

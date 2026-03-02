@@ -32,7 +32,12 @@ export default function GlobalNav() {
 			text: '할 일'
 		},
 		{
-			href: '/profile',
+			href: '/archive',
+			icon: 'icon-svg-gear-settings',
+			text: '기록저장소'
+		},
+		{
+			href: '/myprofile',
 			icon: 'icon-svg-user1',
 			text: '내 정보'
 		},
@@ -40,11 +45,6 @@ export default function GlobalNav() {
 			href: '/setting',
 			icon: 'icon-svg-gear-settings',
 			text: '설정'
-		},
-		{
-			href: '/layout',
-			icon: 'icon-svg-gear-settings',
-			text: '기본 UI'
 		}
 	];
 

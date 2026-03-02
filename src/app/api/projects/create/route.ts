@@ -3,12 +3,14 @@ import fs from 'fs/promises';
 import path from 'path';
 import { register } from 'module';
 
+import { DB_PATH, UPLOAD_DIR } from '@/constants/paths';
+
+
+//create
 export async function POST(req: Request) {
 	try {
-		const clientData = await req.json(); // 클라이언트에서 보낸 제목 등 받기
-		const DBpath = path.join(process.cwd(), 'data', 'testDB00.json');
-		console.log('================================');
-		const curData = await fs.readFile(DBpath, 'utf-8');
+		const clientData = await req.json(); // 클라이언트에서 보낸 제목 등 받기 
+		const curData = await fs.readFile(DB_PATH, 'utf-8');
 		const projects = JSON.parse(curData);
 
 		const timestamp = Date.now();
@@ -20,11 +22,11 @@ export async function POST(req: Request) {
 			id: newId,
 			projectNum: timestamp,
 			registerDate: timestamp,
-			modifyDate: [timestamp]
+			modifyDate: []
 		};
 
 		// 폴더 생성 미리 해두기
-		const baseDir = path.join(process.cwd(), "public", "uploads", uploadNew.id);
+		const baseDir = path.join(UPLOAD_DIR, uploadNew.id);
 
 		await fs.mkdir(baseDir, { recursive: true });
 		await fs.mkdir(path.join(baseDir, "files"), { recursive: true });
@@ -33,11 +35,11 @@ export async function POST(req: Request) {
 		// ★ 중요: 기존 배열에 추가한 후 전체 다시 저장
 		projects.push(uploadNew);
 
-		await fs.writeFile(DBpath, JSON.stringify(projects, null, 4), 'utf-8');
+		await fs.writeFile(DB_PATH, JSON.stringify(projects, null, 4), 'utf-8');
 
 
 
-		console.log('uploadNew:', DBpath, uploadNew);
+		console.log('uploadNew:', DB_PATH, uploadNew);
 		console.log('000 ================================');
 
 

@@ -29,10 +29,14 @@
 	font-style: normal;
 }
 
+html {
+	height: 100%;
+}
+
 body {
 	overflow: auto;
 	display: flex;
-
+	min-height: 100vh;
 	background-color: var(--body-background-color);
 
 	font-variant-numeric: tabular-nums lining-nums !important;
@@ -385,6 +389,10 @@ textarea {
 	background-color: var(--form-background-color);
 
 	min-height: 42px;
+}
+
+select {
+	padding: 4px 1.5em 4px 8px;
 }
 
 input[type="checkbox"],
@@ -1250,6 +1258,98 @@ hr {
 .flex-none {
 	flex: none !important;
 }
+
+
+
+label.switch {
+	--xx: 2px;
+	--size: calc(24px + (var(--xx) * 2));
+	cursor: pointer;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5em;
+	line-height: 0;
+
+	.switch {
+		-webkit-appearance: none;
+		/* 기본 스타일 제거 (크롬, 사파리) */
+		-moz-appearance: none;
+		/* 기본 스타일 제거 (파이어폭스) */
+		appearance: none;
+		/* 기본 스타일 제거 */
+
+		position: relative;
+		justify-content: flex-start;
+		border-radius: 100em;
+		height: var(--size);
+		width: calc(var(--size) + 1em);
+		margin: 0px 0px;
+		border-color: transparent;
+		background-color: var(--dark-300);
+		outline: none;
+		/* input 자체의 기본 포커스 아웃라인 제거 */
+		cursor: pointer;
+		/* input 자체도 클릭 가능함을 표시 */
+
+		&:before {
+			position: absolute;
+			content: "";
+			display: block;
+			width: calc(var(--size) - 6px);
+			height: calc(var(--size) - 6px);
+			background-color: hsl(0, 0%, 100%);
+			border-radius: 100em;
+			mask-image: none;
+			line-height: 1;
+			padding-top: 0px;
+			left: 2px;
+			top: 2px;
+			transition: left .15s ease-in-out, background-color .15s ease-in-out;
+
+			&:focus-within {
+				/* 내부 input에 포커스가 있을 때 label에 포커스 스타일 적용 */
+				outline: 4px solid var(--form-focus-outline-color, rgb(195, 222, 250));
+				/* --form-focus-color 변수 사용 */
+				outline-offset: 0px;
+				border-radius: 100em;
+			}
+		}
+
+		&:focus-within {
+			/* 내부 input에 포커스가 있을 때 label에 포커스 스타일 적용 */
+			outline: 4px solid var(--form-focus-outline-color, rgb(195, 222, 250));
+			/* --form-focus-color 변수 사용 */
+			outline-offset: 0px;
+			border-radius: 100em;
+		}
+
+		&:checked {
+			background-color: var(--form-checked-bg-color, #007bff);
+
+			&::before {
+				left: calc(100% - (var(--size) - 4px));
+				background-color: #fff;
+			}
+		}
+
+		&:disabled {
+			opacity: 0.6;
+			cursor: not-allowed;
+
+			&::before {
+				background-color: #f0f0f0;
+				/* 비활성화 시 핸들 색상 변경 */
+			}
+		}
+	}
+
+
+}
+
+
+
+
+
 
 
 /* 다크모드 */

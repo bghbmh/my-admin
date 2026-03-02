@@ -59,7 +59,7 @@ export default function HeaderUserInfo({ profile }: Props) {
 							{profile.nickname.check ? profile.nickname.value : profile.name}
 						</strong>
 						<div className="extra-info">
-							<span className="item">{profile.business.position}</span>
+							<span className="item">{profile.business.role}</span>
 							<span className="item">{profile.business.team}</span>
 							<span className="item">{profile.business.company}</span>
 						</div>
@@ -73,7 +73,7 @@ export default function HeaderUserInfo({ profile }: Props) {
 				</div>
 
 				<UserVisual
-					src={profile.image.main.webUrl}
+					src={profile.titleimage[0].url}
 					alt={profile.name}
 				/>
 

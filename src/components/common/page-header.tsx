@@ -6,11 +6,12 @@ import Breadcrumb from "./breadcrumb";
 
 interface PageHeaderProps {
 	title: string;
+	currentTitle?: string;
 	mode?: "view" | "loading" | "empty";
 	onAction?: (action: string) => void;
 }
 
-export default function PageHeader({ title, mode = "view", onAction }: PageHeaderProps) {
+export default function PageHeader({ title, mode = "view", currentTitle, onAction }: PageHeaderProps) {
 
 	// 1. 로딩 상태 렌더링
 	if (mode === "loading") {
@@ -45,7 +46,7 @@ export default function PageHeader({ title, mode = "view", onAction }: PageHeade
 				</div>
 			</div>
 
-			<Breadcrumb />
+			<Breadcrumb currentTitle={currentTitle} />
 		</header>
 	);
 }

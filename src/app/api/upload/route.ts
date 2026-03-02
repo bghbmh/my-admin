@@ -2,6 +2,9 @@ import { NextResponse } from "next/server";
 import path from "path";
 import fs from "fs/promises";
 
+import { UPLOAD_DIR } from '@/constants/paths';
+
+//upload
 export async function POST(req: Request) {
 	try {
 		const formData = await req.formData();
@@ -12,7 +15,7 @@ export async function POST(req: Request) {
 			return NextResponse.json({ message: "업로드할 파일이 없습니다." }, { status: 400 });
 		}
 
-		const baseDir = path.join(process.cwd(), "public", "uploads", projectId);
+		const baseDir = path.join(UPLOAD_DIR, projectId);
 		const savedFiles = [];
 
 		for (const file of files) {
