@@ -62,6 +62,7 @@ export default function LoginPage() {
 							placeholder="admin@example.com"
 							value={email}
 							onChange={(e) => setEmail(e.target.value)}
+							readOnly
 							required
 						/>
 					</label>
@@ -73,6 +74,7 @@ export default function LoginPage() {
 							placeholder="••••••••"
 							value={password}
 							onChange={(e) => setPassword(e.target.value)}
+							readOnly
 							required
 						/>
 					</label>
