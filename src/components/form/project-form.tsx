@@ -17,7 +17,6 @@ import RadioGroupList from "./RadioGroupList";
 import CheckboxGroupList from "./CheckboxGroupList";
 import StateGroupList from "./state-group-list";
 
-import MockupUploadSection from "./MockupUploadSection";
 import TitleImageUploadSection from "./TitleImageUploadSection";
 import ImageUploadSection from "./ImageUploadSection";
 import ExternalLinkSection from "./ExternalLinkSection";
