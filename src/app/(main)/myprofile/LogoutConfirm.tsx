@@ -1,18 +1,21 @@
 "use client";
 
 import React from "react";
+import { projectService } from '@/services/projectService';
 import { useRouter } from "next/navigation"; // Next.js 라우터 사용
 
 export default function LogoutConfirm() {
 	const router = useRouter();
 
-	const handleLogout = () => {
-		// 1. 실제 로그아웃 로직 (예: 쿠키 삭제, 세션 스토리지 비우기 등)
-		console.log("로그아웃 처리 중...");
+	const handleLogout = async () => {
+		try {
+			await projectService.logout();
+			alert("로그아웃 되었습니다. 로그인 페이지로 이동합니다.");
+			window.location.href = "/login"; // 로그인 페이지로 이동
+		} catch (error: any) {
+			alert("로그아웃 실패: " + (error.message || "다시 시도해주세요."));
+		}
 
-		// 2. 로그인 페이지로 리다이렉트
-		// router.push("/login"); 
-		alert("로그아웃 되었습니다. 로그인 페이지로 이동합니다.");
 	};
 
 	return (

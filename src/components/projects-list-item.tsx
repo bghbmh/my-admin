@@ -1,7 +1,7 @@
 // "use client";
 
-import { CategoryItemType, ProjectDataType, ExtraInfoItemType, MockupFileType } from "@/types/project.data";
-import { NO_ITEM_CONFIG, MAIN_CATEGORY, SUB_CATEGORY, HASH_LIST, STATE_STEP } from "@/constants/config";
+import { ProjectDataType } from "@/types/project.data";
+import { MAIN_CATEGORY, STATE_STEP } from "@/constants/config";
 //import { useRouter } from "next/navigation";
 import Link from "next/link"; // useRouter 대신 Link 임포트
 
@@ -61,10 +61,10 @@ export default function ProjectsListItem({ projectData, isSelected, onSelected }
 				</div>
 
 				<div className="btn-wrap">
-					<Link href={`/projects/${projectData.id}`} className="btn view-btn">
+					<Link href={`/projects/${projectData.id}`} className="btn dark ">
 						상세보기
 					</Link>
-					<Link href={`/projects/${projectData.id}/edit`} className="btn edit-btn">
+					<Link href={`/projects/${projectData.id}/edit`} className="btn default">
 						수정
 					</Link>
 					{/* <button type="button" className="btn view-btn"

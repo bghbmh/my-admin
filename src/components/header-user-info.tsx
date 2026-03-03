@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from 'react';
+import { createClient } from '@/utils/client-supabase';
 import "./header-user-info.scss";
 import ThemeToggle from "./form/theme-toggle";
 import UserVisual from "./user-image";
@@ -38,6 +39,20 @@ export default function HeaderUserInfo({ profile }: Props) {
 		// 필요 시 여기서 DB 업데이트 fetch를 호출하세요.
 	};
 
+
+	const supabase = createClient();
+	const [userEmail, setUserEmail] = useState<string | null>(null);
+	useEffect(() => {
+		const getUser = async () => {
+			const { data: { user } } = await supabase.auth.getUser();
+			if (user) {
+				// 이메일 주소 설정 (예: guest@minibig.com) 
+				setUserEmail(user.email ?? null);
+			}
+		};
+		getUser();
+	}, []);
+
 	return (
 		<div className="header-user-info-wrap">
 			<div className="user">
@@ -59,7 +74,8 @@ export default function HeaderUserInfo({ profile }: Props) {
 							{profile.nickname.check ? profile.nickname.value : profile.name}
 						</strong>
 						<div className="extra-info">
-							<span className="item">{profile.business.role}</span>
+							<span className="item">{userEmail}</span>
+							{/* <span className="item">{profile.business.role}</span> */}
 							<span className="item">{profile.business.team}</span>
 							<span className="item">{profile.business.company}</span>
 						</div>

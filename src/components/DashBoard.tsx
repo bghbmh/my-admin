@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect, useState } from 'react';
+import { createClient } from '@/utils/client-supabase';
 
 import { ProjectDataType } from "@/types/project.data";
 import SectionHeader from "@/components/common/section-header";

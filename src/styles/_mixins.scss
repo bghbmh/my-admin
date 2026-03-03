@@ -1,3 +1,5 @@
+@use "sass:map"; // 파일 맨 상단에 추가
+
 // 1. CSS 변수 접두사 변경 (ex: --bmh-blue)
 $variable-prefix: "bmh-";
 
@@ -35,7 +37,7 @@ $breakpoints: (
 // 2. 미디어쿼리 Mixin
 @mixin respond-to($breakpoint) {
 	// Map에서 해당 키값의 수치를 가져옵니다.
-	$value: map-get($breakpoints, $breakpoint);
+	$value: map.get($breakpoints, $breakpoint);
 
 	@if $value {
 		@media screen and (max-width: $value) {
@@ -101,9 +103,9 @@ $unit-labels: (
 
 // 1em, 1rem, 1px, 1%
 @mixin width-height($prefix: "", $start: 2, $end: 9, $offset: 0.5, $unit: "em", $interval: 1) {
-	$u-value: map-get($unit-values, $unit
+	$u-value: map.get($unit-values, $unit
 	);
-$u-label: map-get($unit-labels, $unit);
+$u-label: map.get($unit-labels, $unit);
 
 $i: $start;
 

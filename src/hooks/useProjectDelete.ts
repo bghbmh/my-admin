@@ -2,6 +2,8 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
+import { projectService } from "@/services/projectService";
+
 export function useProjectDelete() {
 
 	const router = useRouter();
@@ -15,35 +17,30 @@ export function useProjectDelete() {
 
 		// 1. 서버에 삭제 요청 보내기 (예시 URL, 실제 API 엔드포인트로 변경 필요)
 		try {
-			// 1. 서버에 삭제 요청 (await로 결과가 올 때까지 대기)
-			const response = await fetch(`/api/projects/delete`, {
-				method: "DELETE",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify({ ids }),
-			});
+			// 🎯 API 대신 서비스를 직접 호출합니다!
+			await projectService.deleteProjects(ids);
 
-			// 2. 응답 결과 처리
-			if (response.ok) {
-				alert("프로젝트가 삭제되었습니다.");
+			alert("성공적으로 삭제되었습니다. ✨");
 
-				if (onSuccess) onSuccess(); // 클라이언트 상태 초기화 (체크박스 비우기 등)
+			if (onSuccess) onSuccess();
+			router.refresh(); // 목록 갱신
 
-				console.log("onSuccess 콜백 실행됨", ids);
+		} catch (error: any) {
+			let finalMessage = "삭제에 실패했습니다.";
 
-				// 3. 서버 데이터 갱신
-				router.refresh();
-			} else {
-				// 서버에서 에러 메시지를 보냈다면 출력
-				const errorData = await response.json();
-				alert(errorData.message || "삭제에 실패했습니다. 다시 시도해주세요.");
+			try {
+				// 우리가 정의한 JSON 에러 메시지인지 확인
+				const errorData = JSON.parse(error.message);
+				if (errorData.user === "guest") {
+					finalMessage = `🚫 [권한 제한] ${errorData.msg}`;
+				} else {
+					finalMessage = errorData.msg;
+				}
+			} catch (e) {
+				finalMessage = error.message || finalMessage;
 			}
 
-		} catch (error) {
-			// 4. 네트워크 에러 등 예외 처리
-			console.error("삭제 중 오류 발생:", error);
-			alert("삭제 중 오류가 발생했습니다. 다시 시도해주세요.");
+			alert(finalMessage);
 
 		} finally {
 			// 5. 성공/실패 여부와 상관없이 로딩 종료

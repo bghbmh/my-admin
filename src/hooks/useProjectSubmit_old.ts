@@ -1,19 +1,15 @@
-import { useRouter } from "next/navigation";
-import { UploadFile } from 'antd';
-import { ProjectDataType } from "@/types/project.data";
-import { uploadToCloudinary } from "@/utils/cloudinary";
-
 // @/hooks/useProjectSubmit.ts
+import { useRouter } from "next/navigation";
+import { ProjectDataType } from "@/types/project.data";
+import { UiProjectFormDataType, transformImagesToServer } from "@/types/project.ui";
+import { uploadToCloudinary } from "@/utils/cloudinary";
 
 export function useProjectSubmit(mode: "create" | "edit", id: string) {
 	const router = useRouter();
 
 	const handleSubmit = async (
 		e: React.FormEvent<HTMLFormElement>,
-		formData: ProjectDataType,
-		titleImageFile: any[],
-		imageFileList: any[],
-		mockupFileList: any[] // 여기서 각 file 객체에 label이 포함되어 있어야 합니다.
+		formData: UiProjectFormDataType
 	) => {
 		e.preventDefault();
 
@@ -25,7 +21,7 @@ export function useProjectSubmit(mode: "create" | "edit", id: string) {
 		};
 
 		try {
-			// 1. 신규 생성 시 ID 확보
+			// 1. 신규 생성 시 ID 우선 확보 (폴더명 등을 위해)
 			if (mode === "create") {
 				const createRes = await fetch('/api/projects/create', {
 					method: 'POST',
@@ -35,87 +31,35 @@ export function useProjectSubmit(mode: "create" | "edit", id: string) {
 				if (!createRes.ok) throw new Error('프로젝트 생성 실패');
 				const result = await createRes.json();
 				currentId = result.data.id;
-				metaData = {
-					projectNum: result.data.projectNum,
-					registerDate: result.data.registerDate,
-					modifyDate: result.data.modifyDate
-				};
+				metaData = result.data;
 			}
 
-			// 2. 데이터 매핑 함수 (라벨 및 URL 확정)
-			const mapToDatabaseFormat = async (file: any, folderName: 'images' | 'files') => {
-				const isNew = !!file.originFileObj;
-				let finalUrl = "";
+			// 1. 이미지 계열 (Cloudinary)
+			const [titleImage, subimage, before, after] = await Promise.all([
+				transformImagesToServer(formData.titleImage),
+				transformImagesToServer(formData.subimage),
+				transformImagesToServer(formData.imageComparison.before),
+				transformImagesToServer(formData.imageComparison.after)
+			]);
 
-				if (isNew) {
-					if (folderName === 'images') {
-						finalUrl = await uploadToCloudinary(file.originFileObj as File);
-					} else {
-						finalUrl = `${currentId}/files/${file.name}`;
-					}
-				} else {
-					const originalUrl = file.url || "";
-					finalUrl = originalUrl.replace(/^\/uploads\//, "");
-				}
 
-				// 결과 반환 (목업일 경우 라벨을 명시적으로 포함)
-				const result: any = {
-					alt: file.alt || file.name,
-					name: file.name,
-					size: file.size || 0,
-					type: file.type || (isNew ? file.originFileObj.type : ""),
-					lastModified: isNew ? file.originFileObj.lastModified : (file.lastModified || null),
-					url: finalUrl,
-				};
 
-				if (folderName === 'files') {
-					// 사용자가 입력한 label이 없으면 name을 기본값으로 사용
-					result.label = file.label || file.name;
-				}
 
-				return result;
-			};
-
-			// 3. 모든 파일의 데이터 포맷팅 수행 (비동기)
-			const titleImage = titleImageFile.length > 0
-				? await mapToDatabaseFormat(titleImageFile[0], 'images') : null;
-
-			const subimage = await Promise.all(
-				(imageFileList || []).map(file => mapToDatabaseFormat(file, 'images'))
-			);
-
-			// ★ 여기서 각 목업 파일의 label이 포함된 데이터가 생성됩니다.
-			const mockup = await Promise.all(
-				(mockupFileList || []).map(file => mapToDatabaseFormat(file, 'files'))
-			);
-
-			// 4. 로컬 서버에 실제 파일 업로드 (목업 전용)
-			const uploadMockupsToServer = async (files: any[]) => {
-				const newFiles = files
-					.filter(file => !file.url && file.originFileObj)
-					.map(file => file.originFileObj as File);
-
-				if (newFiles.length > 0) {
-					const uploadFormData = new FormData();
-					newFiles.forEach(file => uploadFormData.append("files", file));
-					uploadFormData.append('projectId', currentId);
-					const res = await fetch('/api/upload', { method: 'POST', body: uploadFormData });
-					if (!res.ok) throw new Error("로컬 파일 업로드 실패");
-				}
-			};
-
-			await uploadMockupsToServer(mockupFileList);
-
-			// 5. 최종 데이터 구성 및 DB 업데이트
-			const finalData = {
+			// 4. 최종 데이터 결합
+			const finalData: ProjectDataType = {
 				...formData,
 				id: currentId,
 				...metaData,
 				titleImage,
-				subimage,
-				mockup, // 라벨이 포함된 배열
+				subimage: subimage.filter(Boolean),
+				imageComparison: {
+					use: formData.imageComparison.use,
+					before,
+					after
+				}
 			};
 
+			// 6. DB 업데이트 요청
 			const updateRes = await fetch('/api/projects/update', {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
@@ -123,14 +67,30 @@ export function useProjectSubmit(mode: "create" | "edit", id: string) {
 			});
 
 			if (updateRes.ok) {
+				alert("성공적으로 저장되었습니다.");
 				router.push(`/projects/${currentId}`);
 				router.refresh();
 			}
 		} catch (error) {
 			console.error("제출 중 에러:", error);
-			alert("저장에 실패했습니다.");
+			alert("저장 중 오류가 발생했습니다.");
 		}
 	};
 
 	return { handleSubmit };
+}
+
+// 목업 파일 로컬 서버 업로드 헬퍼 함수
+async function uploadMockupsToServer(files: any[], currentId: string) {
+	const newFiles = files
+		.filter(file => file.originFileObj)
+		.map(file => file.originFileObj as File);
+
+	if (newFiles.length > 0) {
+		const uploadFormData = new FormData();
+		newFiles.forEach(file => uploadFormData.append("files", file));
+		uploadFormData.append('projectId', currentId);
+		const res = await fetch('/api/upload', { method: 'POST', body: uploadFormData });
+		if (!res.ok) throw new Error("로컬 파일 업로드 실패");
+	}
 }

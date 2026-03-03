@@ -18,19 +18,25 @@ const MOCK_BRAND_LOGO = {
 	"webUrl": "/img/common/logo-temp.svg"
 };
 
-export default async function Header() {
+
+interface HeaderProps {
+	user: any;
+	isAdmin: boolean;
+	isLogged: boolean;
+}
+export default async function Header({ user, isAdmin, isLogged }: HeaderProps) {
 
 	const fileContent = await fs.readFile(DB_TEMP_PROFILE, "utf-8");
 	const profile: any[] = JSON.parse(fileContent);
 
-	console.log("sdf - ", profile)
+	//console.log("sdf - ", profile)
 
 	return (
 		<header className="common">
 			{/* 나중에 로고나 다른 요소가 들어올 자리를 미리 확보할 수 있어요 */}
 			<BrandLogo info={MOCK_BRAND_LOGO} />
 			<HeaderUserInfo profile={profile[0]} />
-			<GlobalNav />
+			<GlobalNav isLogged={isLogged} isAdmin={isAdmin} />
 
 		</header>
 	);

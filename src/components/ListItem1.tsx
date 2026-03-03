@@ -9,7 +9,7 @@ interface Props {
 
 export default function ListItem1({ item, optionClassName }: Props) {
 
-	console.log("aff - ", item)
+	//console.log("aff - ", item)
 	const mainCat = item?.category.find(cat => cat.label === "main");
 	const icon = MAIN_CATEGORY.find(c => c.name === mainCat?.name)?.icon;
 	return (

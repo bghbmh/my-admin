@@ -68,24 +68,31 @@ export default function ExternalLinkItem({ id, label, url, type, onChange, onDel
 				)}
 			</div>
 
-			<div className="input-fields">
-				<input
-					type="text"
-					name="label"
-					value={label}
-					placeholder="라벨"
-					onChange={e => onChange(id, e.target.name, e.target.value)}
-				/>
-				<input
-					type="text"
-					name="url"
-					value={url}
-					placeholder="주소"
-					onChange={e => onChange(id, e.target.name, e.target.value)}
-				/>
+			<div className="extra-info-group__item">
+				<label className="info-label">
+					<span className="guide">라벨</span>
+					<input
+						type="text"
+						name="label"
+						value={label}
+						placeholder="라벨"
+						onChange={e => onChange(id, e.target.name, e.target.value)}
+					/>
+				</label>
+
+				<label className="info-value">
+					<span className="guide">url 주소</span>
+					<input
+						type="text"
+						name="url"
+						value={url}
+						placeholder="https://example.com"
+						onChange={e => onChange(id, e.target.name, e.target.value)}
+					/>
+				</label>
+				<button type="button" className="btn delete-one" onClick={() => onDelete(id)}>삭제</button>
 			</div>
 
-			<button type="button" className="btn delete-one" onClick={() => onDelete(id)}>삭제</button>
 		</div>
 	);
 }

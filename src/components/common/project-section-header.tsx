@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import "./project-section-header.scss";
+
+import { projectService } from "@/services/projectService";
 
 import DropDownTypeA from "./dropdown-type-a";
-
+import "./project-section-header.scss";
 interface SectionHeaderProps {
 	title: string;
 	id?: string;
@@ -16,24 +17,42 @@ export default function ProjectSectionHeader({ title, id, mode }: SectionHeaderP
 
 	const router = useRouter();
 
-	const handleDelete = () => {
-		if (confirm("정말 삭제하시겠습니까?")) {
+	const handleDelete = async () => {
+		if (!id) {
+			alert("삭제할 프로젝트 ID를 찾을 수 없습니다.");
+			return;
+		}
 
-			// 1. 서버에 삭제 요청 보내기 (예시 URL, 실제 API 엔드포인트로 변경 필요)
-			fetch(`/api/projects/delete`, {
-				method: "DELETE",
-				body: JSON.stringify({ id }),
-			}).then((response) => {
-				if (response.ok) {
-					alert("프로젝트가 삭제되었습니다.");
-					router.push("/projects"); // 삭제 후 목록 페이지로 이동
-				} else {
-					alert("삭제에 실패했습니다. 다시 시도해주세요.");
+		if (confirm("정말 삭제하시겠습니까?")) {
+			try {
+				// 1. 삭제 서비스 호출
+				await projectService.deleteProject(id);
+
+				// 2. 성공 알림 (이 부분이 확실히 실행됩니다)
+				alert("프로젝트가 성공적으로 삭제되었습니다. ✨");
+
+				// 3. 페이지 이동 및 데이터 갱신
+				router.push("/projects");
+				router.refresh();
+
+			} catch (error: any) {
+				let finalMessage = "삭제 중 오류가 발생했습니다.";
+
+				try {
+					// JSON 형태의 커스텀 에러인지 확인
+					const errorData = JSON.parse(error.message);
+					if (errorData.user === "guest") {
+						finalMessage = `🚫 [권한 제한] ${errorData.msg}`;
+					} else {
+						finalMessage = errorData.msg;
+					}
+				} catch (e) {
+					// 일반 텍스트 에러일 경우
+					finalMessage = error.message || finalMessage;
 				}
-			}).catch((error) => {
-				console.error("삭제 중 오류 발생:", error);
-				alert("삭제 중 오류가 발생했습니다. 다시 시도해주세요.");
-			});
+
+				alert(finalMessage); // 🎯 실패 시에도 여기서 얼랏이 뜹니다.
+			}
 		}
 	};
 
