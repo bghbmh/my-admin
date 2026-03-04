@@ -6,7 +6,6 @@ import { useState } from "react";
 import { useRouter } from "next/navigation"; // URL 관련 훅 추가
 
 import { useProjectRestore } from "@/hooks/useProjectRestore";
-import { TrashItemType } from "@/types/trash.data";
 import { ProjectDataType } from "@/types/project.data";
 import TrashListItem from "@/components/trash-list-item";
 import SectionHeader from "@/components/common/section-header";
