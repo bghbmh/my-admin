@@ -1,4 +1,4 @@
-// src/utils/supabase/client.ts (파일을 새로 만드세요)
+// src/utils/client-supabase.ts
 import { createBrowserClient } from '@supabase/ssr'
 
 export const createClient = () =>

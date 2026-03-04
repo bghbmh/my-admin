@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useMemo, useEffect } from "react";
+import React, { useMemo, useEffect, useState } from "react";
 import { useSearchParams, useRouter, usePathname } from "next/navigation"; // URL 관련 훅 추가
 import { MAIN_CATEGORY } from "@/constants/config";
 import { ProjectDataType } from "@/types/project.data";
 
 import { useProjectDelete } from "@/hooks/useProjectDelete";
+import { projectService } from "@/services/projectService";
 import { usePagination } from "@/hooks/usePagination";
 
 import ProjectsListItem from "@/components/projects-list-item";
@@ -22,6 +23,8 @@ export default function ProjectsListClient({ list }: Props) {
 	const router = useRouter();
 	const pathname = usePathname();
 	const searchParams = useSearchParams();
+
+	const [isDeleting, setIsDeleting] = useState(false);
 
 	// 1. URL에서 category 파라미터 읽기 (없으면 0)
 	const categoryParam = Number(searchParams.get("category")) || 0;
@@ -67,7 +70,42 @@ export default function ProjectsListClient({ list }: Props) {
 		));
 	};
 
-	const { handleProjectDelete, isDeleting } = useProjectDelete();
+	//const { handleProjectDelete, isDeleting } = useProjectDelete();
+
+	const handleDelete = async () => {
+		if (confirm("정말 삭제하시겠습니까?")) {
+
+			setIsDeleting(true);
+
+			try {
+				// 1. 삭제 서비스 호출
+				await projectService.deleteProjects(selectedProjects);
+
+				alert("프로젝트가 성공적으로 삭제되었습니다. ✨");
+				router.push("/projects");
+				router.refresh();
+
+			} catch (error: any) {
+				let finalMessage = "삭제 중 오류가 발생했습니다.";
+
+				try {
+					// JSON 형태의 커스텀 에러인지 확인
+					const errorData = JSON.parse(error.message);
+					if (errorData.user === "guest") {
+						finalMessage = `🚫 [권한 제한] ${errorData.msg}`;
+					} else {
+						finalMessage = errorData.msg;
+					}
+				} catch (e) {// 일반 텍스트 에러일 경우
+					finalMessage = error.message || finalMessage;
+				}
+
+				alert(finalMessage); // 🎯 실패 시에도 여기서 얼랏이 뜹니다.
+			} finally {
+				setIsDeleting(false);
+			}
+		}
+	};
 
 	// 3. 탭 클릭 시 URL 변경 함수
 	const changeTab = (type: number) => {
@@ -132,7 +170,7 @@ export default function ProjectsListClient({ list }: Props) {
 						<button
 							type="button"
 							className="btn delete"
-							onClick={() => handleProjectDelete(selectedProjects, () => setSelectedProjects([]))}>
+							onClick={handleDelete}>
 							{isDeleting ? "삭제 중..." : "삭제"}
 						</button>
 					</div>

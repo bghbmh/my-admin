@@ -26,7 +26,7 @@ export default function ProjectSectionHeader({ title, id, mode }: SectionHeaderP
 		if (confirm("정말 삭제하시겠습니까?")) {
 			try {
 				// 1. 삭제 서비스 호출
-				await projectService.deleteProject(id);
+				await projectService.deleteProjects([id]);
 
 				// 2. 성공 알림 (이 부분이 확실히 실행됩니다)
 				alert("프로젝트가 성공적으로 삭제되었습니다. ✨");

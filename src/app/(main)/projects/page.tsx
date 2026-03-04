@@ -16,7 +16,7 @@ export default async function ProjectsListPage() {
 	const supabase = await createClient(); // 비동기로 쿠키 읽기
 	const { data: { user } } = await supabase.auth.getUser(); // 서버에서 유저 확인
 
-	const isAdmin = user?.user_metadata?.role === 'admin';
+	const isAdmin = user?.app_metadata?.role === 'admin';
 	const isLogged = !!user;
 
 	try {
@@ -25,6 +25,10 @@ export default async function ProjectsListPage() {
 		console.error('데이터 로드 실패:', error);
 		isError = true;
 	}
+
+	const list = projectList
+		.filter(p => !p.isDeleted)
+		.sort((a, b) => b.registerDate - a.registerDate);
 
 	return (
 		<>
@@ -39,7 +43,7 @@ export default async function ProjectsListPage() {
 				) : projectList.length === 0 ? (
 					<div className="empty-message">등록된 프로젝트가 없습니다.</div>
 				) : (
-					<ProjectsListClient list={projectList} />
+					<ProjectsListClient list={list} />
 				)}
 			</div>
 		</>

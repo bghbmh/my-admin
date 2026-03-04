@@ -75,6 +75,8 @@ export interface ProjectDataType {
 	member: any[];
 	registerDate: number;
 	modifyDate: number[];
+	isDeleted: boolean;       // 삭제 여부 (기본값 false)
+	deletedAt: string | null;  // 삭제된 시각 (ISO string 형식)
 }
 
 export const DEFAULT_PROJECT_DATA: ProjectDataType = {
@@ -101,5 +103,7 @@ export const DEFAULT_PROJECT_DATA: ProjectDataType = {
 	endDate: "",
 	member: [],
 	registerDate: 0,
-	modifyDate: []
+	modifyDate: [],
+	isDeleted: false,
+	deletedAt: null
 };

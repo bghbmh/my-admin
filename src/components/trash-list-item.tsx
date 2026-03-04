@@ -1,25 +1,41 @@
 // src/components/trash-list-item.tsx
-
-import { TrashItemType } from "@/types/trash.data";
+import { useState, useEffect } from "react";
+import { ProjectDataType } from "@/types/project.data";
 import { MAIN_CATEGORY, STATE_STEP } from "@/constants/config";
-import "./projects-list-item.scss"; // ✅ 기존 scss 그대로 재사용!
+import "./projects-list-item.scss"; // 기존 스타일 재사용
 
 interface Props {
-	item: TrashItemType;
+	item: ProjectDataType;
 	isSelected: boolean;
 	onSelected: (checked: boolean, id: string) => void;
-	onRestore: (id: string) => void;  // 단건 복원용
+	onRestore: (id: string) => void;
 }
 
 export default function TrashListItem({ item, isSelected, onSelected, onRestore }: Props) {
+	const [mounted, setMounted] = useState(false);
 
+	useEffect(() => {
+		setMounted(true);
+	}, []);
+
+	// 1. 카테고리 및 상태 정보 매칭
 	const mainCategoryInfo = MAIN_CATEGORY.find(mc => mc.type === Number(item.category[0]?.type));
 	const stateInfo = STATE_STEP.find(state => state.type === item.currentState);
-	const deletedDate = new Date(item.deletedAt).toLocaleDateString("ko-KR");
+
+	// 2. 삭제일 포맷팅 (deletedAt이 null일 경우를 대비한 방어 코드)
+	const deletedDate = item.deletedAt
+		? new Date(item.deletedAt).toLocaleDateString("ko-KR", {
+			year: 'numeric',
+			month: '2-digit',
+			day: '2-digit',
+			hour: '2-digit',
+			minute: '2-digit'
+		})
+		: "날짜 정보 없음";
 
 	return (
-		<div className="project-list-item">
-			{/* 체크박스 - 기존과 동일 */}
+		<div className={`project-list-item ${isSelected ? "selected" : ""}`}>
+			{/* 체크박스 */}
 			<label aria-label="항목선택" className="cb">
 				<input
 					type="checkbox"
@@ -28,36 +44,40 @@ export default function TrashListItem({ item, isSelected, onSelected, onRestore 
 				/>
 			</label>
 
-			{/* 정보 영역 - 기존과 동일 */}
+			{/* 정보 영역 */}
 			<div className="info">
-				<div className={`category c-type-${mainCategoryInfo?.type}`}>
-					<i className={mainCategoryInfo?.icon} aria-hidden="true"></i>
+				<div className={`category c-type-${mainCategoryInfo?.type || '6'}`}>
+					<i className={mainCategoryInfo?.icon || 'icon-svg2-folder'} aria-hidden="true"></i>
 					<dl className="text">
-						<dt data-type={item.category[0]?.type}>{item.category[0]?.name}</dt>
-						<dd data-type={item.category[1]?.type}>{item.category[1]?.name}</dd>
+						<dt>{item.category[0]?.name || "기타"}</dt>
+						<dd>{item.category[1]?.name || ""}</dd>
 					</dl>
 				</div>
 				<div className="title">
-					<div className="text">{item.title || "제목 없음"}</div>
-					{/* ✅ 삭제일 표시 (기존 날짜 자리에) */}
-					<small>🗑 삭제일: {deletedDate}</small>
+					<div className="text" style={{ fontWeight: 'bold' }}>{item.title || "제목 없음"}</div>
+					{/* 삭제일 표시 - 가독성을 위해 스타일 살짝 보정 */}
+					<div style={{ marginTop: '4px', fontSize: '12px', color: '#888' }}>
+						<i className="icon-svg2-trash" style={{ marginRight: '4px' }}></i>
+						삭제일: {mounted ? deletedDate : ""}
+					</div>
 				</div>
 			</div>
 
-			{/* 상태 뱃지 - 기존과 동일 */}
+			{/* 상태 뱃지 */}
 			<div className={`state-${stateInfo?.type || "unknown"}`}>
 				<i className={stateInfo?.icon} aria-hidden="true"></i>
-				{stateInfo?.name}
+				{stateInfo?.name || "알 수 없음"}
 			</div>
 
-			{/* 버튼 - 복원만! */}
+			{/* 작업 버튼 */}
 			<div className="btn-wrap">
 				<button
 					type="button"
-					className="btn view-btn"
+					className="btn primary" // 'view-btn' 대신 강조 컬러 사용 권장
 					onClick={() => onRestore(item.id)}
+					style={{ minWidth: '80px' }}
 				>
-					복원
+					복원하기
 				</button>
 			</div>
 		</div>

@@ -73,8 +73,29 @@ export const projectService = {
 	},
 
 	// 4. 프로젝트 삭제
-	async deleteProject(id: string) {
+	// async deleteProject(id: string) {
 
+	// 	const { isAdmin } = await this.checkAdminRole();
+	// 	if (!isAdmin) {
+	// 		throw new Error(JSON.stringify({
+	// 			user: "guest",
+	// 			code: "AUTH_REQUIRED",
+	// 			msg: "게스트 계정은 삭제 권한이 없습니다."
+	// 		}));
+	// 	}
+
+	// 	const { error } = await supabase
+	// 		.from('portfolio')
+	// 		.delete()
+	// 		.eq('id', id);
+
+	// 	if (error) throw error;
+	// 	return true;
+	// },
+
+	// [추가] 여러 개 프로젝트 일괄 삭제
+	async deleteProjects(ids: string[]) {
+		// 1. 권한 체크 (아까 만든 checkAdminRole 활용)
 		const { isAdmin } = await this.checkAdminRole();
 		if (!isAdmin) {
 			throw new Error(JSON.stringify({
@@ -84,35 +105,33 @@ export const projectService = {
 			}));
 		}
 
+		// 2. Supabase 일괄 삭제 실행 (in 연산자 사용)  
 		const { error } = await supabase
 			.from('portfolio')
-			.delete()
-			.eq('id', id);
+			.update({ isDeleted: true, deletedAt: new Date().toISOString() }) // 삭제 표시
+			.in('id', ids); // 여러 ID를 한꺼번에 삭제
 
 		if (error) throw error;
 		return true;
 	},
 
-	// [추가] 여러 개 프로젝트 일괄 삭제
-	async deleteProjects(ids: string[]) {
-		// 1. 권한 체크 (아까 만든 checkAdminRole 활용)
+	async restoreProjects(ids: string[]) {
 		const { isAdmin } = await this.checkAdminRole();
 		if (!isAdmin) {
 			throw new Error(JSON.stringify({
 				user: "guest",
-				msg: "게스트 계정은 삭제 권한이 없습니다."
+				code: "AUTH_REQUIRED",
+				msg: "게스트 계정은 복원 권한이 없습니다."
 			}));
 		}
 
-		// 2. Supabase 일괄 삭제 실행 (in 연산자 사용)
-		const supabase = createClient();
-		const { error } = await supabase
+		const { data, error } = await supabase
 			.from('portfolio')
-			.delete()
-			.in('id', ids); // 여러 ID를 한꺼번에 삭제
+			.update({ isDeleted: false, deletedAt: null }) // 복원
+			.in('id', ids);
 
 		if (error) throw error;
-		return true;
+		return data;
 	},
 
 	// 5. 프로젝트 생성 (isAdmin 인자 추가)
@@ -125,12 +144,11 @@ export const projectService = {
 				msg: "게스트 계정은 등록 권한이 없습니다."
 			}));
 		}
-
-		const { id, ...dataWithoutId } = newProject;
+		console.log("🚀 [Service] createProject 호출 - ", newProject);
 
 		const { data, error } = await supabase
 			.from('portfolio')
-			.insert([dataWithoutId])
+			.insert([newProject])
 			.select()
 			.single();
 

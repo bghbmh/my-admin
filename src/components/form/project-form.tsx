@@ -112,15 +112,7 @@ export default function ProjectForm({ id, initialData, mode }: testProps) {
 	// 프로젝트 데이터 폼 핸들러
 	const router = useRouter();
 
-	// 2. 훅 호출 (반드시 여기, 최상단에서!)
-	//console.log("useProjectSubmit 호출 - mode:", mode, "id:", id);
-	// const { handleSubmit } = useProjectSubmit(mode, id);
-	// const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-	// 	handleSubmit(e, formData, imageFileList, mockupFileList);
-	// };
-
 	const { handleSubmit: originalSubmit } = useProjectSubmit(mode, id);
-
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>, data: any) => {
 		e.preventDefault();
 
@@ -151,7 +143,7 @@ export default function ProjectForm({ id, initialData, mode }: testProps) {
 		if (confirm("정말 삭제하시겠습니까?")) {
 			try {
 				// 1. 삭제 서비스 호출
-				await projectService.deleteProject(id);
+				await projectService.deleteProjects([id]); // 단일 삭제라도 배열로 감싸서 호출
 
 				// 2. 성공 알림 (이 부분이 확실히 실행됩니다)
 				alert("프로젝트가 성공적으로 삭제되었습니다. ✨");

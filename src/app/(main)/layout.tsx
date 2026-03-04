@@ -13,7 +13,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 	const supabase = await createClient();
 	const { data: { user } } = await supabase.auth.getUser();
 
-	const isAdmin = user?.user_metadata?.role === 'admin';
+	const isAdmin = user?.app_metadata?.role === 'admin';
 	const isLogged = !!user;
 
 	console.log("RootLayout - ", user)
