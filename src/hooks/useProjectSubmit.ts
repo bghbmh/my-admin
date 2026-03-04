@@ -22,6 +22,18 @@ export function useProjectSubmit(mode: "create" | "edit", id: string) {
 				transformImagesToServer(formData.imageComparison.after)
 			]);
 
+			// --- [수정] 과거에 쓰시던 ID 및 타임스탬프 생성 로직 ---
+			const timestamp = Date.now();
+			let projectId = id;
+			let projectNum = (formData as any).projectNum; // 기존 번호 유지
+			let registerDate = (formData as any).registerDate;
+
+			if (mode === "create") {
+				projectId = 'bmh' + timestamp; // 과거 방식 그대로
+				projectNum = timestamp;       // 정렬용 번호
+				registerDate = timestamp;     // 등록일
+			}
+
 			// 2. 최종 데이터 결합
 			const finalData: ProjectDataType = {
 				...formData,

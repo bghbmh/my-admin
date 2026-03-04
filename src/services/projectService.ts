@@ -125,7 +125,7 @@ export const projectService = {
 				msg: "게스트 계정은 등록 권한이 없습니다."
 			}));
 		}
-		// id가 빈 문자열이면 Supabase에서 자동 생성하도록 id 필드 제외 가능
+
 		const { id, ...dataWithoutId } = newProject;
 
 		const { data, error } = await supabase
