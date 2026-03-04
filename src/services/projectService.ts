@@ -29,7 +29,7 @@ export const projectService = {
 		// 로그인 상태인데 관리자가 아니라면(게스트) 5개로 제한
 		if (isLogged && !isAdmin) {
 			console.log("🚀 [Service] 게스트 권한 감지: 5개만 반환합니다.");
-			return (data?.slice(0, 5) ?? []) as ProjectDataType[];
+			return (data?.slice(0, 6) ?? []) as ProjectDataType[];
 		}
 
 		// 그 외(관리자 혹은 비로그인 방문자)는 전체 반환
