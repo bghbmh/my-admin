@@ -8,7 +8,11 @@ export const dynamic = 'force-dynamic';
 export default async function TempUpload() {
 
 	// JSON 데이터가 배열인지 확인 (구조에 따라 .projectList 등이 필요할 수 있음)
-	const dummyData = dummyDataRaw as ProjectDataType[];
+	const dummyData: ProjectDataType[] = (dummyDataRaw as any[]).map(item => ({
+		...item,
+		isDeleted: item.isDeleted ?? false,
+		deletedAt: item.deletedAt ?? null
+	}));
 
 
 	const onUpload = async () => {
