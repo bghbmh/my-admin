@@ -11,6 +11,8 @@ export default function LoginPage() {
 	const [loading, setLoading] = useState(false);
 	const router = useRouter();
 
+	const isGuest = process.env.NEXT_PUBLIC_IS_GUEST === 'true';
+
 	// 👈 쿠키 관리 기능이 포함된 클라이언트 생성
 	const supabase = createClient();
 
@@ -31,7 +33,7 @@ export default function LoginPage() {
 
 			// 1. 역할에 따른 인사
 			if (userRole === "admin") {
-				alert("관리자님, 환영합니다! 🚀")
+				alert("관리자님, 환영합니다! 🚀");
 			} else {
 				alert("게스트 계정으로 로그인되었습니다. 😊")
 			}
@@ -59,10 +61,10 @@ export default function LoginPage() {
 						<span className="guide required">이메일</span>
 						<input
 							type="email"
-							placeholder="admin@example.com"
+							placeholder="guest@example.com"
 							value={email}
 							onChange={(e) => setEmail(e.target.value)}
-							readOnly
+							readOnly={isGuest}
 							required
 						/>
 					</label>
@@ -74,7 +76,7 @@ export default function LoginPage() {
 							placeholder="••••••••"
 							value={password}
 							onChange={(e) => setPassword(e.target.value)}
-							readOnly
+							readOnly={isGuest}
 							required
 						/>
 					</label>
