@@ -29,7 +29,7 @@ export default function LoginPage() {
 
 			if (error) throw error;
 
-			const userRole = data.user?.user_metadata?.role
+			const userRole = data.user?.app_metadata?.role
 
 			// 1. 역할에 따른 인사
 			if (userRole === "admin") {
