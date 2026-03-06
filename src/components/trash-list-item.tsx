@@ -8,7 +8,7 @@ interface Props {
 	item: ProjectDataType;
 	isSelected: boolean;
 	onSelected: (checked: boolean, id: string) => void;
-	onRestore: (id: string) => void;
+	onRestore: (id: string[]) => void;
 }
 
 export default function TrashListItem({ item, isSelected, onSelected, onRestore }: Props) {
@@ -73,11 +73,11 @@ export default function TrashListItem({ item, isSelected, onSelected, onRestore 
 			<div className="btn-wrap">
 				<button
 					type="button"
-					className="btn primary" // 'view-btn' 대신 강조 컬러 사용 권장
-					onClick={() => onRestore(item.id)}
+					className="btn dark" // 'view-btn' 대신 강조 컬러 사용 권장
+					onClick={() => onRestore([item.id])}
 					style={{ minWidth: '80px' }}
 				>
-					복원하기
+					복원하기_
 				</button>
 			</div>
 		</div>

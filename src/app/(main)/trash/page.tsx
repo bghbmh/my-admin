@@ -15,14 +15,14 @@ export default async function TrashPage() {
 	const supabase = await createClient();
 	const { data: { user } } = await supabase.auth.getUser();
 
-	// 관리자 여부 확인
-	const isAdmin = user?.app_metadata?.role === 'admin';
+	//  로그인 여부도 함께 확인
 	const isLogged = !!user;
 
 	try {
 		// 1. 전체 목록을 가져옵니다. 
-		// (관리자만 휴지통 페이지에 접근 가능하도록 별도의 체크 로직이 상위에 있으면 더 좋습니다.)
-		projectList = await projectService.getAllProjects(isAdmin, isLogged);
+		//  isAdmin,
+		projectList = await projectService.getTrashProjects(isLogged);
+		//projectList = await projectService.getTrashProjects();
 	} catch (error) {
 		console.error('데이터 로드 실패:', error);
 		isError = true;
@@ -30,7 +30,6 @@ export default async function TrashPage() {
 
 	// 2. 필터링 및 정렬 로직 수정
 	const deleteList = projectList
-		.filter(p => p.isDeleted) // 삭제된 항목만 추출
 		.sort((a, b) => {
 			// 삭제일(deletedAt) 기준 내림차순 정렬 (최신 삭제 항목이 위로)
 			const dateA = a.deletedAt ? new Date(a.deletedAt).getTime() : 0;

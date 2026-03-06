@@ -5,7 +5,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation"; // URL 관련 훅 추가
 
-import { useProjectRestore } from "@/hooks/useProjectRestore";
+//import { useProjectRestore } from "@/hooks/useProjectRestore";
 import { ProjectDataType } from "@/types/project.data";
 import TrashListItem from "@/components/trash-list-item";
 import SectionHeader from "@/components/common/section-header";
@@ -18,7 +18,8 @@ interface Props {
 export default function TrashListClient({ list }: Props) {
 	const router = useRouter();
 	const [selectedIds, setSelectedIds] = useState<string[]>([]);
-	const { isRestoring, handleProjectRestore } = useProjectRestore();
+	//const { isRestoring, handleProjectRestore } = useProjectRestore();
+	const [isRestoring, setIsRestoring] = useState(false);
 
 	const handleSelect = (checked: boolean, id: string) => {
 		setSelectedIds(prev =>
@@ -28,12 +29,23 @@ export default function TrashListClient({ list }: Props) {
 
 	const handleCancel = () => setSelectedIds([]);
 
-	// 단건 복원 (버튼 클릭)
-	const handleSingleRestore = async () => {
+
+	const handleProjectRestore = async (ids: string[]) => {
+		setIsRestoring(true);
+		if (ids.length === 0) {
+			console.log("비어이쓴 경우, 복원할 프로젝트:", ids); // 🎯 복원할 프로젝트 로그
+			alert("복원할 프로젝트를 선택해주세요.");
+			setIsRestoring(false);
+			return;
+		}
+
+		//console.log("복원할 프로젝트:", ids); // 🎯 복원할 프로젝트 로그
+
 		try {
 			// 1. 복원 서비스 호출
-			await projectService.restoreProjects(selectedIds);
+			const ch = await projectService.restoreProjects(ids);
 
+			//console.log("복원 결과:", ch); // 🎯 복원 결과 로그
 			alert("프로젝트가 성공적으로 복원되었습니다. ✨");
 			router.push("/trash");
 			router.refresh();
@@ -54,6 +66,8 @@ export default function TrashListClient({ list }: Props) {
 			}
 
 			alert(finalMessage); // 🎯 실패 시에도 여기서 얼랏이 뜹니다.
+		} finally {
+			setIsRestoring(false);
 		}
 	};
 
@@ -78,10 +92,10 @@ export default function TrashListClient({ list }: Props) {
 						<button
 							type="button"
 							className="btn primary"
-							onClick={() => handleProjectRestore(selectedIds, () => setSelectedIds([]))}
+							onClick={() => handleProjectRestore(selectedIds || [])}
 							disabled={isRestoring}
 						>
-							{isRestoring ? "복원 중..." : `${selectedIds.length} 건 복원`}
+							{isRestoring ? "복원 중..." : `${selectedIds.length} 건 복원_`}
 						</button>
 					</div>
 				)}
@@ -96,7 +110,7 @@ export default function TrashListClient({ list }: Props) {
 							item={item}
 							isSelected={selectedIds.includes(item.id)}
 							onSelected={handleSelect}
-							onRestore={handleSingleRestore}
+							onRestore={handleProjectRestore}
 						/>
 					))
 				}

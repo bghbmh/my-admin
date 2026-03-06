@@ -10,8 +10,10 @@ export const projectService = {
 	async checkAdminRole() {
 		const supabase = createClient();
 		const { data: { user } } = await supabase.auth.getUser();
-		const isAdmin = user?.user_metadata?.role === 'admin';
+		const isAdmin = user?.app_metadata?.role === 'admin';
 		const isLogged = !!user;
+
+		console.log("🚀 [Service]checkAdminRole:  ", user?.app_metadata?.role);
 
 		return { isAdmin, isLogged, user };
 	},
@@ -25,15 +27,39 @@ export const projectService = {
 
 		if (error) throw error;
 
+		const projectList: ProjectDataType[] = data.filter((p: ProjectDataType) => !p.isDeleted);
+
 		// 🎯 [중요] 한 곳에서 관리하는 데이터 선별 로직
 		// 로그인 상태인데 관리자가 아니라면(게스트) 5개로 제한
 		if (isLogged && !isAdmin) {
 			console.log("🚀 [Service] 게스트 권한 감지: 5개만 반환합니다.");
-			return (data?.slice(0, 6) ?? []) as ProjectDataType[];
+			return (projectList?.slice(0, 5) ?? []);
 		}
 
 		// 그 외(관리자 혹은 비로그인 방문자)는 전체 반환
-		return (data ?? []) as ProjectDataType[];
+		return (projectList ?? []);
+	},
+
+	//async getTrashProjects() isAdmin: boolean = false,
+	async getTrashProjects(isLogged: boolean = false) {
+		//const { isAdmin } = await this.checkAdminRole();
+
+		console.log("🚀 [Service] getTrashProjects 호출 -isAdmin:", isLogged);
+
+		if (!isLogged) {
+			return [];
+		}
+
+		const { data, error } = await supabase
+			.from('portfolio')
+			.select('*')
+			.eq('isDeleted', true)
+			.order('deletedAt', { ascending: false }); // 최근 삭제순
+
+		console.log("🚀 [Service] getTrashProjects 호출 - 반환된 데이터 수:", data?.length ?? 0);
+
+		if (error) throw error;
+		return data as ProjectDataType[];
 	},
 
 	// 2. 단일 프로젝트 상세 조회
@@ -60,6 +86,8 @@ export const projectService = {
 				msg: "게스트 계정은 수정 권한이 없습니다."
 			}));
 		}
+
+		console.log("🚀 [Service] updateProject 호출 -isAdmin:", isAdmin);
 
 		const { data, error } = await supabase
 			.from('portfolio')
