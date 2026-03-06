@@ -3,6 +3,7 @@
 import React, { useState, useRef, useEffect } from "react";
 // ProjectIcon 파일의 경로에 맞춰 import 하세요
 import { ProjectIcon, ICONSET, IconType } from "@/types/icon.data";
+import Icon from "./icon-text";
 
 interface Props {
 	id: string;
@@ -18,7 +19,10 @@ export default function ExternalLinkItem({ id, label, url, type, onChange, onDel
 	const [isOpen, setIsOpen] = useState(false);
 	const dropdownRef = useRef<HTMLDivElement>(null);
 
-	const availableTypes: IconType[] = ['link', 'figma', 'github', 'mockup', 'homepage'];
+	//const availableTypes: IconType[] = ['link', 'figma', 'github', 'mockup', 'homepage'];
+	const availableTypes = Object.keys(ProjectIcon).filter(
+		(key) => key !== "question" && key !== "zoomIn"
+	) as IconType[];
 
 	// 2. 외부 클릭 시 목록 닫기 로직
 	useEffect(() => {

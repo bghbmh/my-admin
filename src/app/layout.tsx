@@ -4,6 +4,8 @@ import "@/styles/common.scss";
 
 import { Metadata, Viewport } from "next";
 
+import { Analytics } from '@vercel/analytics/react';
+
 // 1. 뷰포트 및 포맷 감지 설정 (viewport 관련 태그들)
 export const viewport: Viewport = {
 	width: "device-width",
@@ -65,6 +67,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 			<body>
 				{/* (auth)나 (main)의 레이아웃들이 이 children 자리로 들어옵니다 */}
 				{children}
+
+				<Analytics /> {/* 👈 Analytics 컴포넌트 추가 */}
 			</body>
 		</html>
 	);
