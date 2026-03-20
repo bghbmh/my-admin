@@ -53,7 +53,7 @@ export default function LoginPage() {
 			<div className="login-card">
 				<div className="login-header">
 					<h1>Admin Login</h1>
-					<p>내 포트폴리오 관리를 위해 로그인하세요.</p>
+					<p>내 포트폴리오 관리를 위한 애플리케이션입니다</p>
 				</div>
 
 				<form onSubmit={handleLogin} className="login-form">
